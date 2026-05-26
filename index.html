@@ -12,7 +12,9 @@
     
     <style>
         body {
-            background: #ffffff;
+            background-color: #ffffff;
+            background-image: radial-gradient(rgba(147, 51, 234, 0.03) 1px, transparent 1px);
+            background-size: 24px 24px;
             background-attachment: fixed;
             font-family: 'Plus Jakarta Sans', sans-serif;
         }
@@ -37,47 +39,48 @@
         .animate-bg-2 { animation: float-fuchsia 22s infinite ease-in-out; will-change: transform; }
         .animate-bg-3 { animation: float-cyan 26s infinite ease-in-out; will-change: transform; }
         
-        /* Люксовое неоновое стекло со светлым подтоном */
+        /* Плотное матовое стекло (Frosted Glassmorphism) */
         .crystal-glass {
-            background: rgba(255, 255, 255, 0.75);
-            backdrop-filter: blur(30px) saturate(180%);
-            -webkit-backdrop-filter: blur(30px) saturate(180%);
-            border: 1px solid rgba(168, 85, 247, 0.08);
+            background: rgba(255, 255, 255, 0.78);
+            backdrop-filter: blur(35px) saturate(190%);
+            -webkit-backdrop-filter: blur(35px) saturate(190%);
+            border: 1px solid rgba(255, 255, 255, 0.65);
             box-shadow: 
-                inset 0 1px 1px 0 rgba(255, 255, 255, 0.9),
-                inset 0 -1px 2px 0 rgba(0, 0, 0, 0.02),
-                0 20px 50px -10px rgba(0, 0, 0, 0.05);
+                0 4px 30px rgba(15, 23, 42, 0.02),
+                0 30px 60px -15px rgba(15, 23, 42, 0.05),
+                inset 0 1px 1px 0 rgba(255, 255, 255, 0.95),
+                inset 0 -1px 2px 0 rgba(0, 0, 0, 0.01);
             transition: all 0.6s cubic-bezier(0.16, 1, 0.3, 1);
         }
 
         .crystal-glass-hover:hover {
-            background: rgba(255, 255, 255, 0.9);
-            border-color: rgba(168, 85, 247, 0.3);
+            background: rgba(255, 255, 255, 0.88);
+            border-color: rgba(147, 51, 234, 0.25);
             box-shadow: 
-                inset 0 1px 2px 0 rgba(255, 255, 255, 1),
-                0 30px 60px -10px rgba(147, 51, 234, 0.1),
-                0 0 30px -5px rgba(168, 85, 247, 0.1);
+                0 10px 40px rgba(147, 51, 234, 0.04),
+                0 40px 80px -20px rgba(147, 51, 234, 0.08),
+                inset 0 1px 1px 0 rgba(255, 255, 255, 1);
             transform: translateY(-4px);
         }
 
-        /* Ультра-прозрачные интерактивные кнопки */
+        /* Интерактивные матовые кнопки */
         .glass-action-btn {
-            background: rgba(255, 255, 255, 0.4);
+            background: rgba(255, 255, 255, 0.65);
             backdrop-filter: blur(20px);
             -webkit-backdrop-filter: blur(20px);
-            border: 1px solid rgba(0, 0, 0, 0.06);
+            border: 1px solid rgba(255, 255, 255, 0.5);
             box-shadow: 
-                inset 0 1px 1px 0 rgba(255, 255, 255, 0.9),
-                0 4px 15px rgba(0, 0, 0, 0.02);
+                0 2px 10px rgba(15, 23, 42, 0.02),
+                inset 0 1px 1px 0 rgba(255, 255, 255, 0.9);
             transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
         }
         
         .glass-action-btn:hover {
-            background: rgba(168, 85, 247, 0.08);
-            border-color: rgba(168, 85, 247, 0.3);
+            background: rgba(255, 255, 255, 0.85);
+            border-color: rgba(147, 51, 234, 0.3);
             box-shadow: 
-                inset 0 1px 2px 0 rgba(255, 255, 255, 1), 
-                0 15px 30px rgba(147, 51, 234, 0.08);
+                0 12px 25px rgba(147, 51, 234, 0.06),
+                inset 0 1px 1px 0 rgba(255, 255, 255, 1);
             transform: translateY(-2px);
         }
 
@@ -89,7 +92,7 @@
             background: #ffffff;
         }
         ::-webkit-scrollbar-thumb {
-            background: rgba(0, 0, 0, 0.1);
+            background: rgba(15, 23, 42, 0.08);
             border-radius: 10px;
             border: 2px solid #ffffff;
         }
@@ -100,9 +103,10 @@
 </head>
 <body class="text-slate-800 antialiased min-h-screen selection:bg-purple-500/30 relative overflow-x-hidden">
 
-    <div class="fixed top-[-10%] left-[-20%] w-[70vw] h-[70vw] bg-purple-200/20 rounded-full blur-[130px] pointer-events-none animate-bg-1 z-0"></div>
-    <div class="fixed top-[25%] right-[-20%] w-[65vw] h-[65vw] bg-fuchsia-200/20 rounded-full blur-[130px] pointer-events-none animate-bg-2 z-0"></div>
-    <div class="fixed bottom-[-10%] left-[10%] w-[60vw] h-[60vw] bg-indigo-200/20 rounded-full blur-[140px] pointer-events-none animate-bg-3 z-0"></div>
+    <!-- Фоновые свечения с адаптированной плотностью для красивого размытия -->
+    <div class="fixed top-[-10%] left-[-20%] w-[70vw] h-[70vw] bg-purple-200/35 rounded-full blur-[140px] pointer-events-none animate-bg-1 z-0"></div>
+    <div class="fixed top-[25%] right-[-20%] w-[65vw] h-[65vw] bg-fuchsia-200/40 rounded-full blur-[130px] pointer-events-none animate-bg-2 z-0"></div>
+    <div class="fixed bottom-[-10%] left-[10%] w-[60vw] h-[60vw] bg-indigo-200/40 rounded-full blur-[140px] pointer-events-none animate-bg-3 z-0"></div>
 
     <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 pb-24 pt-8 relative z-10">
         
@@ -111,7 +115,7 @@
             
             <div class="h-48 sm:h-72 relative overflow-hidden">
                 <div class="absolute inset-0 bg-cover bg-center scale-102" style="background-image: url('https://sun9-41.userapi.com/s/v1/ig2/e11M_ial-zNdsquEKzWNIVPlJxQgnBEeXdfuS_3MEiDPWdungADBkR-v4CvHYv6pz8bcJbML4bDuE1DMnbZGglBn.jpg?quality=95&as=32x18,48x27,72x40,108x60,160x89,240x134,360x201,480x268,540x301,640x357,720x402,1080x603,1280x714,1440x804,1505x840&from=bu&u=Bo45LKMu5IbwnqKYrjdbBEs5c47liYUv48GKqcs7fOU&cs=1505x0');"></div>
-                <div class="absolute inset-0 bg-gradient-to-t from-white via-white/30 to-black/10"></div>
+                <div class="absolute inset-0 bg-gradient-to-t from-white via-white/50 to-black/10"></div>
             </div>
             
             <div class="px-6 sm:px-10 pb-10 -mt-20 sm:-mt-28 relative z-10">
