@@ -113,28 +113,30 @@
         <header class="crystal-glass rounded-[2rem] overflow-hidden mb-8 relative">
             <div class="absolute top-0 left-0 right-0 h-[1px] bg-gradient-to-r from-transparent via-purple-400/20 to-transparent z-20"></div>
             
-            <div class="h-48 sm:h-72 relative overflow-hidden">
+            <!-- Высота обложки задана более просторной для лучшей видимости текста на картинке -->
+            <div class="h-56 md:h-80 relative overflow-hidden">
                 <div class="absolute inset-0 bg-cover bg-center scale-102" style="background-image: url('https://sun9-27.userapi.com/s/v1/ig2/XvRdtYciMUhWycmkNkD_aPpksuuUApkS1R12T24pcVYpyl4oX0PfaBWuiIF-MdVRVU9-Y7BANKwp_aUfp7kPE6Ab.jpg?quality=95&as=32x13,48x19,72x29,108x43,160x64,240x96,360x144,480x192,540x216,640x256,720x288,1080x432,1280x512,1440x576,1640x656&from=bu&u=_HNgT3hmaiMpmaAvnxKluzLPapr0qSNuDKxSqVLF7xI&cs=1640x0');"></div>
-                <!-- Ослабленное засветление: via-white/20 вместо via-white/50, to-black/5 вместо to-black/10 -->
-                <div class="absolute inset-0 bg-gradient-to-t from-white via-white/20 to-black/5"></div>
+                <!-- Ослабленный белый градиент для сохранения контраста картинки -->
+                <div class="absolute inset-0 bg-gradient-to-t from-white/30 via-white/10 to-transparent"></div>
             </div>
             
-            <!-- Изменен отрицательный отступ с -mt-20 sm:-mt-28 на -mt-12 sm:-mt-16 для смещения фото ниже -->
-            <div class="px-6 sm:px-10 pb-10 -mt-12 sm:-mt-16 relative z-10">
-                <div class="flex flex-col sm:flex-row items-center sm:items-end gap-6 text-center sm:text-left mb-8">
+            <!-- Отрицательный отступ уменьшен до -mt-4 md:-mt-6, чтобы опустить аватар ниже и не загораживать обложку -->
+            <div class="px-6 md:px-10 pb-10 -mt-4 md:-mt-6 relative z-10">
+                <!-- flex-row включается на md (768px), гарантируя отсутствие горизонтальных пересечений текста и фото -->
+                <div class="flex flex-col md:flex-row items-center gap-6 md:gap-8 text-center md:text-left mb-8">
                     
-                    <div class="w-32 h-32 sm:w-40 sm:h-40 rounded-full p-1 bg-white/60 shadow-[0_15px_50px_0_rgba(0,0,0,0.1)] backdrop-blur-3xl border border-purple-200 flex-shrink-0 relative group/avatar cursor-pointer zoomable-img-container">
+                    <div class="w-32 h-32 md:w-40 md:h-40 rounded-full p-1 bg-white/60 shadow-[0_15px_50px_0_rgba(0,0,0,0.1)] backdrop-blur-3xl border border-purple-200 flex-shrink-0 relative group/avatar cursor-pointer zoomable-img-container">
                         <div class="absolute inset-0 rounded-full bg-purple-500/25 blur-md opacity-0 group-hover/avatar:opacity-100 transition-opacity duration-500"></div>
                         <div class="w-full h-full rounded-full overflow-hidden border border-white/80 relative z-10">
                             <img src="https://sun9-79.userapi.com/s/v1/ig2/FBrzlXNIFtc1OlpbZ531A6n-IaiZ6GwyS8iY31wWS5fW4NltJ6AlcxhRp02RXC_ELluf10NOQDg-COuoaqGfjWGR.jpg?quality=95&as=32x51,48x77,72x115,108x173,160x256,240x384,360x577,480x769,540x865,640x1025,720x1153,799x1280&from=bu&u=idguh_Gn7sJRf8iyfFzNMhRZ1xqbDgNfC9ADVRv_qrk&cs=799x0" alt="Матвеевы Сергей и Олеся" class="w-full h-full object-cover transition-transform duration-700 group-hover/avatar:scale-105 src-image">
                         </div>
                     </div>
                     
-                    <div class="flex-1">
-                        <h1 class="text-3xl sm:text-4xl font-extrabold tracking-tight bg-clip-text text-transparent bg-gradient-to-r from-slate-900 via-slate-800 to-purple-900 leading-[1.1]">
+                    <div class="flex-1 min-w-0">
+                        <h1 class="text-3xl md:text-4xl font-extrabold tracking-tight bg-clip-text text-transparent bg-gradient-to-r from-slate-900 via-slate-800 to-purple-900 leading-[1.15]">
                             Матвеевы<br>Сергей и Олеся
                         </h1>
-                        <p class="text-purple-600 font-semibold text-xs sm:text-sm mt-3 tracking-widest uppercase">
+                        <p class="text-purple-600 font-semibold text-xs md:text-sm mt-3 tracking-widest uppercase">
                             Фуллерен С60 • Молекула долголетия в каждой капле!
                         </p>
                     </div>
@@ -193,7 +195,7 @@
             </div>
 
             <div class="space-y-4">
-                <!-- Отзывы в Telegram (Более насыщенная оранжевая карточка) -->
+                <!-- Отзывы в Telegram -->
                 <a href="https://t.me/fullenergy_otzyv" target="_blank" rel="noopener noreferrer" 
                    class="block p-6 rounded-2xl border border-orange-300/80 bg-orange-100/40 backdrop-blur-2xl transition-all duration-400 hover:bg-orange-100/80 hover:border-orange-400 hover:-translate-y-1 group/btn relative overflow-hidden shadow-sm">
                     <div class="absolute inset-0 bg-gradient-to-r from-orange-500/0 via-orange-500/10 to-orange-500/0 translate-x-[-100%] group-hover/btn:translate-x-[100%] transition-transform duration-1000"></div>
@@ -211,7 +213,7 @@
                     </div>
                 </a>
 
-                <!-- Отзывы в ВКонтакте (Более насыщенная оранжевая карточка) -->
+                <!-- Отзывы в ВКонтакте -->
                 <a href="https://vk.com/im/channels/-237463683" target="_blank" rel="noopener noreferrer" 
                    class="block p-6 rounded-2xl border border-orange-300/80 bg-orange-100/40 backdrop-blur-2xl transition-all duration-400 hover:bg-orange-100/80 hover:border-orange-400 hover:-translate-y-1 group/btn relative overflow-hidden shadow-sm">
                     <div class="absolute inset-0 bg-gradient-to-r from-orange-500/0 via-orange-500/10 to-orange-500/0 translate-x-[-100%] group-hover/btn:translate-x-[100%] transition-transform duration-1000"></div>
@@ -239,7 +241,7 @@
                 </p>
                 
                 <div class="grid grid-cols-1 sm:grid-cols-2 gap-4 my-6">
-                    <!-- Эстетика кожи (Зеленая карточка) -->
+                    <!-- Эстетика кожи -->
                     <div class="bg-emerald-50/50 border border-emerald-200 rounded-2xl p-5 flex items-start gap-4 shadow-inner relative group/icon">
                         <span class="text-2xl text-emerald-500 filter drop-shadow-[0_0_8px_rgba(16,185,129,0.3)] transition-all group-hover/icon:scale-110">✨</span>
                         <div>
@@ -247,7 +249,7 @@
                             <p class="text-xs sm:text-sm text-black mt-1 leading-relaxed">Здоровый и свежий тон лица без необходимости применения агрессивных уходовых процедур.</p>
                         </div>
                     </div>
-                    <!-- Стабильный тонус (Оранжевая карточка) -->
+                    <!-- Стабильный тонус -->
                     <div class="bg-orange-50/50 border border-orange-200 rounded-2xl p-5 flex items-start gap-4 shadow-inner relative group/icon">
                         <span class="text-2xl text-orange-500 filter drop-shadow-[0_0_8px_rgba(249,115,22,0.3)] transition-all group-hover/icon:scale-110">⚡</span>
                         <div>
@@ -255,7 +257,7 @@
                             <p class="text-xs sm:text-sm text-black mt-1 leading-relaxed">Легкое пробуждение по утрам и сохранение сил до самого вечера.</p>
                         </div>
                     </div>
-                    <!-- Ясность мышления (Розовая карточка) -->
+                    <!-- Ясность мышления -->
                     <div class="bg-pink-50/50 border border-pink-200 rounded-2xl p-5 flex items-start gap-4 shadow-inner relative group/icon">
                         <span class="text-2xl text-pink-500 filter drop-shadow-[0_0_8px_rgba(236,72,153,0.3)] transition-all group-hover/icon:scale-110">🧠</span>
                         <div>
@@ -263,12 +265,12 @@
                             <p class="text-xs sm:text-sm text-black mt-1 leading-relaxed">Повышение концентрации внимания, памяти и избавление от ментального шума.</p>
                         </div>
                     </div>
-                    <!-- Иммунный барьер (Синяя карточка) -->
+                    <!-- Иммунный барьер -->
                     <div class="bg-blue-50/50 border border-blue-200 rounded-2xl p-5 flex items-start gap-4 shadow-inner relative group/icon">
                         <span class="text-2xl text-blue-500 filter drop-shadow-[0_0_8px_rgba(59,130,246,0.3)] transition-all group-hover/icon:scale-110">🛡️</span>
                         <div>
                             <h4 class="font-bold text-blue-950 text-sm sm:text-base">Иммунный барьер</h4>
-                            <p class="text-xs sm:text-sm text-black mt-1 leading-relaxed">Поддержка естественных защитных сил организма в периоды сезонных нагрузок.</p>
+                            <p class="text-xs sm:text-sm text-black mt-1 leading-relaxed">Поддержка естественных защитных сил организма в периоды сезонных нагрузки.</p>
                         </div>
                     </div>
                 </div>
@@ -332,7 +334,7 @@
                 <!-- Блок контактов -->
                 <div class="pt-2 font-semibold text-sm sm:text-base space-y-4 w-full">
                     
-                    <!-- Сергей Матвеев (Зеленая карточка) -->
+                    <!-- Сергей Матвеев -->
                     <div class="bg-emerald-50/80 p-5 rounded-xl border border-emerald-200 shadow-inner">
                         <p class="text-slate-800 font-bold mb-3 text-lg">Сергей Матвеев</p>
                         <div class="space-y-3">
@@ -351,7 +353,7 @@
                         </div>
                     </div>
                 
-                    <!-- Олеся Матвеева (Малиновая карточка) -->
+                    <!-- Олеся Матвеева -->
                     <div class="bg-pink-50/80 p-5 rounded-xl border border-pink-200 shadow-inner">
                         <p class="text-slate-800 font-bold mb-3 text-lg">Олеся Матвеева</p>
                         <div class="space-y-3">
