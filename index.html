@@ -425,6 +425,382 @@
         .page-section.active {
             display: block;
         }
+
+        /* Страница «Маркетинг» */
+        #page-marketing {
+            max-width: 52rem;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .marketing-header {
+            background: linear-gradient(90deg, #d9f99d 0%, #bfdbfe 35%, #ddd6fe 70%, #c4b5fd 100%);
+            padding: 2.5rem 1.5rem;
+            text-align: center;
+            border-radius: 1rem 1rem 0 0;
+        }
+
+        .marketing-header .label {
+            font-size: 0.875rem;
+            font-weight: 700;
+            letter-spacing: 0.2em;
+            color: #4c1d95;
+            text-transform: uppercase;
+        }
+
+        .marketing-header .brand {
+            font-family: 'Playfair Display', Georgia, serif;
+            font-size: 2rem;
+            font-weight: 700;
+            color: #312e81;
+            margin-top: 0.25rem;
+        }
+
+        .marketing-body {
+            background: #fff;
+            border: 1px solid #e2e8f0;
+            border-top: none;
+            border-radius: 0 0 1rem 1rem;
+            padding: 2rem 1.5rem 2.5rem;
+        }
+
+        .marketing-section-title {
+            font-family: 'Playfair Display', Georgia, serif;
+            font-size: 1.125rem;
+            font-weight: 700;
+            font-style: italic;
+            color: #1e293b;
+            text-align: center;
+            margin-bottom: 1.25rem;
+        }
+
+        .marketing-text {
+            font-size: 0.9375rem;
+            line-height: 1.65;
+            color: #334155;
+        }
+
+        .marketing-benefit-box {
+            border: 1px solid #cbd5e1;
+            border-radius: 0.375rem;
+            padding: 1rem 0.75rem;
+            text-align: center;
+            font-size: 0.875rem;
+            color: #334155;
+            line-height: 1.45;
+            background: #fff;
+        }
+
+        .marketing-benefit-box .title {
+            font-weight: 700;
+            color: #1e293b;
+            margin-bottom: 0.5rem;
+        }
+
+        .marketing-table-wrap {
+            overflow-x: auto;
+            margin: 0.75rem 0;
+        }
+
+        .marketing-table {
+            width: 100%;
+            border-collapse: collapse;
+            font-size: 0.75rem;
+        }
+
+        .marketing-table th,
+        .marketing-table td {
+            border: 1px solid #cbd5e1;
+            padding: 0.375rem 0.5rem;
+            text-align: center;
+        }
+
+        .marketing-table th {
+            background: #f8fafc;
+            font-weight: 600;
+        }
+
+        .marketing-note {
+            font-size: 0.8125rem;
+            color: #64748b;
+            margin-top: 0.5rem;
+        }
+
+        .marketing-feature-img {
+            border-radius: 0.5rem;
+            overflow: hidden;
+            background: #f1f5f9;
+            min-height: 180px;
+        }
+
+        .marketing-feature-img img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            display: block;
+            min-height: 180px;
+        }
+
+        .marketing-package-card {
+            border: 1px solid #cbd5e1;
+            border-radius: 0.375rem;
+            padding: 1rem 0.75rem;
+            text-align: center;
+            background: #fff;
+        }
+
+        .marketing-package-card .name {
+            font-weight: 700;
+            font-size: 1rem;
+            color: #1e293b;
+            margin-bottom: 0.5rem;
+        }
+
+        .marketing-package-card .ue {
+            font-size: 0.8125rem;
+            color: #64748b;
+        }
+
+        .marketing-package-card .rub {
+            font-size: 1.125rem;
+            font-weight: 700;
+            color: #1e293b;
+            margin: 0.25rem 0 0.5rem;
+        }
+
+        .marketing-package-card .meta {
+            font-size: 0.75rem;
+            color: #64748b;
+            line-height: 1.4;
+        }
+
+        .marketing-accordion-item {
+            margin-bottom: 0.375rem;
+        }
+
+        .marketing-accordion-btn {
+            width: 100%;
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+            padding: 0.75rem 1rem;
+            background: #5b3a7a;
+            color: #fff;
+            border: none;
+            border-radius: 0.25rem;
+            font-size: 0.875rem;
+            font-weight: 500;
+            text-align: left;
+            cursor: pointer;
+            transition: background 0.2s;
+        }
+
+        .marketing-accordion-btn:hover {
+            background: #4a2f64;
+        }
+
+        .marketing-accordion-btn .arrow {
+            margin-left: auto;
+            transition: transform 0.25s;
+            font-size: 0.75rem;
+        }
+
+        .marketing-accordion-btn.open .arrow {
+            transform: rotate(90deg);
+        }
+
+        .marketing-accordion-panel {
+            display: none;
+            padding: 1rem 1.25rem;
+            background: #fff;
+            border: 1px solid #e2e8f0;
+            border-top: none;
+            font-size: 0.875rem;
+            line-height: 1.6;
+            color: #334155;
+        }
+
+        .marketing-accordion-panel.open {
+            display: block;
+        }
+
+        .marketing-accordion-panel .example {
+            color: #ea580c;
+            font-weight: 600;
+            margin-top: 0.75rem;
+        }
+
+        .marketing-info-box {
+            background: #fff;
+            border: 1px solid #e2e8f0;
+            border-radius: 0.5rem;
+            padding: 1.25rem 1.5rem;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .marketing-info-box::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            right: 0;
+            width: 40%;
+            height: 100%;
+            background: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='60' height='52' viewBox='0 0 60 52'%3E%3Cpath d='M30 0l30 17.3v34.7L30 52 0 52V17.3z' fill='none' stroke='%23e2e8f0' stroke-width='1'/%3E%3C/svg%3E") repeat;
+            opacity: 0.5;
+            pointer-events: none;
+        }
+
+        .marketing-info-box h3 {
+            color: #2563eb;
+            font-weight: 700;
+            font-size: 1rem;
+            margin-bottom: 0.5rem;
+            position: relative;
+            z-index: 1;
+        }
+
+        .marketing-info-box h4 {
+            color: #ea580c;
+            font-weight: 700;
+            font-size: 0.9375rem;
+            margin-bottom: 0.75rem;
+            position: relative;
+            z-index: 1;
+        }
+
+        .marketing-info-box ul {
+            position: relative;
+            z-index: 1;
+            font-size: 0.8125rem;
+            line-height: 1.55;
+            color: #475569;
+        }
+
+        .marketing-calc-title {
+            text-align: center;
+            color: #5b3a7a;
+            font-weight: 700;
+            font-size: 1.125rem;
+            margin-bottom: 1.25rem;
+        }
+
+        .marketing-calc-sub {
+            color: #ea580c;
+            font-weight: 700;
+            font-size: 0.9375rem;
+            margin-bottom: 1rem;
+        }
+
+        .marketing-step-num {
+            width: 1.75rem;
+            height: 1.75rem;
+            border-radius: 50%;
+            background: #22c55e;
+            color: #fff;
+            font-weight: 700;
+            font-size: 0.875rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-shrink: 0;
+        }
+
+        .marketing-income {
+            color: #ea580c;
+            font-weight: 700;
+            font-size: 0.9375rem;
+            margin: 0.5rem 0;
+        }
+
+        .marketing-income .amount {
+            font-size: 1.25rem;
+        }
+
+        .marketing-freedom-title {
+            font-family: 'Playfair Display', Georgia, serif;
+            font-size: 1.25rem;
+            font-weight: 700;
+            text-align: center;
+            color: #1e293b;
+            margin-bottom: 1rem;
+        }
+
+        .marketing-cta-btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            padding: 0.75rem 1.75rem;
+            background: #5b3a7a;
+            color: #fff;
+            border-radius: 9999px;
+            font-size: 0.9375rem;
+            font-weight: 600;
+            transition: background 0.2s;
+        }
+
+        .marketing-cta-btn:hover {
+            background: #4a2f64;
+        }
+
+        .marketing-feature-card {
+            background: linear-gradient(160deg, #1a0a2e 0%, #2d1b4e 40%, #1e1033 100%);
+            border-radius: 0.5rem;
+            overflow: hidden;
+            min-height: 200px;
+            display: flex;
+            flex-direction: column;
+            position: relative;
+        }
+
+        .marketing-feature-card::before {
+            content: '';
+            position: absolute;
+            top: -30%;
+            right: -20%;
+            width: 70%;
+            height: 70%;
+            background: radial-gradient(circle, rgba(168, 85, 247, 0.4) 0%, transparent 70%);
+            pointer-events: none;
+        }
+
+        .marketing-feature-card .logo {
+            text-align: center;
+            padding: 0.75rem;
+            font-size: 0.625rem;
+            font-weight: 700;
+            letter-spacing: 0.15em;
+            color: rgba(255,255,255,0.7);
+            position: relative;
+            z-index: 1;
+        }
+
+        .marketing-feature-card .card-title {
+            padding: 0 1rem;
+            font-weight: 700;
+            font-size: 0.875rem;
+            color: #facc15;
+            line-height: 1.35;
+            position: relative;
+            z-index: 1;
+        }
+
+        .marketing-feature-card .card-body {
+            padding: 0.75rem 1rem 1rem;
+            font-size: 0.75rem;
+            color: rgba(255,255,255,0.9);
+            line-height: 1.5;
+            flex: 1;
+            position: relative;
+            z-index: 1;
+        }
+
+        .marketing-feature-caption {
+            text-align: center;
+            font-size: 0.8125rem;
+            color: #475569;
+            margin-top: 0.5rem;
+        }
     </style>
 </head>
 <body class="text-slate-800 antialiased min-h-screen selection:bg-purple-500/30 relative overflow-x-hidden">
@@ -844,13 +1220,13 @@
                     <div class="grid grid-cols-1 sm:grid-cols-2 gap-6 pt-2">
                         <div>
                             <div class="about-photo-slot aspect-square sm:aspect-[4/3]">
-                                <img src="" alt="Фуллерен C60">
+                                <img src="https://sun9-11.userapi.com/s/v1/ig2/N-3Ge6tGFzRk1kFL2Mx2CfZ6STpaIvNc-XW9qkRh6JHjRpbsu-wEYYGaC8q5VcAB4bmpLQeBocp3DAvK6p_GYGGa.jpg?quality=95&as=32x31,48x47,72x71,108x106,160x157,240x236,360x353,480x471,540x530,595x584&from=bu&u=XDCP7InCF61h_0eXN1y8EFzNKAEMKHpf5YDFSA4i_SY&cs=595x0" alt="Фуллерен C60">
                             </div>
                             <p class="text-center text-sm font-semibold text-slate-600 mt-3">Фуллерен C60</p>
                         </div>
                         <div>
                             <div class="about-photo-slot aspect-square sm:aspect-[4/3]">
-                                <img src="" alt="Футбольный мяч">
+                                <img src="https://sun9-10.userapi.com/s/v1/ig2/NX7ZsgJSFyxUNrUZUDzrWea0Q8sHQry629cToxzq5aA9pWzXZWof5aQAdw6v7tFm-GiuNQrd_QHRqN6lO2jQZhu-.jpg?quality=95&as=32x28,48x43,72x64,108x96,160x142,240x213,360x319,480x425,540x478,640x567,709x628&from=bu&u=U1gOE4IWpouLlzyhAwNSF_fqIBBBoylFNMmLJl_YmM4&cs=709x0" alt="Футбольный мяч">
                             </div>
                             <p class="text-center text-sm font-semibold text-slate-600 mt-3">Футбольный мяч</p>
                         </div>
@@ -1145,6 +1521,324 @@
         </div>
         <!-- /Каталог -->
 
+        <!-- Маркетинг -->
+        <div id="page-marketing" class="page-section">
+
+            <div class="marketing-header">
+                <h1 class="brand">МАРКЕТИНГ FULL ENERGY</h1>
+            </div>
+
+            <div class="marketing-body space-y-10">
+
+                <!-- Бизнес возможности -->
+                <section>
+                    <h2 class="marketing-section-title">Бизнес возможности с FULL ENERGY</h2>
+                    <ul class="marketing-text list-disc pl-5 space-y-1 mb-4">
+                        <li>Бизнес, который даёт свободу.</li>
+                        <li>Продукт, которому доверяют.</li>
+                        <li>Возможности, которые вдохновляют.</li>
+                    </ul>
+                    <p class="marketing-text mb-5">
+                        Абсолютно каждый человек может стать частью большой и дружной семьи Full Energy, где мы предоставляем возможность:
+                    </p>
+                    <div class="grid grid-cols-1 sm:grid-cols-3 gap-3">
+                        <div class="marketing-benefit-box">
+                            <p class="title">Развивать партнёрство и зарабатывать честно</p>
+                            <p>Собираешь свою команду, делишься продуктом и получаешь достойный доход без впаривания и агрессивных продаж.</p>
+                        </div>
+                        <div class="marketing-benefit-box">
+                            <p class="title">Улучшать качество жизни — своей и семьи</p>
+                            <p>Продукты реально работают: больше энергии, лучше самочувствие, яснее голова. Ты не просто продаёшь, ты пользуешься сам и рекомендуешь от сердца.</p>
+                        </div>
+                        <div class="marketing-benefit-box">
+                            <p class="title">Вносить вклад в развитие нанотехнологий</p>
+                            <p>Ты продвигаешь инновационный продукт на основе фуллерена C60 и становишься частью движения, которое двигает рынок здоровья вперёд.</p>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- Бизнес-пакеты -->
+                <section>
+                    <h2 class="marketing-section-title">Наполнение бизнес-пакетов</h2>
+                    <div class="marketing-text space-y-3 mb-5">
+                        <p>Компания FULL ENERGY предлагает уникальную возможность построить успешный бизнес, основанный на инновационных продуктах с доказанной эффективностью.</p>
+                        <p>Бизнес-пакет выбирается на первом этапе при регистрации. Пакеты: Х1, Х2, Х3, Х5, VIP или Premium. От пакета в дальнейшем будет зависеть ваш заработок. Чем круче пакет, тем больше денег!</p>
+                        <p>Пакет покупается один раз, но можно в последствии его повышать (делать апгрейд) в течение 3 месяцев с момента регистрации. Приобретая бизнес-пакет, вы получаете продукцию по ценам для бизнес-партнёров и активируете себе возможность для построения команды и получения дохода.</p>
+                        <p>Заработанный бонус в у.е. вы можете использовать на покупку продукта или апгрейд. При оплате продукта: <strong>1 у.е. = 88 руб.</strong> При выводе средств на расчётный счёт: <strong>1 у.е. = 50 руб.</strong></p>
+                        <p class="marketing-note">* Апгрейд бизнес-пакета можно повысить в течение 3 месяцев с момента регистрации. Для этого используйте кнопку «Апгрейд» в своём личном кабинете.</p>
+                    </div>
+                    <div class="grid grid-cols-2 sm:grid-cols-3 gap-3 mb-5">
+                        <div class="marketing-package-card">
+                            <div class="name">X-1</div>
+                            <div class="ue">100 у.е.</div>
+                            <div class="rub">8 800 руб.</div>
+                            <div class="meta">3 любых продукта<br>50 баллов</div>
+                        </div>
+                        <div class="marketing-package-card">
+                            <div class="name">X-2</div>
+                            <div class="ue">200 у.е.</div>
+                            <div class="rub">17 600 руб.</div>
+                            <div class="meta">6 любых продуктов<br>100 баллов</div>
+                        </div>
+                        <div class="marketing-package-card">
+                            <div class="name">X-3</div>
+                            <div class="ue">300 у.е.</div>
+                            <div class="rub">26 400 руб.</div>
+                            <div class="meta">9 любых продуктов<br>150 баллов</div>
+                        </div>
+                        <div class="marketing-package-card">
+                            <div class="name">X-5</div>
+                            <div class="ue">500 у.е.</div>
+                            <div class="rub">44 000 руб.</div>
+                            <div class="meta">15 любых продуктов<br>250 баллов</div>
+                        </div>
+                        <div class="marketing-package-card">
+                            <div class="name">VIP</div>
+                            <div class="ue">1 000 у.е.</div>
+                            <div class="rub">88 000 руб.</div>
+                            <div class="meta">30 любых продуктов<br>500 баллов</div>
+                        </div>
+                        <div class="marketing-package-card">
+                            <div class="name">Premium</div>
+                            <div class="ue">2 000 у.е.</div>
+                            <div class="rub">176 000 руб.</div>
+                            <div class="meta">60 любых продуктов<br>1 000 баллов</div>
+                        </div>
+                    </div>
+                    <div class="marketing-text space-y-3">
+                        <p>Условные единицы введены для того, чтоб переводить стоимость продукции в валюты разных стран. Баллы — каждый продукт имеет балловое наполнение. 3 продукта в бизнес-пакете = 50 баллов. Исходя из балловой стоимости заказа рассчитываются ваши вознаграждения!</p>
+                        <p>Full Energy — это не просто доход, а шанс построить жизнь, в которой вы выбираете правила. Чёткая система, которая открывает реальные возможности для достойного дохода. Каждый партнёр получает шанс выстроить стабильный бизнес, раскрыть свой потенциал и шаг за шагом двигаться к финансовой свободе. И самое вдохновляющее — в маркетинг-плане целых 8 источников дохода, которые начинают работать сразу и поддерживают ваш рост на каждом этапе.</p>
+                    </div>
+                </section>
+
+                <!-- 8 видов вознаграждений -->
+                <section>
+                    <h2 class="marketing-section-title">8 видов вознаграждений</h2>
+                    <div class="space-y-1" id="marketing-accordion">
+
+                        <div class="marketing-accordion-item">
+                            <button type="button" class="marketing-accordion-btn">
+                                <i class="fa-solid fa-user-plus text-sm opacity-80"></i>
+                                Инвайт-бонус
+                                <span class="arrow"><i class="fa-solid fa-chevron-right"></i></span>
+                            </button>
+                            <div class="marketing-accordion-panel">
+                                <p>Вознаграждение за подключение новых партнёров к бизнесу в размере 10–30% от стоимости бизнес-пакета в баллах. Инвайт-бонус начисляется мгновенно.</p>
+                                <div class="marketing-table-wrap">
+                                    <table class="marketing-table">
+                                        <thead>
+                                            <tr><th></th><th>Х1</th><th>Х2</th><th>Х3</th><th>Х5</th><th>VIP</th><th>PREMIUM</th></tr>
+                                        </thead>
+                                        <tbody>
+                                            <tr><td>%</td><td>10%</td><td>10%</td><td>20%</td><td>20%</td><td>30%</td><td>30%</td></tr>
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="marketing-accordion-item">
+                            <button type="button" class="marketing-accordion-btn">
+                                <i class="fa-solid fa-sitemap text-sm opacity-80"></i>
+                                Бинарный бонус
+                                <span class="arrow"><i class="fa-solid fa-chevron-right"></i></span>
+                            </button>
+                            <div class="marketing-accordion-panel">
+                                <p>Вознаграждение в размере 5–30% от баллового группового товарооборота* в меньшей ветке бинарной структуры.</p>
+                                <div class="marketing-table-wrap">
+                                    <table class="marketing-table">
+                                        <thead>
+                                            <tr><th></th><th>Х1</th><th>Х2</th><th>Х3</th><th>Х5</th><th>VIP</th><th>PREMIUM</th></tr>
+                                        </thead>
+                                        <tbody>
+                                            <tr><td>%</td><td>5%</td><td>10%</td><td>15%</td><td>20%</td><td>25%</td><td>30%</td></tr>
+                                        </tbody>
+                                    </table>
+                                </div>
+                                <p class="marketing-note">* Бинарный товарооборот засчитывается в накопительный объём с учётом вычета уже выплаченного инвайт-бонуса. Бинарный бонус активируется после подписания по одному лично приглашённому партнёру в обеих ветках (слева и справа). Максимальное начисление в неделю по бинарному бонусу — 14 000 у.е. Бинарный бонус начисляется 1, 8, 16 и 24 числа каждого месяца.</p>
+                            </div>
+                        </div>
+
+                        <div class="marketing-accordion-item">
+                            <button type="button" class="marketing-accordion-btn">
+                                <i class="fa-solid fa-handshake text-sm opacity-80"></i>
+                                Матчинг-бонус
+                                <span class="arrow"><i class="fa-solid fa-chevron-right"></i></span>
+                            </button>
+                            <div class="marketing-accordion-panel">
+                                <p>Вознаграждение до 60% от бинарного дохода структуры до 7-го уровня. *Учитывается товарооборот в меньшей ветке за предыдущий месяц.</p>
+                                <p><strong>ВАЖНО:</strong> матчинг-бонус зависит от квалификации и начисляется в текущем месяце — по квалификации, достигнутой в предыдущем месяце.</p>
+                                <div class="marketing-table-wrap">
+                                    <table class="marketing-table">
+                                        <thead>
+                                            <tr>
+                                                <th>Пакет</th><th>Звезда</th><th>Лидер</th><th>Регион. лидер</th><th>Федерал. лидер</th><th>Национал. лидер</th><th>Междунар. лидер</th><th>ТОП-лидер</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            <tr><td>1 уровень</td><td>20%</td><td>20%</td><td>20%</td><td>20%</td><td>20%</td><td>20%</td><td>20%</td></tr>
+                                            <tr><td>2 уровень</td><td>10%</td><td>10%</td><td>10%</td><td>10%</td><td>10%</td><td>10%</td><td></td></tr>
+                                            <tr><td>3 уровень</td><td>10%</td><td>10%</td><td>10%</td><td>10%</td><td>10%</td><td></td><td></td></tr>
+                                            <tr><td>4 уровень</td><td>10%</td><td>10%</td><td>10%</td><td>10%</td><td></td><td></td><td></td></tr>
+                                            <tr><td>5 уровень</td><td>5%</td><td>5%</td><td>5%</td><td></td><td></td><td></td><td></td></tr>
+                                            <tr><td>6 уровень</td><td>5%</td><td>5%</td><td></td><td></td><td></td><td></td><td></td></tr>
+                                            <tr><td>7 уровень</td><td>5%</td><td></td><td></td><td></td><td></td><td></td><td></td></tr>
+                                        </tbody>
+                                    </table>
+                                </div>
+                                <p class="marketing-note">Матчинг-бонус начисляется 1, 8, 16 и 24 числа каждого месяца.</p>
+                            </div>
+                        </div>
+
+                        <div class="marketing-accordion-item">
+                            <button type="button" class="marketing-accordion-btn">
+                                <i class="fa-solid fa-crown text-sm opacity-80"></i>
+                                Ранговый бонус
+                                <span class="arrow"><i class="fa-solid fa-chevron-right"></i></span>
+                            </button>
+                            <div class="marketing-accordion-panel">
+                                <p>Вознаграждение за открытие квалификации и удержание её в течение 3-х месяцев:</p>
+                                <ul class="list-disc pl-5 mt-2 space-y-1">
+                                    <li>Региональный Лидер: планшет</li>
+                                    <li>Федеральный Лидер: смартфон</li>
+                                    <li>Национальный Лидер: ноутбук</li>
+                                    <li>Международный Лидер: путешествие на двоих, 5 дней</li>
+                                    <li>Топ-Лидер: VIP-путешествие на двоих, 5 дней</li>
+                                    <li>Амбассадор: автомобиль</li>
+                                    <li>Советник: квартира</li>
+                                </ul>
+                            </div>
+                        </div>
+
+                        <div class="marketing-accordion-item">
+                            <button type="button" class="marketing-accordion-btn">
+                                <i class="fa-solid fa-layer-group text-sm opacity-80"></i>
+                                Структурный бонус
+                                <span class="arrow"><i class="fa-solid fa-chevron-right"></i></span>
+                            </button>
+                            <div class="marketing-accordion-panel">
+                                <p>Вознаграждение от 5 до 10% от баллового товарооборота вашей личной группы на 7 уровней вниз + от 1 до 3% на бесконечное количество уровней вниз на квалификациях Топ-Лидер, Амбассадор и Советник.</p>
+                                <p class="marketing-note">Структурный бонус начисляется 1 числа каждого месяца в 00:01 (МСК).</p>
+                                <div class="marketing-table-wrap">
+                                    <table class="marketing-table">
+                                        <thead>
+                                            <tr><th>Пакет</th><th>X1</th><th>X2</th><th>X3</th><th>X5</th><th>Vip</th><th>Premium</th></tr>
+                                        </thead>
+                                        <tbody>
+                                            <tr><td>1 уровень</td><td>5%</td><td>6%</td><td>7%</td><td>8%</td><td>9%</td><td>10%</td></tr>
+                                            <tr><td>2 уровень</td><td>5%</td><td>6%</td><td>7%</td><td>8%</td><td>9%</td><td>10%</td></tr>
+                                            <tr><td>3 уровень</td><td>5%</td><td>6%</td><td>7%</td><td>8%</td><td>9%</td><td>10%</td></tr>
+                                            <tr><td>4 уровень</td><td>5%</td><td>6%</td><td>7%</td><td>8%</td><td>9%</td><td>10%</td></tr>
+                                            <tr><td>5 уровень</td><td>5%</td><td>6%</td><td>7%</td><td>8%</td><td>9%</td><td>10%</td></tr>
+                                            <tr><td>6 уровень</td><td>5%</td><td>6%</td><td>7%</td><td>8%</td><td>9%</td><td>10%</td></tr>
+                                            <tr><td>7 уровень</td><td>5%</td><td>6%</td><td>7%</td><td>8%</td><td>9%</td><td>10%</td></tr>
+                                            <tr><td>8 уровень + ∞</td><td colspan="6">1–3%</td></tr>
+                                        </tbody>
+                                    </table>
+                                </div>
+                                <p class="marketing-note"><strong>Важно!</strong> Структурный бонус — единственный бонус, который требует личной активности каждый месяц. Для этого необходимо приобрести 1 продукт в период с 1 по 7 число на сумму 35 у.е. или 2 продукта на 70 у.е. с 8 числа до конца месяца. В первый месяц после регистрации личная активность для бонуса не нужна.</p>
+                            </div>
+                        </div>
+
+                        <div class="marketing-accordion-item">
+                            <button type="button" class="marketing-accordion-btn open">
+                                <i class="fa-solid fa-users text-sm opacity-80"></i>
+                                Клиентский бонус
+                                <span class="arrow"><i class="fa-solid fa-chevron-right"></i></span>
+                            </button>
+                            <div class="marketing-accordion-panel open">
+                                <p>Вознаграждение в размере <strong>30%</strong> со всех покупок клиентов в интернет-магазине по вашей персональной ссылке. Ссылку можно найти в вашем личном кабинете на главной странице.</p>
+                                <p class="example">Пример: клиент приобретает 1 продукт за 4 400 руб. 4 400 − 30% = 1 320 руб.</p>
+                                <p>Если 100 клиентов купили по 1 продукту, ваша прибыль — 132 000 руб. Если 100 клиентов купили по 4 продукта, ваша прибыль — 528 000 руб.</p>
+                                <p>Статистика компании говорит о том, что средняя покупка — это 5 продуктов. Клиентский бонус начисляется мгновенно.</p>
+                            </div>
+                        </div>
+
+                        <div class="marketing-accordion-item">
+                            <button type="button" class="marketing-accordion-btn">
+                                <i class="fa-solid fa-globe text-sm opacity-80"></i>
+                                Глобальный пул
+                                <span class="arrow"><i class="fa-solid fa-chevron-right"></i></span>
+                            </button>
+                            <div class="marketing-accordion-panel">
+                                <p>% от товарооборота компании делится между:</p>
+                                <ul class="list-disc pl-5 mt-2 space-y-1">
+                                    <li>Топ-лидером — 1%</li>
+                                    <li>Амбассадором — 2%</li>
+                                    <li>Советником — 3%</li>
+                                </ul>
+                            </div>
+                        </div>
+
+                        <div class="marketing-accordion-item">
+                            <button type="button" class="marketing-accordion-btn">
+                                <i class="fa-solid fa-ship text-sm opacity-80"></i>
+                                Вояж-бонус
+                                <span class="arrow"><i class="fa-solid fa-chevron-right"></i></span>
+                            </button>
+                            <div class="marketing-accordion-panel">
+                                <p>Захватывающее ежегодное путешествие с командой единомышленников.</p>
+                                <p class="marketing-note">* Объявляется 1 раз в год президентом компании.</p>
+                            </div>
+                        </div>
+
+                    </div>
+                </section>
+
+                <!-- Бизнес, который даёт свободу -->
+                <section class="text-center space-y-4 pt-4">
+                    <h2 class="marketing-freedom-title">Бизнес, который даёт свободу</h2>
+                    <p class="marketing-text text-center italic">Продукт, которому доверяют. Возможности, которые вдохновляют.</p>
+                    <div class="marketing-text space-y-3 text-center max-w-2xl mx-auto">
+                        <p>С Full Energy вы получаете всё и сразу в готовом интернет-магазине с уникальными нанопродуктами на основе фуллерена С60 — без рисков, без сложностей, с реальными возможностями финансового роста.</p>
+                        <p>С маркетинг-планом Full Energy ваши усилия никогда не останутся незамеченными, а каждый шаг вперёд будет вознаграждён. Всё, что остаётся — использовать его на полную.</p>
+                    </div>
+                    <p class="text-orange-600 font-semibold text-sm">Есть желание строить структуру и зарабатывать — присоединяйся в нашу Команду!</p>
+                    <a href="https://my.full-en.com/register.php?code=12055CB0-FFF9" target="_blank" rel="noopener noreferrer" class="marketing-cta-btn">
+                        <i class="fa-solid fa-paper-plane"></i>
+                        Хочу стать партнёром
+                    </a>
+                </section>
+
+                <!-- Карточки -->
+                <section>
+                    <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5">
+                        <div>
+                            <div class="marketing-feature-img"><img src="" alt="бизнес под ключ"></div>
+                            <p class="marketing-feature-caption">бизнес под ключ</p>
+                        </div>
+                        <div>
+                            <div class="marketing-feature-img"><img src="" alt="Пройди регистрацию"></div>
+                            <p class="marketing-feature-caption">Пройди регистрацию</p>
+                        </div>
+                        <div>
+                            <div class="marketing-feature-img"><img src="" alt="Подключи свой магазин"></div>
+                            <p class="marketing-feature-caption">Подключи свой магазин</p>
+                        </div>
+                        <div>
+                            <div class="marketing-feature-img"><img src="" alt="бизнес без затрат и рисков"></div>
+                            <p class="marketing-feature-caption">бизнес без затрат и рисков</p>
+                        </div>
+                        <div>
+                            <div class="marketing-feature-img"><img src="" alt="твой доход растёт"></div>
+                            <p class="marketing-feature-caption">твой доход растёт</p>
+                        </div>
+                        <div>
+                            <div class="marketing-feature-img"><img src="" alt="масштабируй бизнес"></div>
+                            <p class="marketing-feature-caption">масштабируй бизнес</p>
+                        </div>
+                    </div>
+                </section>
+
+            </div>
+
+            <footer class="mt-8 text-center text-[10px] text-purple-700/50 tracking-widest uppercase pb-4">
+                &copy; 2026 Матвеевы Сергей и Олеся
+            </footer>
+
+        </div>
+        <!-- /Маркетинг -->
+
     </div>
 
     <!-- Нижняя навигация -->
@@ -1163,10 +1857,10 @@
                     <i class="fa-solid fa-cart-shopping text-sm"></i>
                     Каталог
                 </button>
-                <a href="https://my.full-en.com/register.php?code=12055CB0-FFF9" target="_blank" rel="noopener noreferrer" class="nav-btn">
+                <button type="button" data-page="marketing" class="nav-btn">
                     <i class="fa-solid fa-trophy text-sm"></i>
                     Маркетинг
-                </a>
+                </button>
                 <button type="button" data-page="home" data-scroll="contacts" class="nav-btn">
                     <i class="fa-solid fa-phone text-sm"></i>
                     Контакты
@@ -1196,7 +1890,8 @@
             const pages = {
                 home: document.getElementById('page-home'),
                 about: document.getElementById('page-about'),
-                catalog: document.getElementById('page-catalog')
+                catalog: document.getElementById('page-catalog'),
+                marketing: document.getElementById('page-marketing')
             };
             const navButtons = document.querySelectorAll('.nav-btn[data-page]');
 
@@ -1223,6 +1918,19 @@
             navButtons.forEach(btn => {
                 btn.addEventListener('click', () => {
                     showPage(btn.dataset.page, btn.dataset.scroll || null);
+                });
+            });
+
+            document.querySelectorAll('.marketing-accordion-btn').forEach(btn => {
+                btn.addEventListener('click', () => {
+                    const panel = btn.nextElementSibling;
+                    const isOpen = btn.classList.contains('open');
+                    document.querySelectorAll('.marketing-accordion-btn').forEach(b => b.classList.remove('open'));
+                    document.querySelectorAll('.marketing-accordion-panel').forEach(p => p.classList.remove('open'));
+                    if (!isOpen) {
+                        btn.classList.add('open');
+                        panel.classList.add('open');
+                    }
                 });
             });
         });
