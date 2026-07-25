@@ -8,8 +8,8 @@
     <script src="https://cdn.tailwindcss.com"></script>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
-    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,600;0,700;1,600;1,700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght=300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght=0,600;0,700;1,600;1,700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
     
     <style>
@@ -184,23 +184,25 @@
             min-height: 220px;
         }
 
-        .about-photo-slot img:not([src]),
-        .about-photo-slot img[src=""] {
-            display: none;
-        }
-
-        .about-photo-slot:has(img:not([src])),
-        .about-photo-slot:has(img[src=""]) {
-            display: flex;
+        /* Стили для слотов без картинок */
+        .about-photo-slot:not(:has(img)),
+        .catalog-photo-slot:not(:has(img)),
+        .card-img:not(:has(img)),
+        .marketing-feature-img:not(:has(img)) {
+            display: flex !important;
             align-items: center;
             justify-content: center;
+            background: rgba(147, 51, 234, 0.03);
+            border: 2px dashed rgba(147, 51, 234, 0.15);
         }
 
-        .about-photo-slot:has(img:not([src]))::after,
-        .about-photo-slot:has(img[src=""])::after {
-            content: 'Добавьте фото';
-            color: #94a3b8;
-            font-size: 0.875rem;
+        .about-photo-slot:not(:has(img))::after,
+        .catalog-photo-slot:not(:has(img))::after,
+        .card-img:not(:has(img))::after,
+        .marketing-feature-img:not(:has(img))::after {
+            content: '🧬';
+            font-size: 2.25rem;
+            opacity: 0.7;
         }
 
         .about-infographic-card {
@@ -240,25 +242,6 @@
             min-height: 140px;
         }
 
-        .about-infographic-card .card-img img:not([src]),
-        .about-infographic-card .card-img img[src=""] {
-            display: none;
-        }
-
-        .about-infographic-card .card-img:has(img:not([src])),
-        .about-infographic-card .card-img:has(img[src=""]) {
-            display: flex;
-            align-items: center;
-            justify-content: center;
-        }
-
-        .about-infographic-card .card-img:has(img:not([src]))::after,
-        .about-infographic-card .card-img:has(img[src=""])::after {
-            content: 'Добавьте фото';
-            color: rgba(168, 85, 247, 0.45);
-            font-size: 0.75rem;
-        }
-
         .about-infographic-card .card-text {
             padding: 1rem 1.125rem 1.25rem;
             color: #f8fafc;
@@ -280,7 +263,7 @@
 
         /* Страница «Каталог» */
         #page-catalog {
-            max-width: 72rem;
+            max-width: 64rem;
             margin-left: auto;
             margin-right: auto;
         }
@@ -292,11 +275,12 @@
 
         .catalog-photo-slot {
             background: #f1f5f9;
-            border: 2px dashed #cbd5e1;
             border-radius: 1rem;
             overflow: hidden;
             position: relative;
-            min-height: 200px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
         }
 
         .catalog-photo-slot img {
@@ -304,118 +288,60 @@
             height: 100%;
             object-fit: contain;
             display: block;
-            min-height: 200px;
         }
 
-        .catalog-photo-slot img:not([src]),
-        .catalog-photo-slot img[src=""] {
-            display: none;
-        }
-
-        .catalog-photo-slot:has(img:not([src])),
-        .catalog-photo-slot:has(img[src=""]) {
-            display: flex;
-            align-items: center;
-            justify-content: center;
-        }
-
-        .catalog-photo-slot:has(img:not([src]))::after,
-        .catalog-photo-slot:has(img[src=""])::after {
-            content: 'Добавьте фото';
-            color: #94a3b8;
-            font-size: 0.875rem;
-        }
-
+        /* Точный стиль карточек из макета */
         .catalog-product-card {
             background: #ffffff;
-            border: 1px solid #e2e8f0;
+            border: 1px solid #f1f5f9;
             border-radius: 1.25rem;
             overflow: hidden;
-            box-shadow: 0 4px 20px rgba(15, 23, 42, 0.04);
-            height: 100%;
+            box-shadow: 0 4px 15px rgba(15, 23, 42, 0.02);
+            transition: all 0.35s cubic-bezier(0.16, 1, 0.3, 1);
+            cursor: pointer;
             display: flex;
             flex-direction: column;
         }
 
-        .catalog-product-glow {
-            position: relative;
-            padding: 1.5rem;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            min-height: 220px;
-        }
-
-        .catalog-product-glow::before {
-            content: '';
-            position: absolute;
-            width: 140px;
-            height: 140px;
-            border-radius: 50%;
-            opacity: 0.35;
-            filter: blur(2px);
-        }
-
-        .catalog-glow-blue::before { background: #38bdf8; }
-        .catalog-glow-yellow::before { background: #facc15; }
-        .catalog-glow-green::before { background: #4ade80; }
-        .catalog-glow-orange::before { background: #fb923c; }
-        .catalog-glow-purple::before { background: #c084fc; }
-        .catalog-glow-pink::before { background: #f472b6; }
-        .catalog-glow-teal::before { background: #2dd4bf; }
-        .catalog-glow-red::before { background: #f87171; }
-        .catalog-glow-indigo::before { background: #818cf8; }
-
-        .catalog-product-glow .catalog-photo-slot {
-            position: relative;
-            z-index: 1;
-            background: transparent;
-            border: none;
-            min-height: 180px;
-            max-width: 160px;
-            margin: 0 auto;
-        }
-
-        .catalog-product-glow .catalog-photo-slot img {
-            min-height: 180px;
-            object-fit: contain;
+        .catalog-product-card:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 16px 25px rgba(15, 23, 42, 0.05);
+            border-color: #e2e8f0;
         }
 
         .catalog-product-body {
-            padding: 1.25rem 1.5rem 1.5rem;
+            padding: 1rem 1.25rem 1.25rem;
             flex: 1;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
         }
 
         .catalog-product-name {
-            font-family: 'Playfair Display', Georgia, serif;
-            font-size: 1.25rem;
+            font-size: 0.95rem;
             font-weight: 700;
-            color: #1e293b;
-            margin-bottom: 0.75rem;
+            color: #0f172a;
+            line-height: 1.35;
         }
 
-        .catalog-product-desc {
-            font-size: 0.875rem;
-            line-height: 1.6;
-            color: #475569;
+        .catalog-product-price {
+            font-size: 0.95rem;
+            font-weight: 800;
+            color: #0f172a;
+            margin-top: 0.375rem;
         }
 
-        .catalog-hero-glow {
-            position: relative;
-        }
-
-        .catalog-hero-glow::before {
-            content: '';
-            position: absolute;
-            width: 200px;
-            height: 200px;
-            background: #fb923c;
-            border-radius: 50%;
-            opacity: 0.25;
-            top: 50%;
-            left: 50%;
-            transform: translate(-50%, -50%);
-            z-index: 0;
+        /* Плашка категории из оригинального макета */
+        .catalog-category-pill {
+            background-color: #8cc63f;
+            color: #ffffff;
+            font-size: 0.65rem;
+            font-weight: 700;
+            padding: 0.25rem 0.75rem;
+            border-radius: 9999px;
+            display: inline-block;
+            text-transform: none;
+            letter-spacing: normal;
         }
 
         .page-section {
@@ -829,7 +755,7 @@
                     <div class="w-32 h-32 md:w-40 md:h-40 rounded-full p-1 bg-white/60 shadow-[0_15px_50px_0_rgba(0,0,0,0.1)] backdrop-blur-3xl border border-purple-200 flex-shrink-0 relative group/avatar cursor-pointer zoomable-img-container">
                         <div class="absolute inset-0 rounded-full bg-purple-500/25 blur-md opacity-0 group-hover/avatar:opacity-100 transition-opacity duration-500"></div>
                         <div class="w-full h-full rounded-full overflow-hidden border border-white/80 relative z-10">
-                            <img src="https://sun9-79.userapi.com/s/v1/ig2/FBrzlXNIFtc1OlpbZ531A6n-IaiZ6GwyS8iY31wWS5fW4NltJ6AlcxhRp02RXC_ELluf10NOQDg-COuoaqGfjWGR.jpg?quality=95&as=32x51,48x77,72x115,108x173,160x256,240x384,360x577,480x769,540x865,640x1025,720x1153,799x1280&from=bu&u=idguh_Gn7sJRf8iyfFzNMhRZ1xqbDgNfC9ADVRv_qrk&cs=799x0" alt="Матвеевы Сергей и Олеся" class="w-full h-full object-cover transition-transform duration-700 group-hover/avatar:scale-105 src-image">
+                            <img src="https://sun9-79.userapi.com/s/v1/ig2/FBrzlXNIFtc1OlpbZ531A6n-IaiZ6GwyS8iY31wWS5fW4NltJ6AlcxhRp02RXC_ELluf10NOQDg-COuoaqGfjWGR.jpg?quality=95&as=32x51,48x77,72x115,108x173,160x256,240x384,360x577,480x769,540x865,640x1025,720x1153,799x1280&from=bu&u=idguh_Gn7sJRf8iyfFzNMhRZ1xqbDgNfC9ADVRv_qrk&cs=799x0" alt="Матвеевы Сергей и Олеся" class="w-full h-full object-cover transition-transform duration-700 group-hover/avatar:scale-105 src-image" onerror="this.remove();">
                         </div>
                     </div>
                     
@@ -845,9 +771,9 @@
 
                 <div class="bg-purple-50/50 rounded-2xl p-6 md:p-8 text-sm sm:text-base text-black space-y-4 border border-purple-100 shadow-inner">
                     <p class="leading-relaxed">Энергия, молодость и здоровье для Вас и Ваших близких.</p>
-                    <p class="leading-relaxed"><strong class="text-slate-900 font-semibold">Фуллерен С60</strong> — революционный нано-антиоксидант, который деликатно очищает клетки от токсинов, дарит чистый приток энергии и мягко замедляет возрастные процессы. За его открытие исследователи были удостоены Нобелевской премии.</p>
+                    <p class="leading-relaxed"><strong class="text-slate-900 font-semibold">Фуллерен С60</strong> — нано-антиоксидант, который очищает клетки от токсинов, дарит приток энергии и поддерживает процессы регенерации. За его открытие исследователи были удостоены Нобелевской премии.</p>
                     <p class="text-emerald-900 font-bold bg-emerald-500/10 px-5 py-3 rounded-xl inline-block border border-emerald-500/20 shadow-sm leading-relaxed">
-                        Это не про кратковременный эффект на пару часов. Это осознанный переход на новый уровень качества жизни.
+                        Это переход на качественно новый уровень самочувствия и активности.
                     </p>
                 </div>
             </div>
@@ -860,37 +786,37 @@
                     Главный секрет энергии: почему все говорят про Фуллерен С60?
                 </h2>
                 <p class="text-base sm:text-lg text-purple-600 font-semibold tracking-wide">
-                    Одна молекула, которая в 172 раза мощнее классического витамина С. Готовы узнать правду? 💥
+                    Одна молекула, которая эффективнее классического витамина С.
                 </p>
                 <div class="h-px bg-gradient-to-r from-transparent via-purple-500/25 to-transparent"></div>
                 <div class="text-black space-y-4 text-sm sm:text-base leading-relaxed">
-                    <p>Хроническая усталость, тусклая кожа и постоянная тяжесть в голове отнимают продуктивность? Прием обычных витаминов часто не дает ощутимого результата. Это общая проблема многих людей в современных мегаполисах.</p>
-                    <p>Решение лежит в области нанотехнологий: <strong class="text-slate-900 font-semibold">Фуллерен С60</strong> 🌑. Это уникальная молекулярная сфера сверхчистого углерода.</p>
-                    <p>С60 действует комплексно. Он нейтрализует свободные радикалы — основные катализаторы клеточного разрушения, мягко и глубоко обновляя ткани изнутри.</p>
+                    <p>Хроническая усталость, тусклая кожа и постоянная тяжесть в голове снижают общую продуктивность. Это общая проблема жителей современных мегаполисов.</p>
+                    <p>Решение лежит в области нанотехнологий: <strong class="text-slate-900 font-semibold">Фуллерен С60</strong> 🌑 — уникальная молекулярная сфера сверхчистого углерода.</p>
+                    <p>С60 действует комплексно: нейтрализует свободные радикалы — катализаторы разрушения клеток, поддерживая и обновляя ткани на клеточном уровне.</p>
                 </div>
             </div>
 
             <div class="crystal-glass crystal-glass-hover block rounded-[2rem] overflow-hidden p-2.5 group relative cursor-zoom-in zoomable-img-container">
                 <div class="overflow-hidden rounded-[1.5rem] relative">
                     <div class="absolute inset-0 bg-purple-900/5 z-10 opacity-100 group-hover:opacity-0 transition-opacity duration-500"></div>
-                    <img src="https://s3.aisevenai.ru/uploads/528821113/aa373755-35dc-4c85-a44e-dc66799cf714.jpg?quality=95&as=32x18,48x27,72x40,108x60,160x89,240x134,360x201,480x268,540x301,640x357,720x402,1080x603,1280x714,1440x804,1505x840&from=bu&u=Bo45LKMu5IbwnqKYrjdbBEs5c47liYUv48GKqcs7fOU&cs=1505x0" alt="Фуллерен жизнь" class="w-full aspect-[1120/625] object-cover rounded-[1.5rem] transition-transform duration-700 group-hover:scale-[1.02] src-image">
+                    <img src="https://s3.aisevenai.ru/uploads/528821113/aa373755-35dc-4c85-a44e-dc66799cf714.jpg?quality=95&as=32x18,48x27,72x40,108x60,160x89,240x134,360x201,480x268,540x301,640x357,720x402,1080x603,1280x714,1440x804,1505x840&from=bu&u=Bo45LKMu5IbwnqKYrjdbBEs5c47liYUv48GKqcs7fOU&cs=1505x0" alt="Фуллерен жизнь" class="w-full aspect-[1120/625] object-cover rounded-[1.5rem] transition-transform duration-700 group-hover:scale-[1.02] src-image" onerror="this.remove();">
                 </div>
             </div>
 
             <div class="grid grid-cols-3 gap-4">
                 <div class="aspect-square rounded-2xl crystal-glass p-2 overflow-hidden group cursor-zoom-in zoomable-img-container">
                     <div class="w-full h-full rounded-xl overflow-hidden">
-                        <img src="https://sun9-73.userapi.com/s/v1/ig2/ww55ylnvHXfIbqr6nsGM6j1oAsX8QOZu0kHg3oSbiuGxL5yYhHVMKzzMYQdQTwNbyi2ODmGD4aT4tXw7YQsPE_Mx.jpg?quality=95&as=32x31,48x47,72x71,108x106,160x157,240x236,360x354,361x355&from=bu&u=tDzsM3FGtxIP77aqv396NHppikJGkFbpDiv2_li8JFY&cs=361x0" alt="Фуллерен 1" class="w-full h-full object-cover transition-all duration-700 group-hover:scale-108 group-hover:rotate-1 src-image">
+                        <img src="https://sun9-73.userapi.com/s/v1/ig2/ww55ylnvHXfIbqr6nsGM6j1oAsX8QOZu0kHg3oSbiuGxL5yYhHVMKzzMYQdQTwNbyi2ODmGD4aT4tXw7YQsPE_Mx.jpg?quality=95&as=32x31,48x47,72x71,108x106,160x157,240x236,360x354,361x355&from=bu&u=tDzsM3FGtxIP77aqv396NHppikJGkFbpDiv2_li8JFY&cs=361x0" alt="Фуллерен 1" class="w-full h-full object-cover transition-all duration-700 group-hover:scale-108 group-hover:rotate-1 src-image" onerror="this.remove();">
                     </div>
                 </div>
                 <div class="aspect-square rounded-2xl crystal-glass p-2 overflow-hidden group cursor-zoom-in zoomable-img-container">
                     <div class="w-full h-full rounded-xl overflow-hidden">
-                        <img src="https://s3.aisevenai.ru/uploads/528821113/f63bd63d-7eb5-4bf3-8c2d-734f46dbe4bd.jpg?quality=95&as=32x18,48x27,72x40,108x60,160x89,240x134,360x201,480x268,540x301,640x357,720x402,1080x603,1280x714,1440x804,1505x840&from=bu&u=Bo45LKMu5IbwnqKYrjdbBEs5c47liYUv48GKqcs7fOU&cs=1505x0" alt="Фуллерен 2" class="w-full h-full object-cover transition-all duration-700 group-hover:scale-108 group-hover:-rotate-1 src-image">
+                        <img src="https://s3.aisevenai.ru/uploads/528821113/f63bd63d-7eb5-4bf3-8c2d-734f46dbe4bd.jpg?quality=95&as=32x18,48x27,72x40,108x60,160x89,240x134,360x201,480x268,540x301,640x357,720x402,1080x603,1280x714,1440x804,1505x840&from=bu&u=Bo45LKMu5IbwnqKYrjdbBEs5c47liYUv48GKqcs7fOU&cs=1505x0" alt="Фуллерен 2" class="w-full h-full object-cover transition-all duration-700 group-hover:scale-108 group-hover:-rotate-1 src-image" onerror="this.remove();">
                     </div>
                 </div>
                 <div class="aspect-square rounded-2xl crystal-glass p-2 overflow-hidden group cursor-zoom-in zoomable-img-container">
                     <div class="w-full h-full rounded-xl overflow-hidden">
-                        <img src="https://s3.aisevenai.ru/uploads/528821113/27a2ce8f-59dc-4a8d-ad37-dcc4af664115.jpg?quality=95&as=32x18,48x27,72x40,108x60,160x89,240x134,360x201,480x268,540x301,640x357,720x402,1080x603,1280x714,1440x804,1505x840&from=bu&u=Bo45LKMu5IbwnqKYrjdbBEs5c47liYUv48GKqcs7fOU&cs=1505x0" alt="Фуллерен 3" class="w-full h-full object-cover transition-all duration-700 group-hover:scale-108 group-hover:rotate-1 src-image">
+                        <img src="https://s3.aisevenai.ru/uploads/528821113/27a2ce8f-59dc-4a8d-ad37-dcc4af664115.jpg?quality=95&as=32x18,48x27,72x40,108x60,160x89,240x134,360x201,480x268,540x301,640x357,720x402,1080x603,1280x714,1440x804,1505x840&from=bu&u=Bo45LKMu5IbwnqKYrjdbBEs5c47liYUv48GKqcs7fOU&cs=1505x0" alt="Фуллерен 3" class="w-full h-full object-cover transition-all duration-700 group-hover:scale-108 group-hover:rotate-1 src-image" onerror="this.remove();">
                     </div>
                 </div>
             </div>
@@ -936,7 +862,7 @@
                     Как работает С60?
                 </h2>
                 <p class="text-black leading-relaxed text-sm sm:text-base max-w-2xl">
-                    Он выполняет роль бережной <span class="text-purple-600 font-bold">«молекулярной губки»</span>: абсорбирует свободные радикалы, предотвращает деструктивные окислительные процессы и помогает организму мягко перезапустить клеточный баланс.
+                    Выполняет роль <span class="text-purple-600 font-bold">«молекулярной губки»</span>: связывает свободные радикалы, предохраняет ткани от деструктивных окислительных процессов и помогает поддерживать клеточный баланс.
                 </p>
                 
                 <div class="grid grid-cols-1 sm:grid-cols-2 gap-4 my-6">
@@ -944,34 +870,34 @@
                         <span class="text-2xl text-emerald-500 filter drop-shadow-[0_0_8px_rgba(16,185,129,0.3)] transition-all group-hover/icon:scale-110">✨</span>
                         <div>
                             <h4 class="font-bold text-emerald-900 text-sm sm:text-base">Эстетика кожи</h4>
-                            <p class="text-xs sm:text-sm text-black mt-1 leading-relaxed">Здоровый и свежий тон лица без необходимости применения агрессивных уходовых процедур.</p>
+                            <p class="text-xs sm:text-sm text-black mt-1 leading-relaxed">Свежий и ровный тон лица без агрессивного косметического воздействия.</p>
                         </div>
                     </div>
                     <div class="bg-orange-50/50 border border-orange-200 rounded-2xl p-5 flex items-start gap-4 shadow-inner relative group/icon">
                         <span class="text-2xl text-orange-500 filter drop-shadow-[0_0_8px_rgba(249,115,22,0.3)] transition-all group-hover/icon:scale-110">⚡</span>
                         <div>
                             <h4 class="font-bold text-orange-900 text-sm sm:text-base">Стабильный тонус</h4>
-                            <p class="text-xs sm:text-sm text-black mt-1 leading-relaxed">Легкое пробуждение по утрам и сохранение сил до самого вечера.</p>
+                            <p class="text-xs sm:text-sm text-black mt-1 leading-relaxed">Бодрое пробуждение по утрам и комфортное распределение ресурсов на весь день.</p>
                         </div>
                     </div>
                     <div class="bg-pink-50/50 border border-pink-200 rounded-2xl p-5 flex items-start gap-4 shadow-inner relative group/icon">
                         <span class="text-2xl text-pink-500 filter drop-shadow-[0_0_8px_rgba(236,72,153,0.3)] transition-all group-hover/icon:scale-110">🧠</span>
                         <div>
                             <h4 class="font-bold text-pink-900 text-sm sm:text-base">Ясность мышления</h4>
-                            <p class="text-xs sm:text-sm text-black mt-1 leading-relaxed">Повышение концентрации внимания, памяти и избавление от ментального шума.</p>
+                            <p class="text-xs sm:text-sm text-black mt-1 leading-relaxed">Повышение концентрации внимания, улучшение оперативной памяти.</p>
                         </div>
                     </div>
                     <div class="bg-blue-50/50 border border-blue-200 rounded-2xl p-5 flex items-start gap-4 shadow-inner relative group/icon">
                         <span class="text-2xl text-blue-500 filter drop-shadow-[0_0_8px_rgba(59,130,246,0.3)] transition-all group-hover/icon:scale-110">🛡️</span>
                         <div>
                             <h4 class="font-bold text-blue-950 text-sm sm:text-base">Иммунный барьер</h4>
-                            <p class="text-xs sm:text-sm text-black mt-1 leading-relaxed">Поддержка естественных защитных сил организма в периоды сезонных нагрузки.</p>
+                            <p class="text-xs sm:text-sm text-black mt-1 leading-relaxed">Поддержка естественных защитных сил организма в период сезонных нагрузок.</p>
                         </div>
                     </div>
                 </div>
                 
                 <h3 class="text-xs sm:text-sm font-bold text-center py-4 px-4 text-purple-700 bg-purple-100/80 rounded-2xl border border-purple-200/50 tracking-widest uppercase shadow-inner">
-                    Это технологичный прорыв в области биохакинга! 🧬
+                    Инновации в сфере биохакинга! 🧬
                 </h3>
             </div>
 
@@ -982,18 +908,18 @@
                     Будущее уже здесь: Фуллерен и Долголетие 🧬
                 </h2>
                 <p class="text-base sm:text-lg text-purple-600 font-semibold tracking-wide">
-                    Реальная наука на службе вашего долголетия, превосходящая любые ожидания.
+                    Научный подход к сохранению ресурсов организма.
                 </p>
                 <div class="h-px bg-gradient-to-r from-transparent via-purple-500/25 to-transparent"></div>
                 <div class="text-black space-y-4 text-sm sm:text-base leading-relaxed">
                     <p>
-                        Фуллерен C60 — это не фантастика из научно-фантастических романов, а реальная, многообещающая молекула, которая поможет продлить жизнь, а также имеет потенциал революционизировать медицину и наши представления о борьбе со старением.
+                        Фуллерен C60 — перспективная молекула, способствующая сохранению клеточного ресурса и замедлению дегенеративных процессов.
                     </p>
                     <p>
-                        От защиты ДНК от повреждений до рекордного продления жизни в экспериментах — фуллерен обещает вывести антиоксидантную терапию на совершенно новый уровень.
+                        От снижения темпов окисления ДНК до поддержки функциональной активности органов — фуллерен выводит антиоксидантную терапию на клеточный уровень.
                     </p>
                     <div class="text-purple-950 font-bold bg-purple-500/10 px-5 py-3.5 rounded-xl inline-block border border-purple-500/20 shadow-sm leading-relaxed">
-                        Откройте для себя уникальные свойства фуллерена C60 и его невероятный потенциал. ✨
+                        Откройте для себя уникальные свойства и биохимический потенциал фуллерена C60. ✨
                     </div>
                 </div>
             </div>
@@ -1006,7 +932,7 @@
                             КУПИТЬ БЕЗ СКИДКИ<br>И РЕГИСТРАЦИИ
                             <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" class="group-hover/purple:translate-x-0.5 group-hover/purple:translate-y-0.5 transition-transform mt-[-10px]"><path d="M15 3h6v6"></path><path d="M10 14 21 3"></path><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path></svg>
                         </h3>
-                        <p class="text-xs sm:text-sm text-purple-600/80 mt-1">Быстрое оформление заказа в интернет-магазине</p>
+                        <p class="text-xs sm:text-sm text-purple-600/80 mt-1">Оформление заказа в официальном интернет-магазине</p>
                     </div>
                     <div class="w-11 h-11 rounded-xl bg-purple-500/10 flex items-center justify-center border border-purple-500/20 flex-shrink-0 shadow-inner group-hover/purple:bg-purple-500/20 transition-colors">
                         <svg class="w-5 h-5 text-purple-600" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M3 3h2l.4 2M7 13h10l4-8H5.4M7 13L5.4 5M7 13l-2.293 2.293c-.63.63-.184 1.707.707 1.707H17m0 0a2 2 0 100 4 2 2 0 000-4zm-8 2a2 2 0 11-4 0 2 2 0 014 0z"/></svg>
@@ -1022,7 +948,7 @@
                             КУПИТЬ СО СКИДКОЙ 30%
                             <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" class="group-hover/emerald:translate-x-0.5 group-hover/emerald:translate-y-0.5 transition-transform"><path d="M15 3h6v6"></path><path d="M10 14 21 3"></path><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path></svg>
                         </h3>
-                        <p class="text-xs sm:text-sm text-emerald-600/80 mt-1">Ощутимая выгода при заказе полного оздоровительного курса</p>
+                        <p class="text-xs sm:text-sm text-emerald-600/80 mt-1">Оптимальные условия при оформлении личного кабинета</p>
                     </div>
                     <div class="w-11 h-11 rounded-xl bg-emerald-500/10 flex items-center justify-center border border-emerald-500/20 flex-shrink-0 shadow-inner group-hover/emerald:bg-emerald-500/20 transition-colors">
                         <svg class="w-5 h-5 text-emerald-600" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M16 11V7a4 4 0 00-8 0v4M5 9h14l1 12H4L5 9z"/></svg>
@@ -1033,18 +959,18 @@
             <div id="contacts" class="rounded-[2rem] p-6 sm:p-10 text-left space-y-5 border border-rose-500/20 bg-rose-500/5 backdrop-blur-2xl shadow-[0_25px_50px_-15px_rgba(244,63,94,0.1)]">
                 
                 <div class="text-black space-y-3 text-sm sm:text-base leading-relaxed">
-                    <p>Отправьте нам в личное сообщение кодовое слово «С60» в Telegram или в VK, и мы представим вам:</p>
+                    <p>Отправьте личное сообщение с кодовым словом «С60» в Telegram или VK для получения:</p>
                 </div>
                 
                 <div class="grid grid-cols-1 md:grid-cols-3 gap-4 my-4">
                     <div class="bg-purple-50/60 rounded-xl p-4 border border-purple-100 shadow-inner flex items-center">
-                        <p class="text-sm text-black"><span class="font-black text-purple-600 mr-1">1️⃣</span>Помощь в оформлении заказа с гарантированной скидкой 30%</p>
+                        <p class="text-sm text-black"><span class="font-black text-purple-600 mr-1">1️⃣</span>Сопровождения при регистрации и получении скидки 30%</p>
                     </div>
                     <div class="bg-purple-50/60 rounded-xl p-4 border border-purple-100 shadow-inner flex items-center">
-                        <p class="text-sm text-black"><span class="font-black text-purple-600 mr-1">2️⃣</span> Экспертную персональную консультацию по применению продукта</p>
+                        <p class="text-sm text-black"><span class="font-black text-purple-600 mr-1">2️⃣</span>Консультационной поддержки по продуктовой линейке</p>
                     </div>
                     <div class="bg-purple-50/60 rounded-xl p-4 border border-purple-100 shadow-inner flex items-center">
-                        <p class="text-sm text-black"><span class="font-black text-purple-600 mr-1">3️⃣</span> Наставничество в бизнесе</p>
+                        <p class="text-sm text-black"><span class="font-black text-purple-600 mr-1">3️⃣</span>Информационной поддержки по вопросам партнерства</p>
                     </div>
                 </div>
                 
@@ -1087,7 +1013,7 @@
                 </div>
                 
                 <p class="text-center text-base sm:text-lg font-bold tracking-wide text-transparent bg-clip-text bg-gradient-to-r from-rose-950 via-slate-900 to-rose-900 pt-4">
-                    Позвольте организму раскрыть его природный потенциал! 🚀
+                    Забота о здоровье и ресурсах организма! 🚀
                 </p>
             </div>
 
@@ -1115,7 +1041,7 @@
                             ⭐ Выбирай пакет PREMIUM
                             <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" class="text-purple-600 group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-transform"><path d="M15 3h6v6"></path><path d="M10 14 21 3"></path><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path></svg>
                         </h3>
-                        <p class="text-xs sm:text-sm text-black mt-1 max-w-xl">Откройте возможности технологичного бизнеса нового поколения с внедренными системами поддержки.</p>
+                        <p class="text-xs sm:text-sm text-black mt-1 max-w-xl">Информационная поддержка на каждом этапе взаимодействия и развития.</p>
                     </div>
                     <div class="w-11 h-11 rounded-xl bg-purple-50 flex items-center justify-center border border-purple-100 flex-shrink-0 shadow-inner group-hover:bg-purple-500/10 group-hover:border-purple-500/20 transition-all">
                         <svg class="w-5 h-5 text-purple-600" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M11.049 2.927c.3-.921 1.603-.921 1.902 0l1.519 4.674a1 1 0 00.95.69h4.915c.969 0 1.371 1.24.588 1.81l-3.976 2.888a1 1 0 00-.363 1.118l1.518 4.674c.3.922-.755 1.688-1.538 1.118l-3.976-2.888a1 1 0 00-1.176 0l-3.976 2.888c-.783.57-1.838-.197-1.538-1.118l1.518-4.674a1 1 0 00-.363-1.118l-3.976-2.888c-.784-.57-.38-1.81.588-1.81h4.914a1 1 0 00.951-.69l1.519-4.674z"/></svg>
@@ -1123,11 +1049,8 @@
                 </div>
             </a>
 
-            <!-- ========================================== -->
-            <!-- НОВЫЙ БЛОК: Стартуй прямо сейчас! (С ОБВОДКОЙ) -->
-            <!-- ========================================== -->
+            <!-- Стартуй прямо сейчас! -->
             <div class="crystal-glass rounded-[2rem] p-8 sm:p-12 text-center space-y-6 relative overflow-hidden my-6">
-                <!-- Атмосферные градиенты на фоне нового блока -->
                 <div class="absolute -top-16 -left-16 w-48 h-48 bg-purple-500/10 rounded-full blur-[70px] pointer-events-none"></div>
                 <div class="absolute -bottom-16 -right-16 w-48 h-48 bg-blue-500/10 rounded-full blur-[70px] pointer-events-none"></div>
 
@@ -1136,13 +1059,11 @@
                 </h2>
                 
                 <p class="text-base sm:text-lg text-slate-700 italic font-medium max-w-2xl mx-auto leading-relaxed">
-                    Стань представителем бренда <span class="font-bold text-purple-700 not-italic">Full Energy</span><br class="hidden sm:inline"> и получи план развития с поддержкой наставника
+                    Стань представителем бренда <span class="font-bold text-purple-700 not-italic">Full Energy</span><br class="hidden sm:inline"> и получи готовый план развития при поддержке наставника
                 </p>
 
-                <!-- Зона активного действия с обводкой и словом ЖМИ -->
                 <div class="relative mt-10 sm:mt-12 p-6 sm:p-8 rounded-3xl border-2 border-dashed border-[#ab72f8]/50 bg-white/40 max-w-2xl mx-auto transition-all hover:border-[#ab72f8] hover:bg-white/60 group/action">
                     
-                    <!-- Слово "ЖМИ СЮДА" на границе рамки -->
                     <div class="absolute -top-4 left-1/2 -translate-x-1/2 bg-white px-5 py-1.5 rounded-full border-2 border-[#ab72f8]/50 text-[#513580] font-extrabold text-sm sm:text-base shadow-sm flex items-center gap-2.5 group-hover/action:border-[#ab72f8] transition-colors whitespace-nowrap">
                         <span class="relative flex h-3 w-3">
                           <span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-purple-400 opacity-75"></span>
@@ -1155,7 +1076,6 @@
                         </span>
                     </div>
 
-                    <!-- Сами кнопки внутри обводки -->
                     <div class="flex flex-col sm:flex-row justify-center items-stretch sm:items-center gap-4">
                         <a href="https://shop.full-en.com/products?code=59D573B5-7B9A" target="_blank" rel="noopener noreferrer" 
                            class="flex-1 text-center py-4 px-6 rounded-full font-semibold text-white bg-[#ab72f8] hover:bg-[#975bf0] shadow-[0_8px_20px_rgba(171,114,248,0.3)] hover:shadow-[0_12px_24px_rgba(171,114,248,0.4)] hover:-translate-y-0.5 active:translate-y-0 transition-all duration-300 text-sm sm:text-base">
@@ -1164,12 +1084,11 @@
                         
                         <a href="https://my.full-en.com/register.php?code=12055CB0-FFF9" target="_blank" rel="noopener noreferrer" 
                            class="flex-1 text-center py-4 px-6 rounded-full font-semibold text-white bg-[#0052b4] hover:bg-[#004190] shadow-[0_8px_20px_rgba(0,82,180,0.3)] hover:shadow-[0_12px_24px_rgba(0,82,180,0.4)] hover:-translate-y-0.5 active:translate-y-0 transition-all duration-300 text-sm sm:text-base">
-                            Хочу бизнес. Готов действовать!
+                            Хочу в бизнес. Действую!
                         </a>
                     </div>
                 </div>
             </div>
-            <!-- ========================================== -->
 
         </main>
 
@@ -1195,40 +1114,40 @@
                 <!-- Введение -->
                 <section class="space-y-6">
                     <h2 class="about-serif text-xl sm:text-2xl font-bold italic text-center text-slate-900">
-                        Фуллерен — молекула, которая меняет всё!
+                        Фуллерен — молекула, которая меняет представление о ресурсах
                     </h2>
 
                     <div class="text-slate-700 space-y-4 text-base sm:text-[1.05rem] leading-relaxed">
                         <p>
-                            <strong class="text-slate-900">Фуллерен</strong> — это не просто ещё одна форма углерода; это молекулярное произведение искусства, открытое в конце 1980-х годов.
+                            <strong class="text-slate-900">Фуллерен</strong> — это аллотропная форма углерода, открытие которой в конце XX века стало прорывом в нанотехнологиях.
                         </p>
                         <p>
-                            <strong class="text-slate-900">Фуллерен С60</strong> — это особая форма углерода. Молекула фуллерена состоит из 60 атомов углерода, соединённых в идеальную сферическую структуру, включающую 12 пятиугольников и 20 шестиугольников. Углерод является фундаментом всех биологических молекул и основой всех живых организмов: из него построены клетки, белки и ДНК.
+                            <strong class="text-slate-900">Фуллерен С60</strong> состоит of 60 атомов углерода, организованных в замкнутую сферическую структуру. Углерод выступает базовым кирпичиком органической жизни на Земле — из него строятся клетки, белки и цепи ДНК.
                         </p>
                         <p>
-                            Это не просто красивая картинка — фуллерен обладает уникальными физико-химическими свойствами, которые делают его чрезвычайно перспективным для медицины и других научных областей.
+                            Симметричная структура С60 определяет его исключительные физико-химические свойства, активно изучаемые в современной наномедицине и геронтологии.
                         </p>
                     </div>
 
                     <div class="about-fact rounded-xl p-5 sm:p-6 space-y-2 text-slate-700 text-sm sm:text-base">
                         <p class="font-bold text-indigo-900 text-base sm:text-lg">Интересный факт</p>
-                        <p>Размер молекулы фуллерена С60 составляет примерно 0,7–1 нм (нанометр).</p>
-                        <p>Это в 50 000 раз меньше толщины человеческого волоса.</p>
-                        <p>При этом молекула имеет идеально симметричную и очень устойчивую структуру.</p>
+                        <p>Размер сферы фуллерена С60 составляет приблизительно 0,7–1 нанометр.</p>
+                        <p>Это почти в 50 000 раз тоньше волоса человека.</p>
+                        <p>Высокая стабильность связей обусловливает прочность и долговечность данной молекулярной структуры.</p>
                     </div>
 
                     <div class="grid grid-cols-1 sm:grid-cols-2 gap-6 pt-2">
                         <div>
                             <div class="about-photo-slot aspect-square sm:aspect-[4/3]">
-                                <img src="https://sun9-11.userapi.com/s/v1/ig2/N-3Ge6tGFzRk1kFL2Mx2CfZ6STpaIvNc-XW9qkRh6JHjRpbsu-wEYYGaC8q5VcAB4bmpLQeBocp3DAvK6p_GYGGa.jpg?quality=95&as=32x31,48x47,72x71,108x106,160x157,240x236,360x353,480x471,540x530,595x584&from=bu&u=XDCP7InCF61h_0eXN1y8EFzNKAEMKHpf5YDFSA4i_SY&cs=595x0" alt="Фуллерен C60">
+                                <img src="https://sun9-11.userapi.com/s/v1/ig2/N-3Ge6tGFzRk1kFL2Mx2CfZ6STpaIvNc-XW9qkRh6JHjRpbsu-wEYYGaC8q5VcAB4bmpLQeBocp3DAvK6p_GYGGa.jpg?quality=95&as=32x31,48x47,72x71,108x106,160x157,240x236,360x353,480x471,540x530,595x584&from=bu&u=XDCP7InCF61h_0eXN1y8EFzNKAEMKHpf5YDFSA4i_SY&cs=595x0" alt="Фуллерен C60" onerror="this.remove();">
                             </div>
-                            <p class="text-center text-sm font-semibold text-slate-600 mt-3">Фуллерен C60</p>
+                            <p class="text-center text-sm font-semibold text-slate-600 mt-3">Структура фуллерена C60</p>
                         </div>
                         <div>
                             <div class="about-photo-slot aspect-square sm:aspect-[4/3]">
-                                <img src="https://sun9-10.userapi.com/s/v1/ig2/NX7ZsgJSFyxUNrUZUDzrWea0Q8sHQry629cToxzq5aA9pWzXZWof5aQAdw6v7tFm-GiuNQrd_QHRqN6lO2jQZhu-.jpg?quality=95&as=32x28,48x43,72x64,108x96,160x142,240x213,360x319,480x425,540x478,640x567,709x628&from=bu&u=U1gOE4IWpouLlzyhAwNSF_fqIBBBoylFNMmLJl_YmM4&cs=709x0" alt="Футбольный мяч">
+                                <img src="https://sun9-10.userapi.com/s/v1/ig2/NX7ZsgJSFyxUNrUZUDzrWea0Q8sHQry629cToxzq5aA9pWzXZWof5aQAdw6v7tFm-GiuNQrd_QHRqN6lO2jQZhu-.jpg?quality=95&as=32x28,48x43,72x64,108x96,160x142,240x213,360x319,480x425,540x478,640x567,709x628&from=bu&u=U1gOE4IWpouLlzyhAwNSF_fqIBBBoylFNMmLJl_YmM4&cs=709x0" alt="Аналогия с мячом" onerror="this.remove();">
                             </div>
-                            <p class="text-center text-sm font-semibold text-slate-600 mt-3">Футбольный мяч</p>
+                            <p class="text-center text-sm font-semibold text-slate-600 mt-3">Усеченный икосаэдр (мяч)</p>
                         </div>
                     </div>
                 </section>
@@ -1239,109 +1158,109 @@
                     </h2>
 
                     <p class="text-slate-700 text-base sm:text-[1.05rem] leading-relaxed">
-                        Фуллерен С60 — один из самых мощных антиоксидантов, известных науке. По эффективности нейтрализации свободных радикалов он превосходит многие классические антиоксиданты в <strong>100–1000 раз</strong>.
+                        Фуллерен С60 является сильным системным антиоксидантом. По способности связывать свободные радикалы он опережает многие распространенные аналоги.
                     </p>
 
                     <div>
                         <p class="font-semibold text-slate-900 mb-3 text-base sm:text-lg">
-                            Научно доказанные действия фуллерена C60 на организм:
+                            Исследуемые направления влияния фуллерена C60 на биологические структуры:
                         </p>
                         <ul class="space-y-2 text-slate-700 text-base sm:text-[1.05rem] list-disc pl-5">
-                            <li>Нейропротекторное</li>
-                            <li>Антивирусное и антибактериальное</li>
-                            <li>Противовоспалительное</li>
-                            <li>Омолаживающее</li>
-                            <li>Регенерирующее</li>
+                            <li>Нейропротекторное воздействие</li>
+                            <li>Влияние на адаптационный барьер эпидермиса</li>
+                            <li>Снижение выраженности окислительного стресса</li>
+                            <li>Поддержка регенерационных процессов</li>
+                            <li>Замедление факторов старения тканей</li>
                         </ul>
                     </div>
 
                     <div class="about-fact rounded-xl p-5 sm:p-6 space-y-2 text-slate-700 text-sm sm:text-base">
                         <p class="font-bold text-indigo-900 text-base sm:text-lg">Интересный факт</p>
-                        <p>Фуллерен С60 действует избирательно: он «связывает» именно вредные свободные радикалы, не нарушая естественные окислительно-восстановительные процессы в организме.</p>
+                        <p>С60 проявляет селективные свойства: он утилизирует именно избыточные свободные радикалы, не нарушая физиологический ход метаболизма.</p>
                     </div>
                 </section>
 
                 <section class="space-y-4">
                     <h2 class="about-serif text-xl sm:text-2xl font-bold text-slate-900">
-                        Создание новых лекарств
+                        Фармакологические разработки
                     </h2>
                     <p class="text-slate-700 text-base sm:text-[1.05rem] leading-relaxed">
-                        С 2007 года ведутся фармакологические исследования, подтверждающие потенциал фуллерена С60 в создании новых лекарственных препаратов — в том числе с выраженными противоаллергическими свойствами.
+                        Проводящиеся на протяжении последних лет научные работы указывают на перспективность применения С60 в создании новых фармацевтических систем целевого назначения.
                     </p>
                 </section>
 
                 <section class="space-y-6">
                     <h2 class="about-serif text-xl sm:text-2xl font-bold text-center text-slate-900">
-                        Как работает фуллерен в организме
+                        Векторы действия фуллерена в организме
                     </h2>
 
                     <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
                         <div class="about-infographic-card">
-                            <div class="card-img"><img src="" alt=""></div>
-                            <div class="card-text">Нейтрализует свободные радикалы — главную причину клеточного старения</div>
+                            <div class="card-img"><img src="photo\1.jpg" onerror="this.remove();" alt=""></div>
+                            <div class="card-text">Адсорбция свободных радикалов на молекулярном уровне</div>
                         </div>
                         <div class="about-infographic-card">
-                            <div class="card-img"><img src="" alt=""></div>
-                            <div class="card-text">Защищает ДНК от окислительных повреждений</div>
+                            <div class="card-img"><img src="photo\2.jpg" onerror="this.remove();" alt=""></div>
+                            <div class="card-text">Поддержание стабильности мембран живых клеток</div>
                         </div>
                         <div class="about-infographic-card">
-                            <div class="card-img"><img src="" alt=""></div>
-                            <div class="card-text">Поддерживает регенерацию и обновление клеток</div>
+                            <div class="card-img"><img src="photo\3.jpg" onerror="this.remove();" alt=""></div>
+                            <div class="card-text">Участие в процессах естественного обновления тканей</div>
                         </div>
                         <div class="about-infographic-card">
-                            <div class="card-img"><img src="" alt=""></div>
-                            <div class="card-text">Укрепляет естественные защитные силы организма</div>
+                            <div class="card-img"><img src="photo\4.jpg" onerror="this.remove();" alt=""></div>
+                            <div class="card-text">Поддержка энергетического обмена в митохондриях</div>
                         </div>
                         <div class="about-infographic-card">
-                            <div class="card-img"><img src="" alt=""></div>
-                            <div class="card-text">Снижает воспалительные процессы на клеточном уровне</div>
+                            <div class="card-img"><img src="photo\5.jpg" onerror="this.remove();" alt=""></div>
+                            <div class="card-text">Снижение интенсивности системных воспалительных факторов</div>
                         </div>
                         <div class="about-infographic-card">
-                            <div class="card-img"><img src="" alt=""></div>
-                            <div class="card-text">Оказывает нейропротекторное действие на нервную систему</div>
+                            <div class="card-img"><img src="photo\6.jpg" onerror="this.remove();" alt=""></div>
+                            <div class="card-text">Повышение устойчивости нейронов к перегрузкам</div>
                         </div>
                         <div class="about-infographic-card">
-                            <div class="card-img"><img src="" alt=""></div>
-                            <div class="card-text">Повышает устойчивость клеток к стрессовым факторам</div>
+                            <div class="card-img"><img src="photo\7.jpg" onerror="this.remove();" alt=""></div>
+                            <div class="card-text">Улучшение адаптивных возможностей кожи при УФ-воздействии</div>
                         </div>
                         <div class="about-infographic-card">
-                            <div class="card-img"><img src="" alt=""></div>
-                            <div class="card-text">Способствует восстановлению энергетического баланса организма</div>
+                            <div class="card-img"><img src="photo\8.jpg" onerror="this.remove();" alt=""></div>
+                            <div class="card-text">Участие в поддержке общего тонуса организма</div>
                         </div>
                     </div>
                 </section>
 
                 <section class="space-y-6">
                     <h2 class="about-serif text-xl sm:text-2xl font-bold text-center text-slate-900">
-                        Преимущества продукции Full Energy
+                        Характеристики продукции Full Energy
                     </h2>
 
                     <div class="grid grid-cols-1 md:grid-cols-2 gap-6 items-stretch">
                         <div class="about-photo-slot min-h-[320px] md:min-h-full rounded-2xl">
-                            <img src="" alt="Лаборатория Full Energy">
+                            <img src="photo\111.jpg" onerror="this.remove();" alt="Оборудование Full Energy">
                         </div>
 
                         <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
                             <div class="about-benefit-blue rounded-2xl p-5 sm:p-6 flex items-center">
                                 <p class="text-slate-800 text-sm sm:text-base font-medium leading-snug">
                                     <strong class="block text-lg sm:text-xl text-blue-900 mb-1">99,99%</strong>
-                                    чистота фуллерена C60 — высшая степень очистки
+                                    чистота фуллерена C60 — показатель строгого лабораторного контроля
                                 </p>
                             </div>
                             <div class="about-benefit-grey rounded-2xl p-5 sm:p-6 flex items-center">
                                 <p class="text-slate-800 text-sm sm:text-base font-medium leading-snug">
-                                    <strong class="block text-lg sm:text-xl text-slate-900 mb-1">70 000+</strong>
-                                    исследований подтверждают эффективность
+                                    <strong class="block text-lg sm:text-xl text-slate-900 mb-1">Научная база</strong>
+                                    множество исследований, изучающих физику и биологию С60
                                 </p>
                             </div>
                             <div class="about-benefit-grey rounded-2xl p-5 sm:p-6 flex items-center">
                                 <p class="text-slate-800 text-sm sm:text-base font-medium leading-snug">
-                                    Мощный антиоксидант — защита от свободных радикалов, причины старения
+                                    Широкий спектр антиоксидантной защиты на каждый день
                                 </p>
                             </div>
                             <div class="about-benefit-blue rounded-2xl p-5 sm:p-6 flex items-center">
                                 <p class="text-slate-800 text-sm sm:text-base font-medium leading-snug">
-                                    Доставка по всей России, Беларуси и Казахстану
+                                    Логистическая сеть по всей территории СНГ и зарубежья
                                 </p>
                             </div>
                         </div>
@@ -1358,160 +1277,197 @@
         <!-- /О фуллерене -->
 
         <!-- Каталог -->
-        <div id="page-catalog" class="page-section">
+        <div id="page-catalog" class="page-section bg-[#f8fafc] rounded-3xl p-6 md:p-10 border border-slate-100/80 shadow-md">
 
             <!-- Шапка -->
-            <div class="grid grid-cols-1 md:grid-cols-2 gap-8 items-center mb-12 sm:mb-16">
-                <div>
-                    <h1 class="catalog-title text-3xl sm:text-4xl md:text-[2.5rem] font-bold leading-tight tracking-wide">
-                        КАТАЛОГ ПРОДУКТОВ
-                    </h1>
-                    <p class="text-lg sm:text-xl font-semibold text-slate-500 mt-2 tracking-widest uppercase">
-                        Full Energy
-                    </p>
-                </div>
-                <div class="catalog-hero-glow">
-                    <div class="catalog-photo-slot min-h-[260px] sm:min-h-[300px] relative z-10 bg-transparent border-none">
-                        <img src="" alt="Продукция Full Energy">
-                    </div>
-                </div>
+            <div class="mb-10 text-left border-b border-slate-200/60 pb-6">
+                <h1 class="catalog-title text-3xl font-extrabold tracking-tight text-slate-950">
+                    Все продукты
+                </h1>
+                <p class="text-sm font-semibold text-slate-500 mt-1 uppercase tracking-wider">
+                    Full Energy
+                </p>
             </div>
 
-            <!-- Вводный текст -->
-            <div class="max-w-4xl mx-auto text-center space-y-6 mb-12 sm:mb-16 px-2">
-                <h2 class="about-serif text-xl sm:text-2xl font-bold italic text-slate-900">
-                    Full Energy — инновации доступны каждому
-                </h2>
+            <!-- Сетка продуктов 3 колонки на десктопе, полностью по макету -->
+            <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6">
 
-                <div class="text-slate-700 space-y-4 text-base sm:text-[1.05rem] leading-relaxed text-left">
-                    <p>
-                        <strong class="text-slate-900">Собственное производство.</strong> Компания Full Energy контролирует каждый этап создания продукции — от синтеза фуллерена до финальной упаковки. Это гарантирует стабильное качество и чистоту каждой партии.
-                    </p>
-                    <p>
-                        <strong class="text-slate-900">Мировые стандарты качества.</strong> Продукция производится с соблюдением международных норм и проходит многоступенчатый контроль. Фуллерен С60 используется в концентрации 99,99% — высшей степени очистки.
-                    </p>
-                    <p>
-                        <strong class="text-slate-900">Глобальное научное партнёрство.</strong> Full Energy сотрудничает с ведущими исследовательскими центрами, чтобы каждый продукт опирался на актуальные научные данные и клинические исследования.
-                    </p>
-                    <p>
-                        <strong class="text-slate-900">В основе продуктов Full Energy — уникальная молекула фуллерена С60.</strong> Это мощнейший антиоксидант, который нейтрализует свободные радикалы, поддерживает клеточное здоровье и помогает организму сохранять энергию и молодость.
-                    </p>
-                </div>
-
-                <div class="text-left max-w-2xl mx-auto">
-                    <p class="font-semibold text-slate-900 mb-3 text-base sm:text-lg">
-                        На сегодняшний день компания рада предложить продукты на основе фуллерена:
-                    </p>
-                    <ul class="space-y-1.5 text-slate-700 text-base sm:text-[1.05rem] list-disc pl-5">
-                        <li>Aqua Power</li>
-                        <li>Morning, Day, Night</li>
-                        <li>ActiveFull (гель и бальзам)</li>
-                        <li>BeautyonFull (сыворотка, крем для рук, спрей для волос)</li>
-                    </ul>
-                </div>
-            </div>
-
-            <!-- Сетка продуктов -->
-            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5 sm:gap-6">
-
-                <div class="catalog-product-card">
-                    <div class="catalog-product-glow catalog-glow-blue">
-                        <div class="catalog-photo-slot"><img src="" alt="Aqua Power"></div>
-                    </div>
-                    <div class="catalog-product-body">
-                        <h3 class="catalog-product-name">Aqua Power</h3>
-                        <p class="catalog-product-desc">Водный раствор фуллерена С60 для ежедневного приёма. Мягко насыщает организм антиоксидантной защитой, поддерживает водно-солевой баланс и дарит лёгкость с первых дней применения.</p>
+                <!-- 1. Фуллерен C60 Утро (Конопляное масло) -->
+                <div onclick="openProductModal(1)" class="catalog-product-card group">
+                    <div class="p-3">
+                        <div class="catalog-photo-slot aspect-square bg-[#f1f5f9] p-4 relative mb-3">
+                            <img src="photo/Фуллерен C60 Утро.jpg" onerror="this.remove();" alt="Конопляное масло">
+                        </div>
+                        <div class="catalog-product-body p-0">
+                            <span class="catalog-category-pill mb-2">Фуллерен C60 Утро</span>
+                            <h3 class="catalog-product-name group-hover:text-purple-600 transition-colors">Конопляное масло</h3>
+                            <p class="catalog-product-price">4400 RUB</p>
+                        </div>
                     </div>
                 </div>
 
-                <div class="catalog-product-card">
-                    <div class="catalog-product-glow catalog-glow-yellow">
-                        <div class="catalog-photo-slot"><img src="" alt="Morning"></div>
-                    </div>
-                    <div class="catalog-product-body">
-                        <h3 class="catalog-product-name">Morning</h3>
-                        <p class="catalog-product-desc">Утренний комплекс для бодрого начала дня. Активизирует метаболизм, повышает тонус и концентрацию, помогает проснуться без тяжести и усталости.</p>
-                    </div>
-                </div>
-
-                <div class="catalog-product-card">
-                    <div class="catalog-product-glow catalog-glow-green">
-                        <div class="catalog-photo-slot"><img src="" alt="Day"></div>
-                    </div>
-                    <div class="catalog-product-body">
-                        <h3 class="catalog-product-name">Day</h3>
-                        <p class="catalog-product-desc">Дневная формула для поддержания энергии и продуктивности. Защищает клетки от окислительного стресса в течение активного дня и помогает сохранять стабильный тонус.</p>
+                <!-- 2. Фуллерен C60 День (Оливковое масло) -->
+                <div onclick="openProductModal(2)" class="catalog-product-card group">
+                    <div class="p-3">
+                        <div class="catalog-photo-slot aspect-square bg-[#f1f5f9] p-4 relative mb-3">
+                            <img src="photo/Фуллерен C60 День.jpg" onerror="this.remove();" alt="Оливковое масло">
+                        </div>
+                        <div class="catalog-product-body p-0">
+                            <span class="catalog-category-pill mb-2">Фуллерен C60 День</span>
+                            <h3 class="catalog-product-name group-hover:text-purple-600 transition-colors">Оливковое масло</h3>
+                            <p class="catalog-product-price">4400 RUB</p>
+                        </div>
                     </div>
                 </div>
 
-                <div class="catalog-product-card">
-                    <div class="catalog-product-glow catalog-glow-orange">
-                        <div class="catalog-photo-slot"><img src="" alt="Night"></div>
-                    </div>
-                    <div class="catalog-product-body">
-                        <h3 class="catalog-product-name">Night</h3>
-                        <p class="catalog-product-desc">Вечерний комплекс для восстановления и глубокого отдыха. Способствует регенерации клеток во сне, улучшает качество сна и поддерживает организм в период ночного обновления.</p>
-                    </div>
-                </div>
-
-                <div class="catalog-product-card">
-                    <div class="catalog-product-glow catalog-glow-purple">
-                        <div class="catalog-photo-slot"><img src="" alt="ActiveFull Gel"></div>
-                    </div>
-                    <div class="catalog-product-body">
-                        <h3 class="catalog-product-name">ActiveFull — гель</h3>
-                        <p class="catalog-product-desc">Охлаждающий гель с фуллереном С60 для мышц и суставов. Быстро впитывается, снимает напряжение после нагрузок и оказывает противовоспалительное действие.</p>
+                <!-- 3. Фуллерен C60 Вечер (Тыквенное масло) -->
+                <div onclick="openProductModal(3)" class="catalog-product-card group">
+                    <div class="p-3">
+                        <div class="catalog-photo-slot aspect-square bg-[#f1f5f9] p-4 relative mb-3">
+                            <img src="photo/Фуллерен C60 Вечер.jpg" onerror="this.remove();" alt="Тыквенное масло">
+                        </div>
+                        <div class="catalog-product-body p-0">
+                            <span class="catalog-category-pill mb-2">Фуллерен C60 Вечер</span>
+                            <h3 class="catalog-product-name group-hover:text-purple-600 transition-colors">Тыквенное масло</h3>
+                            <p class="catalog-product-price">4400 RUB</p>
+                        </div>
                     </div>
                 </div>
 
-                <div class="catalog-product-card">
-                    <div class="catalog-product-glow catalog-glow-teal">
-                        <div class="catalog-photo-slot"><img src="" alt="ActiveFull Balm"></div>
-                    </div>
-                    <div class="catalog-product-body">
-                        <h3 class="catalog-product-name">ActiveFull — бальзам</h3>
-                        <p class="catalog-product-desc">Питательный бальзам для интенсивного ухода за кожей и суставами. Обогащён фуллереном и натуральными компонентами, ускоряет восстановление и смягчает раздражения.</p>
-                    </div>
-                </div>
-
-                <div class="catalog-product-card">
-                    <div class="catalog-product-glow catalog-glow-pink">
-                        <div class="catalog-photo-slot"><img src="" alt="BeautyonFull Serum"></div>
-                    </div>
-                    <div class="catalog-product-body">
-                        <h3 class="catalog-product-name">BeautyonFull — сыворотка</h3>
-                        <p class="catalog-product-desc">Концентрированная антивозрастная сыворотка для лица. Фуллерен С60 проникает в глубокие слои кожи, стимулирует обновление и возвращает здоровое сияние.</p>
+                <!-- 4. Фуллерен C60 Гель (Регенерирующий гель) -->
+                <div onclick="openProductModal(4)" class="catalog-product-card group">
+                    <div class="p-3">
+                        <div class="catalog-photo-slot aspect-square bg-[#f1f5f9] p-4 relative mb-3">
+                            <img src="photo/Фуллерен C60 Гель.png" onerror="this.remove();" alt="Регенерирующий гель">
+                        </div>
+                        <div class="catalog-product-body p-0">
+                            <span class="catalog-category-pill mb-2">Фуллерен C60 Гель</span>
+                            <h3 class="catalog-product-name group-hover:text-purple-600 transition-colors">Регенерирующий гель</h3>
+                            <p class="catalog-product-price">4400 RUB</p>
+                        </div>
                     </div>
                 </div>
 
-                <div class="catalog-product-card">
-                    <div class="catalog-product-glow catalog-glow-red">
-                        <div class="catalog-photo-slot"><img src="" alt="BeautyonFull Hand Cream"></div>
-                    </div>
-                    <div class="catalog-product-body">
-                        <h3 class="catalog-product-name">BeautyonFull — крем для рук</h3>
-                        <p class="catalog-product-desc">Увлажняющий крем для рук с фуллереном. Защищает кожу от агрессивных факторов, смягчает и восстанавливает, предотвращая преждевременное старение.</p>
-                    </div>
-                </div>
-
-                <div class="catalog-product-card">
-                    <div class="catalog-product-glow catalog-glow-indigo">
-                        <div class="catalog-photo-slot"><img src="" alt="BeautyonFull Hair Spray"></div>
-                    </div>
-                    <div class="catalog-product-body">
-                        <h3 class="catalog-product-name">BeautyonFull — спрей для волос</h3>
-                        <p class="catalog-product-desc">Спрей для укрепления и восстановления волос. Фуллерен питает волосяные фолликулы, придаёт блеск и защищает от повреждений и сухости.</p>
+                <!-- 5. Фуллерен C60 Aqua Power (Aqua фуллерен) -->
+                <div onclick="openProductModal(5)" class="catalog-product-card group">
+                    <div class="p-3">
+                        <div class="catalog-photo-slot aspect-square bg-[#f1f5f9] p-4 relative mb-3">
+                            <img src="photo/Фуллерен C60 Aqua Power.jpg" onerror="this.remove();" alt="Aqua фуллерен">
+                        </div>
+                        <div class="catalog-product-body p-0">
+                            <span class="catalog-category-pill mb-2">Фуллерен C60 Aqua Power</span>
+                            <h3 class="catalog-product-name group-hover:text-purple-600 transition-colors">Aqua фуллерен</h3>
+                            <p class="catalog-product-price">4400 RUB</p>
+                        </div>
                     </div>
                 </div>
 
-            </div>
+                <!-- 6. BeautyOnFull сыворотка (Serum фуллерен) -->
+                <div onclick="openProductModal(6)" class="catalog-product-card group">
+                    <div class="p-3">
+                        <div class="catalog-photo-slot aspect-square bg-[#f1f5f9] p-4 relative mb-3">
+                            <img src="photo/BeautyOnFull сыворотка.png" onerror="this.remove();" alt="Serum фуллерен">
+                        </div>
+                        <div class="catalog-product-body p-0">
+                            <span class="catalog-category-pill mb-2">BeautyOnFull сыворотка</span>
+                            <h3 class="catalog-product-name group-hover:text-purple-600 transition-colors">Serum фуллерен</h3>
+                            <p class="catalog-product-price">4400 RUB</p>
+                        </div>
+                    </div>
+                </div>
 
-            <div class="mt-10 text-center">
-                <a href="https://shop.full-en.com/products?code=59D573B5-7B9A" target="_blank" rel="noopener noreferrer"
-                   class="inline-flex items-center gap-2 px-8 py-4 rounded-full font-semibold text-white bg-[#ab72f8] hover:bg-[#975bf0] shadow-lg hover:-translate-y-0.5 transition-all text-base">
-                    <i class="fa-solid fa-cart-shopping"></i>
-                    Перейти в интернет-магазин
-                </a>
+                <!-- 7. Спрей для волос BeautyOnFull -->
+                <div onclick="openProductModal(7)" class="catalog-product-card group">
+                    <div class="p-3">
+                        <div class="catalog-photo-slot aspect-square bg-[#f1f5f9] p-4 relative mb-3">
+                            <img src="photo/Спрей для волос BeautyONFull.jpg" onerror="this.remove();" alt="Спрей для волос">
+                        </div>
+                        <div class="catalog-product-body p-0">
+                            <span class="catalog-category-pill mb-2">Спрей для волос BeautyOnFull</span>
+                            <h3 class="catalog-product-name group-hover:text-purple-600 transition-colors">Спрей для волос</h3>
+                            <p class="catalog-product-price">4400 RUB</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 8. Гель-бальзам для тела ActiveFull (Гель-бальзам) -->
+                <div onclick="openProductModal(8)" class="catalog-product-card group">
+                    <div class="p-3">
+                        <div class="catalog-photo-slot aspect-square bg-[#f1f5f9] p-4 relative mb-3">
+                            <img src="photo/Гель-бальзам для тела ActiveFull.jpg" onerror="this.remove();" alt="Гель-бальзам">
+                        </div>
+                        <div class="catalog-product-body p-0">
+                            <span class="catalog-category-pill mb-2">Гель-бальзам для тела ActiveFull</span>
+                            <h3 class="catalog-product-name group-hover:text-purple-600 transition-colors">Гель-бальзам</h3>
+                            <p class="catalog-product-price">4400 RUB</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 9. Крем для рук BeautyOnFull -->
+                <div onclick="openProductModal(9)" class="catalog-product-card group">
+                    <div class="p-3">
+                        <div class="catalog-photo-slot aspect-square bg-[#f1f5f9] p-4 relative mb-3">
+                            <img src="photo/Крем для рук BeautyONFull.jpg" onerror="this.remove();" alt="Крем для рук">
+                        </div>
+                        <div class="catalog-product-body p-0">
+                            <span class="catalog-category-pill mb-2">Крем для рук BeautyOnFull</span>
+                            <h3 class="catalog-product-name group-hover:text-purple-600 transition-colors">Крем для рук</h3>
+                            <p class="catalog-product-price">3080 RUB</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 10. Масло Flex Oil (Эликсир из пяти масел) -->
+                <div onclick="openProductModal(10)" class="catalog-product-card group">
+                    <div class="p-3">
+                        <div class="catalog-photo-slot aspect-square bg-[#f1f5f9] p-4 relative mb-3">
+                            <img src="photo\Масло Flex Oil (Флекс ойл).jpg" onerror="this.remove();" alt="Эликсир из пяти масел">
+                        </div>
+                        <div class="catalog-product-body p-0">
+                            <span class="catalog-category-pill mb-2">Масло Flex Oil (Флекс ойл)</span>
+                            <h3 class="catalog-product-name group-hover:text-purple-600 transition-colors">Эликсир из пяти масел</h3>
+                            <p class="catalog-product-price">7040 RUB</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 11. Комплекс Meta-ON (Антивозрастной комплекс) - NEW -->
+                <div onclick="openProductModal(11)" class="catalog-product-card group">
+                    <div class="p-3">
+                        <div class="catalog-photo-slot aspect-square bg-[#f1f5f9] p-4 relative mb-3">
+                            <!-- Красный маркер NEW -->
+                            <div class="absolute top-2 right-2 w-10 h-10 bg-red-600 rounded-full flex items-center justify-center shadow-md animate-pulse">
+                                <span class="text-white text-[9px] font-black uppercase">NEW</span>
+                            </div>
+                            <img src="photo\Комплекс Meta-ON (Мета-ОН).jpg" onerror="this.remove();" alt="Антивозрастной комплекс">
+                        </div>
+                        <div class="catalog-product-body p-0">
+                            <span class="catalog-category-pill mb-2">Комплекс Meta-ON (Мета-ОН)</span>
+                            <h3 class="catalog-product-name group-hover:text-purple-600 transition-colors">Антивозрастной комплекс</h3>
+                            <p class="catalog-product-price">10032 RUB</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 12. FULL-Carnitine (Мощь L-карнитина) - NEW -->
+                <div onclick="openProductModal(12)" class="catalog-product-card group">
+                    <div class="p-3">
+                        <div class="catalog-photo-slot aspect-square bg-[#f1f5f9] p-4 relative mb-3">
+                            <!-- Красный маркер NEW -->
+                            <div class="absolute top-2 right-2 w-10 h-10 bg-red-600 rounded-full flex items-center justify-center shadow-md animate-pulse">
+                                <span class="text-white text-[9px] font-black uppercase">NEW</span>
+                            </div>
+                            <img src="photo\FULL-Carnitine (Фулл - карнитин).jpg" onerror="this.remove();" alt="Мощь L-карнитина с фуллереном">
+                        </div>
+                        <div class="catalog-product-body p-0">
+                            <span class="catalog-category-pill mb-2">FULL-Carnitine (Фулл - карнитин)</span>
+                            <h3 class="catalog-product-name group-hover:text-purple-600 transition-colors">Мощь L-карнитина с фуллереном</h3>
+                            <p class="catalog-product-price">7040 RUB</p>
+                        </div>
+                    </div>
+                </div>
+
             </div>
 
             <footer class="mt-12 text-center text-[10px] text-purple-700/50 tracking-widest uppercase pb-4">
@@ -1532,27 +1488,27 @@
 
                 <!-- Бизнес возможности -->
                 <section>
-                    <h2 class="marketing-section-title">Бизнес возможности с FULL ENERGY</h2>
+                    <h2 class="marketing-section-title">Бизнес-возможности с FULL ENERGY</h2>
                     <ul class="marketing-text list-disc pl-5 space-y-1 mb-4">
-                        <li>Бизнес, который даёт свободу.</li>
-                        <li>Продукт, которому доверяют.</li>
-                        <li>Возможности, которые вдохновляют.</li>
+                        <li>Развитие партнерства на базе востребованного продукта.</li>
+                        <li>Современная технологическая инфраструктура.</li>
+                        <li>Широкие возможности для личностного и финансового роста.</li>
                     </ul>
                     <p class="marketing-text mb-5">
-                        Абсолютно каждый человек может стать частью большой и дружной семьи Full Energy, где мы предоставляем возможность:
+                        Каждый заинтересованный человек может стать частью партнерской сети Full Energy на удобных для себя условиях:
                     </p>
                     <div class="grid grid-cols-1 sm:grid-cols-3 gap-3">
                         <div class="marketing-benefit-box">
-                            <p class="title">Развивать партнёрство и зарабатывать честно</p>
-                            <p>Собираешь свою команду, делишься продуктом и получаешь достойный доход без впаривания и агрессивных продаж.</p>
+                            <p class="title">Создание команды и партнерские бонусы</p>
+                            <p>Формируйте свою команду, делитесь информацией и получайте вознаграждения в рамках прозрачного компенсационного плана.</p>
                         </div>
                         <div class="marketing-benefit-box">
-                            <p class="title">Улучшать качество жизни — своей и семьи</p>
-                            <p>Продукты реально работают: больше энергии, лучше самочувствие, яснее голова. Ты не просто продаёшь, ты пользуешься сам и рекомендуешь от сердца.</p>
+                            <p class="title">Системный продукт для качества жизни</p>
+                            <p>Разработки компании опираются на реальные потребности людей в энергии, восстановлении ресурсов организма и уходе.</p>
                         </div>
                         <div class="marketing-benefit-box">
-                            <p class="title">Вносить вклад в развитие нанотехнологий</p>
-                            <p>Ты продвигаешь инновационный продукт на основе фуллерена C60 и становишься частью движения, которое двигает рынок здоровья вперёд.</p>
+                            <p class="title">Продвижение передовых технологий</p>
+                            <p>Популяризируйте инновационные свойства фуллерена C60 и участвуйте в развитии прогрессивного рынка велнес-индустрии.</p>
                         </div>
                     </div>
                 </section>
@@ -1561,11 +1517,11 @@
                 <section>
                     <h2 class="marketing-section-title">Наполнение бизнес-пакетов</h2>
                     <div class="marketing-text space-y-3 mb-5">
-                        <p>Компания FULL ENERGY предлагает уникальную возможность построить успешный бизнес, основанный на инновационных продуктах с доказанной эффективностью.</p>
-                        <p>Бизнес-пакет выбирается на первом этапе при регистрации. Пакеты: Х1, Х2, Х3, Х5, VIP или Premium. От пакета в дальнейшем будет зависеть ваш заработок. Чем круче пакет, тем больше денег!</p>
-                        <p>Пакет покупается один раз, но можно в последствии его повышать (делать апгрейд) в течение 3 месяцев с момента регистрации. Приобретая бизнес-пакет, вы получаете продукцию по ценам для бизнес-партнёров и активируете себе возможность для построения команды и получения дохода.</p>
-                        <p>Заработанный бонус в у.е. вы можете использовать на покупку продукта или апгрейд. При оплате продукта: <strong>1 у.е. = 88 руб.</strong> При выводе средств на расчётный счёт: <strong>1 у.е. = 50 руб.</strong></p>
-                        <p class="marketing-note">* Апгрейд бизнес-пакета можно повысить в течение 3 месяцев с момента регистрации. Для этого используйте кнопку «Апгрейд» в своём личном кабинете.</p>
+                        <p>Компания FULL ENERGY предоставляет партнерам возможность масштабирования деятельности за счет гибкой системы стартовых пакетов.</p>
+                        <p>Выбор пакета (Х1, Х2, Х3, Х5, VIP или Premium) осуществляется на этапе регистрации. Объем вознаграждений зависит от параметров выбранного бизнес-пакета.</p>
+                        <p>Апгрейд (повышение ранга пакета) возможен в течение 3 месяцев с момента активации аккаунта. Покупка пакета предоставляет скидки и открывает доступ к построению структуры.</p>
+                        <p>Внутренний баланс в у.е. используется для приобретения продукции или апгрейдов. При расчете стоимости заказов: <strong>1 у.е. = 88 руб.</strong> При выводе средств на расчетный счет: <strong>1 у.е. = 50 руб.</strong></p>
+                        <p class="marketing-note">* Апгрейд бизнес-пакета можно осуществить в течение 3 месяцев с момента регистрации. Для этого используйте кнопку «Апгрейд» в личном кабинете.</p>
                     </div>
                     <div class="grid grid-cols-2 sm:grid-cols-3 gap-3 mb-5">
                         <div class="marketing-package-card">
@@ -1606,8 +1562,8 @@
                         </div>
                     </div>
                     <div class="marketing-text space-y-3">
-                        <p>Условные единицы введены для того, чтоб переводить стоимость продукции в валюты разных стран. Баллы — каждый продукт имеет балловое наполнение. 3 продукта в бизнес-пакете = 50 баллов. Исходя из балловой стоимости заказа рассчитываются ваши вознаграждения!</p>
-                        <p>Full Energy — это не просто доход, а шанс построить жизнь, в которой вы выбираете правила. Чёткая система, которая открывает реальные возможности для достойного дохода. Каждый партнёр получает шанс выстроить стабильный бизнес, раскрыть свой потенциал и шаг за шагом двигаться к финансовой свободе. И самое вдохновляющее — в маркетинг-плане целых 8 источников дохода, которые начинают работать сразу и поддерживают ваш рост на каждом этапе.</p>
+                        <p>Условные единицы и баллы введены для унификации цен и расчета товарооборота на международных рынках. 3 продукта в бизнес-пакете эквивалентны 50 баллам. Балловая стоимость заказов является базой для начисления премий.</p>
+                        <p>Партнерская программа Full Energy предлагает сбалансированный маркетинг-план, включающий 8 видов вознаграждений, направленных на поддержку партнеров на всех этапах развития структуры.</p>
                     </div>
                 </section>
 
@@ -1623,7 +1579,7 @@
                                 <span class="arrow"><i class="fa-solid fa-chevron-right"></i></span>
                             </button>
                             <div class="marketing-accordion-panel">
-                                <p>Вознаграждение за подключение новых партнёров к бизнесу в размере 10–30% от стоимости бизнес-пакета в баллах. Инвайт-бонус начисляется мгновенно.</p>
+                                <p>Вознаграждение за привлечение новых партнеров в размере 10–30% от баллового объема приобретаемого ими бизнес-пакета. Инвайт-бонус рассчитывается и начисляется в реальном времени.</p>
                                 <div class="marketing-table-wrap">
                                     <table class="marketing-table">
                                         <thead>
@@ -1644,7 +1600,7 @@
                                 <span class="arrow"><i class="fa-solid fa-chevron-right"></i></span>
                             </button>
                             <div class="marketing-accordion-panel">
-                                <p>Вознаграждение в размере 5–30% от баллового группового товарооборота* в меньшей ветке бинарной структуры.</p>
+                                <p>Начисление в размере 5–30% от накопленного баллового объема меньшей ветки бинарной структуры.</p>
                                 <div class="marketing-table-wrap">
                                     <table class="marketing-table">
                                         <thead>
@@ -1655,7 +1611,7 @@
                                         </tbody>
                                     </table>
                                 </div>
-                                <p class="marketing-note">* Бинарный товарооборот засчитывается в накопительный объём с учётом вычета уже выплаченного инвайт-бонуса. Бинарный бонус активируется после подписания по одному лично приглашённому партнёру в обеих ветках (слева и справа). Максимальное начисление в неделю по бинарному бонусу — 14 000 у.е. Бинарный бонус начисляется 1, 8, 16 и 24 числа каждого месяца.</p>
+                                <p class="marketing-note">* Бинарный оборот рассчитывается с учетом вычета выплаченного инвайт-бонуса. Активируется при наличии одного лично приглашенного партнера в левой ветке и одного в правой. Максимальный объем выплат по бинарной премии за неделю — 14 000 у.е. Начисления производятся 1, 8, 16 и 24 числа каждого месяца.</p>
                             </div>
                         </div>
 
@@ -1666,13 +1622,13 @@
                                 <span class="arrow"><i class="fa-solid fa-chevron-right"></i></span>
                             </button>
                             <div class="marketing-accordion-panel">
-                                <p>Вознаграждение до 60% от бинарного дохода структуры до 7-го уровня. *Учитывается товарооборот в меньшей ветке за предыдущий месяц.</p>
-                                <p><strong>ВАЖНО:</strong> матчинг-бонус зависит от квалификации и начисляется в текущем месяце — по квалификации, достигнутой в предыдущем месяце.</p>
+                                <p>Премия в размере до 60% от бинарного дохода участников структуры до 7 поколений в глубину.</p>
+                                <p><strong>Примечание:</strong> матчинг-бонус рассчитывается исходя из ранга квалификации, зафиксированного в предыдущем расчетном периоде.</p>
                                 <div class="marketing-table-wrap">
                                     <table class="marketing-table">
                                         <thead>
                                             <tr>
-                                                <th>Пакет</th><th>Звезда</th><th>Лидер</th><th>Регион. лидер</th><th>Федерал. лидер</th><th>Национал. лидер</th><th>Междунар. лидер</th><th>ТОП-лидер</th>
+                                                <th>Ранг</th><th>Звезда</th><th>Лидер</th><th>Регион. лидер</th><th>Федерал. лидер</th><th>Национал. лидер</th><th>Междунар. лидер</th><th>ТОП-лидер</th>
                                             </tr>
                                         </thead>
                                         <tbody>
@@ -1686,7 +1642,7 @@
                                         </tbody>
                                     </table>
                                 </div>
-                                <p class="marketing-note">Матчинг-бонус начисляется 1, 8, 16 и 24 числа каждого месяца.</p>
+                                <p class="marketing-note">Матчинг-бонус выплачивается 1, 8, 16 и 24 числа каждого месяца.</p>
                             </div>
                         </div>
 
@@ -1697,15 +1653,15 @@
                                 <span class="arrow"><i class="fa-solid fa-chevron-right"></i></span>
                             </button>
                             <div class="marketing-accordion-panel">
-                                <p>Вознаграждение за открытие квалификации и удержание её в течение 3-х месяцев:</p>
+                                <p>Ценные призы за достижение и удержание соответствующих рангов в течение 3 месяцев подряд:</p>
                                 <ul class="list-disc pl-5 mt-2 space-y-1">
                                     <li>Региональный Лидер: планшет</li>
-                                    <li>Федеральный Лидер: смартфон</li>
-                                    <li>Национальный Лидер: ноутбук</li>
-                                    <li>Международный Лидер: путешествие на двоих, 5 дней</li>
-                                    <li>Топ-Лидер: VIP-путешествие на двоих, 5 дней</li>
-                                    <li>Амбассадор: автомобиль</li>
-                                    <li>Советник: квартира</li>
+                                    <li>Федеральный Лидер: современный смартфон</li>
+                                    <li>Национальный Лидер: ноутбук бизнес-класса</li>
+                                    <li>Международный Лидер: парный тур на 5 дней</li>
+                                    <li>Топ-Лидер: премиальный парный отдых на 5 дней</li>
+                                    <li>Амбассадор: автобонус</li>
+                                    <li>Советник: улучшение жилищных условий</li>
                                 </ul>
                             </div>
                         </div>
@@ -1717,8 +1673,8 @@
                                 <span class="arrow"><i class="fa-solid fa-chevron-right"></i></span>
                             </button>
                             <div class="marketing-accordion-panel">
-                                <p>Вознаграждение от 5 до 10% от баллового товарооборота вашей личной группы на 7 уровней вниз + от 1 до 3% на бесконечное количество уровней вниз на квалификациях Топ-Лидер, Амбассадор и Советник.</p>
-                                <p class="marketing-note">Структурный бонус начисляется 1 числа каждого месяца в 00:01 (МСК).</p>
+                                <p>Начисление от 5 до 10% от баллового объема повторных заказов личной группы до 7 уровней в глубину, а также дополнительно от 1 до 3% без ограничения глубины на лидерских квалификациях.</p>
+                                <p class="marketing-note">Начисление структурной премии происходит 1 числа каждого месяца.</p>
                                 <div class="marketing-table-wrap">
                                     <table class="marketing-table">
                                         <thead>
@@ -1732,11 +1688,11 @@
                                             <tr><td>5 уровень</td><td>5%</td><td>6%</td><td>7%</td><td>8%</td><td>9%</td><td>10%</td></tr>
                                             <tr><td>6 уровень</td><td>5%</td><td>6%</td><td>7%</td><td>8%</td><td>9%</td><td>10%</td></tr>
                                             <tr><td>7 уровень</td><td>5%</td><td>6%</td><td>7%</td><td>8%</td><td>9%</td><td>10%</td></tr>
-                                            <tr><td>8 уровень + ∞</td><td colspan="6">1–3%</td></tr>
+                                            <tr><td>8 уровень + ∞</td><td colspan="6">1–3% в соответствии с рангом</td></tr>
                                         </tbody>
                                     </table>
                                 </div>
-                                <p class="marketing-note"><strong>Важно!</strong> Структурный бонус — единственный бонус, который требует личной активности каждый месяц. Для этого необходимо приобрести 1 продукт в период с 1 по 7 число на сумму 35 у.е. или 2 продукта на 70 у.е. с 8 числа до конца месяца. В первый месяц после регистрации личная активность для бонуса не нужна.</p>
+                                <p class="marketing-note"><strong>Внимание!</strong> Для получения структурной премии требуется ежемесячная личная активность — приобретение продукции на сумму от 35 у.е. (с 1 по 7 число) или 70 у.е. (с 8 числа до конца месяца). В первый календарный месяц после регистрации требование активности не предъявляется.</p>
                             </div>
                         </div>
 
@@ -1747,10 +1703,9 @@
                                 <span class="arrow"><i class="fa-solid fa-chevron-right"></i></span>
                             </button>
                             <div class="marketing-accordion-panel open">
-                                <p>Вознаграждение в размере <strong>30%</strong> со всех покупок клиентов в интернет-магазине по вашей персональной ссылке. Ссылку можно найти в вашем личном кабинете на главной странице.</p>
-                                <p class="example">Пример: клиент приобретает 1 продукт за 4 400 руб. 4 400 − 30% = 1 320 руб.</p>
-                                <p>Если 100 клиентов купили по 1 продукту, ваша прибыль — 132 000 руб. Если 100 клиентов купили по 4 продукта, ваша прибыль — 528 000 руб.</p>
-                                <p>Статистика компании говорит о том, что средняя покупка — это 5 продуктов. Клиентский бонус начисляется мгновенно.</p>
+                                <p>Прямое вознаграждение в размере <strong>30%</strong> от суммы розничных покупок клиентов, оформленных по вашей реферальной ссылке.</p>
+                                <p class="example">Пример расчета: client приобретает 1 продукт за 4 400 руб. Сумма вашего начисления составит 1 320 руб.</p>
+                                <p>Клиентский бонус рассчитывается автоматически и начисляется в личный кабинет сразу после оплаты заказа клиентом.</p>
                             </div>
                         </div>
 
@@ -1761,11 +1716,11 @@
                                 <span class="arrow"><i class="fa-solid fa-chevron-right"></i></span>
                             </button>
                             <div class="marketing-accordion-panel">
-                                <p>% от товарооборота компании делится между:</p>
+                                <p>Распределение фиксированного процента от суммарного мирового оборота компании среди высших квалификационных рангов:</p>
                                 <ul class="list-disc pl-5 mt-2 space-y-1">
-                                    <li>Топ-лидером — 1%</li>
-                                    <li>Амбассадором — 2%</li>
-                                    <li>Советником — 3%</li>
+                                    <li>Топ-Лидер — доля из пула 1%</li>
+                                    <li>Амбассадор — доля из пула 2%</li>
+                                    <li>Советник — доля из пула 3%</li>
                                 </ul>
                             </div>
                         </div>
@@ -1777,8 +1732,8 @@
                                 <span class="arrow"><i class="fa-solid fa-chevron-right"></i></span>
                             </button>
                             <div class="marketing-accordion-panel">
-                                <p>Захватывающее ежегодное путешествие с командой единомышленников.</p>
-                                <p class="marketing-note">* Объявляется 1 раз в год президентом компании.</p>
+                                <p>Ежегодные корпоративные поездки и обучающие семинары за счет компании для active-партнеров.</p>
+                                <p class="marketing-note">* Условия и критерии квалификации на поездку объявляются администрацией раз в год.</p>
                             </div>
                         </div>
 
@@ -1787,44 +1742,47 @@
 
                 <!-- Бизнес, который даёт свободу -->
                 <section class="text-center space-y-4 pt-4">
-                    <h2 class="marketing-freedom-title">Бизнес, который даёт свободу</h2>
-                    <p class="marketing-text text-center italic">Продукт, которому доверяют. Возможности, которые вдохновляют.</p>
+                    <h2 class="marketing-freedom-title">Бизнес и партнерство</h2>
+                    <p class="marketing-text text-center italic">Проверенная система и надежные продукты.</p>
                     <div class="marketing-text space-y-3 text-center max-w-2xl mx-auto">
-                        <p>С Full Energy вы получаете всё и сразу в готовом интернет-магазине с уникальными нанопродуктами на основе фуллерена С60 — без рисков, без сложностей, с реальными возможностями финансового роста.</p>
-                        <p>С маркетинг-планом Full Energy ваши усилия никогда не останутся незамеченными, а каждый шаг вперёд будет вознаграждён. Всё, что остаётся — использовать его на полную.</p>
+                        <p>Партнерская модель Full Energy позволяет построить деятельность на продвижении востребованного продукта на базе фуллерена С60, минимизируя логистические риски и получая доступ к современному инструментарию продаж.</p>
                     </div>
-                    <p class="text-orange-600 font-semibold text-sm">Есть желание строить структуру и зарабатывать — присоединяйся в нашу Команду!</p>
+                    <p class="text-orange-600 font-semibold text-sm">Присоединяйтесь к нашей команде для совместного развития!</p>
                     <a href="https://my.full-en.com/register.php?code=12055CB0-FFF9" target="_blank" rel="noopener noreferrer" class="marketing-cta-btn">
                         <i class="fa-solid fa-paper-plane"></i>
-                        Хочу стать партнёром
+                        Регистрация партнера
                     </a>
                 </section>
 
-                <!-- Карточки -->
+                <!-- Карточки маркетинга -->
                 <section>
                     <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5">
                         <div>
-                            <div class="marketing-feature-img"><img src="" alt="бизнес под ключ"></div>
+                            <div class="marketing-feature-img"><img src="photo\9.jpg" onerror="this.remove();" alt="бизнес под ключ"></div>
                             <p class="marketing-feature-caption">бизнес под ключ</p>
                         </div>
                         <div>
-                            <div class="marketing-feature-img"><img src="" alt="Пройди регистрацию"></div>
-                            <p class="marketing-feature-caption">Пройди регистрацию</p>
+                            <div class="marketing-feature-img"><img src="photo\10.jpg" onerror="this.remove();" alt="
+
+Пройди регистрацию"></div>
+                            <p class="marketing-feature-caption">
+
+Пройди регистрацию</p>
                         </div>
                         <div>
-                            <div class="marketing-feature-img"><img src="" alt="Подключи свой магазин"></div>
+                            <div class="marketing-feature-img"><img src="photo\11.jpg" onerror="this.remove();" alt="Подключи свой магазин"></div>
                             <p class="marketing-feature-caption">Подключи свой магазин</p>
                         </div>
                         <div>
-                            <div class="marketing-feature-img"><img src="" alt="бизнес без затрат и рисков"></div>
+                            <div class="marketing-feature-img"><img src="photo\12.jpg" onerror="this.remove();" alt="бизнес без затрат и рисков"></div>
                             <p class="marketing-feature-caption">бизнес без затрат и рисков</p>
                         </div>
                         <div>
-                            <div class="marketing-feature-img"><img src="" alt="твой доход растёт"></div>
-                            <p class="marketing-feature-caption">твой доход растёт</p>
+                            <div class="marketing-feature-img"><img src="photo\13.jpg" onerror="this.remove();" alt="твой доход растет"></div>
+                            <p class="marketing-feature-caption">твой доход растет</p>
                         </div>
                         <div>
-                            <div class="marketing-feature-img"><img src="" alt="масштабируй бизнес"></div>
+                            <div class="marketing-feature-img"><img src="photo\14.jpg" onerror="this.remove();" alt="масштабируй бизнес"></div>
                             <p class="marketing-feature-caption">масштабируй бизнес</p>
                         </div>
                     </div>
@@ -1867,14 +1825,119 @@
                 </button>
                 <a href="https://my.full-en.com/" target="_blank" rel="noopener noreferrer" class="nav-btn">
                     <i class="fa-solid fa-circle-check text-sm"></i>
-                    <span class="hidden sm:inline">Вход в Личный кабинет Full Energy</span>
+                    <span class="hidden sm:inline">Личный кабинет Full Energy</span>
                     <span class="sm:hidden">Личный кабинет</span>
                 </a>
             </div>
         </div>
     </nav>
 
-    <!-- Модалка (Лайтбокс) -->
+    <!-- Модалка просмотра товара (По макету со скриншота) -->
+    <div id="product-modal" class="fixed inset-0 bg-slate-900/60 backdrop-blur-md z-50 flex items-center justify-center opacity-0 pointer-events-none transition-all duration-300 overflow-y-auto p-4 sm:p-6">
+        <div class="max-w-5xl w-full bg-white rounded-3xl shadow-2xl p-6 sm:p-8 relative transform scale-95 transition-transform duration-300 max-h-[90vh] overflow-y-auto" id="product-modal-content">
+            
+            <!-- Кнопка закрытия модалки -->
+            <button onclick="closeProductModal()" class="absolute top-4 right-4 text-slate-400 hover:text-slate-600 p-2 rounded-full hover:bg-slate-100 transition-colors z-10">
+                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="6" x2="6" y2="18"></line><line x1="6" y1="6" x2="18" y2="18"></line></svg>
+            </button>
+
+            <!-- Двухколоночный контент -->
+            <div class="grid grid-cols-1 md:grid-cols-12 gap-8 items-start">
+                
+                <!-- Левая колонка (Картинка, сертификаты) -->
+                <div class="md:col-span-5 space-y-6">
+                    <!-- Изображение -->
+                    <div class="bg-[#e2e8f0] rounded-2xl aspect-[4/3] flex items-center justify-center p-6 relative overflow-hidden">
+                        <img id="modal-product-img" src="" alt="Изображение товара" class="max-h-full max-w-full object-contain">
+                    </div>
+
+                    <!-- Сертификационный блок -->
+                    <div class="bg-[#f8fafc] border border-slate-100 rounded-2xl p-5 space-y-4">
+                        <p class="text-xs text-slate-600 leading-relaxed font-medium">
+                            Вы можете быть уверены в том, что приобретаете сертифицированный товар, который соответствует высоким стандартам качества.
+                        </p>
+                        <p class="text-xs text-slate-500 leading-relaxed">
+                            Мы используем современные технологии для очистки компонентов, из которых создаётся наша продукция.
+                        </p>
+                        
+                        <div class="pt-2">
+                            <span class="text-[11px] font-bold text-slate-400 uppercase tracking-wider block mb-3">Ознакомиться с документами:</span>
+                            <div class="space-y-2">
+                                <a href="https://shop.full-en.com/assets/docs/declaration.png" target="_blank" class="w-full flex items-center justify-center gap-2 py-2.5 px-4 rounded-xl border border-orange-500/30 hover:border-orange-500 text-orange-600 text-xs font-bold transition-all bg-white hover:bg-orange-50/20">
+                                    <i class="fa-regular fa-file-pdf"></i>
+                                    ДЕКЛАРАЦИЯ СООТВЕТСТВИЯ
+                                </a>
+                                <a href="https://shop.full-en.com/assets/docs/cert_cosm.pdf" target="_blank" class="w-full flex items-center justify-center gap-2 py-2.5 px-4 rounded-xl border border-orange-500/30 hover:border-orange-500 text-orange-600 text-xs font-bold transition-all bg-white hover:bg-orange-50/20">
+                                    <i class="fa-regular fa-file-pdf"></i>
+                                    СЕРТИФИКАТ ПРОИЗВОДСТВА
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Правая колонка (Описание, буллеты, преимущества, цена) -->
+                <div class="md:col-span-7 space-y-6">
+                    
+                    <!-- Заголовок -->
+                    <div class="space-y-2">
+                        <span id="modal-product-badge" class="bg-[#8cc63f] text-white text-[10px] font-bold px-3 py-1 rounded-full uppercase tracking-wider inline-block">Категория</span>
+                        <h2 id="modal-product-title" class="text-2xl sm:text-3xl font-extrabold text-slate-950">Название товара</h2>
+                        <p id="modal-product-desc" class="text-sm text-slate-600 leading-relaxed">Краткое описание товара.</p>
+                    </div>
+
+                    <!-- Для людей, которые -->
+                    <div class="bg-[#f8fafc] border border-slate-100 rounded-2xl p-5 space-y-3">
+                        <h4 class="text-sm font-bold text-slate-900">Для людей, которые:</h4>
+                        <ul id="modal-product-bullets" class="space-y-2">
+                            <!-- JS Буллеты -->
+                        </ul>
+                    </div>
+
+                    <!-- Спойлеры / Аккордеоны -->
+                    <div class="space-y-2">
+                        <!-- Что это такое -->
+                        <div class="border border-slate-200/80 rounded-xl overflow-hidden">
+                            <button onclick="toggleAccordion('modal-acc-1')" class="w-full flex items-center justify-between py-3 px-4 bg-white hover:bg-slate-50 text-slate-900 font-bold text-sm transition-colors text-left">
+                                Что это такое?
+                                <i id="modal-acc-1-arrow" class="fa-solid fa-chevron-down text-slate-400 text-xs transition-transform duration-200"></i>
+                            </button>
+                            <div id="modal-acc-1" class="hidden py-3 px-4 bg-slate-50/40 border-t border-slate-100 text-xs sm:text-sm text-slate-600 leading-relaxed">
+                                <!-- Текст -->
+                            </div>
+                        </div>
+
+                        <!-- Главные преимущества -->
+                        <div class="border border-slate-200/80 rounded-xl overflow-hidden">
+                            <button onclick="toggleAccordion('modal-acc-2')" class="w-full flex items-center justify-between py-3 px-4 bg-white hover:bg-slate-50 text-slate-900 font-bold text-sm transition-colors text-left">
+                                Главные преимущества
+                                <i id="modal-acc-2-arrow" class="fa-solid fa-chevron-down text-slate-400 text-xs transition-transform duration-200"></i>
+                            </button>
+                            <div id="modal-acc-2" class="hidden py-3 px-4 bg-slate-50/40 border-t border-slate-100 text-xs sm:text-sm text-slate-600 leading-relaxed">
+                                <!-- Текст -->
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Стоимость и кнопка перехода в магазин -->
+                    <div class="bg-slate-50/80 rounded-2xl p-4 sm:p-5 flex flex-col sm:flex-row items-center justify-between gap-4 border border-slate-100/50">
+                        <div class="text-center sm:text-left">
+                            <span class="text-xs text-slate-400 block mb-1">Стоимость:</span>
+                            <span id="modal-product-price" class="text-xl sm:text-2xl font-black text-slate-950">4400 RUB</span>
+                        </div>
+                        <a id="modal-product-shop-link" href="" target="_blank" class="w-full sm:w-auto text-center py-4 px-8 rounded-2xl font-extrabold text-white bg-gradient-to-r from-orange-500 to-orange-600 hover:from-orange-600 hover:to-orange-700 shadow-lg shadow-orange-500/10 hover:shadow-orange-500/25 active:scale-98 transition-all text-sm uppercase tracking-wide">
+                            Перейти в магазин
+                        </a>
+                    </div>
+
+                </div>
+
+            </div>
+
+        </div>
+    </div>
+
+    <!-- Модалка обычного лайтбокса -->
     <div id="lightbox" class="fixed inset-0 bg-slate-950/80 backdrop-blur-xl z-50 flex items-center justify-center opacity-0 pointer-events-none transition-all duration-300">
         <button id="lightbox-close" class="absolute top-6 right-6 text-white/70 hover:text-white bg-white/10 hover:bg-white/20 p-3 rounded-full border border-white/10 backdrop-blur-md transition-all z-50">
             <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="6" x2="6" y2="18"></line><line x1="6" y1="6" x2="18" y2="18"></line></svg>
@@ -1883,6 +1946,281 @@
             <img id="lightbox-img" src="" alt="Просмотр" class="max-w-full max-h-[80vh] rounded-xl object-contain shadow-2xl">
         </div>
     </div>
+
+    <!-- База данных продуктов для детального просмотра -->
+    <script>
+        const productsData = {
+            1: {
+                badge: "Фуллерен C60 Утро",
+                title: "Конопляное масло",
+                price: "4400 RUB",
+                img: "photo/Фуллерен C60 Утро.jpg",
+                desc: "Утренний комплекс с фуллереном: уникальный продукт из натуральных компонентов с бодрящими организм силой и ресурсами, необходимыми для бодрого начала дня.",
+                bullets: [
+                    "Ведут активный образ жизни",
+                    "Заботятся о своем здоровье",
+                    "Хотят сохранять молодость и красоту как можно дольше",
+                    "Стремятся к активному долголетию"
+                ],
+                about: "Фуллерен C60 Утро на основе конопляного масла холодного отжима — это оптимизированный утренний энерготоник. Конопляное масло богато полиненасыщенными жирными кислотами Омега-3 и Омега-6 в идеальном соотношении, что способствует мягкому усвоению антиоксидантов.",
+                benefits: "Запускает обмен веществ с самого утра, поддерживает высокий уровень энергии, нормализует тонус сосудов, улучшает работу ЖКТ и укрепляет иммунную защиту.",
+                link: "https://shop.full-en.com/products/morning?code=59D573B5-7B9A"
+            },
+            2: {
+                badge: "Фуллерен C60 День",
+                title: "Оливковое масло",
+                price: "4400 RUB",
+                img: "photo/Фуллерен C60 День.jpg",
+                desc: "Дневной комплекс с фуллереном С60 для поддержания оптимальной работоспособности и высокого уровня энергии в течение всего дня.",
+                bullets: [
+                    "Испытывают повышенные нагрузки в течение дня",
+                    "Чувствуют спад активности после обеда",
+                    "Следят за здоровьем печени и ЖКТ",
+                    "Стремятся поддерживать ясность ума"
+                ],
+                about: "Масляный раствор на базе высококачественного оливкового масла категории Extra Virgin. Прекрасно усваивается во время дневного приема пищи, обеспечивая клетки антиоксидантной защитой в пиковые рабочие часы.",
+                benefits: "Снижает утомляемость, поддерживает метаболизм, защищает гепатоциты (клетки печени), улучшает липидный профиль и способствует концентрации внимания.",
+                link: "https://shop.full-en.com/products/day?code=59D573B5-7B9A"
+            },
+            3: {
+                badge: "Фуллерен C60 Вечер",
+                title: "Тыквенное масло",
+                price: "4400 RUB",
+                img: "photo/Фуллерен C60 Вечер.jpg",
+                desc: "Вечерний комплекс для спокойного сна, снятия напряжения и запуска процессов естественной ночной регенерации клеток.",
+                bullets: [
+                    "Страдают нарушениями сна или бессонницей",
+                    "Хотят просыпаться отдохнувшими и свежими",
+                    "Заботятся о мужском и женском здоровье",
+                    "Следят за чистотой и детоксом ЖКТ"
+                ],
+                about: "Раствор фуллерена С60 на основе чистого тыквенного масла холодного отжима. Тыквенное масло богато цинком, селеном и фитостеролами, благотворно влияющими на гормональный фон и репродуктивную систему.",
+                benefits: "Способствует глубокому расслаблению, улучшает фазы сна, активирует клеточное восстановление за ночь, поддерживает здоровье простаты и репродуктивной сферы.",
+                link: "https://shop.full-en.com/products/night?code=59D573B5-7B9A"
+            },
+            4: {
+                badge: "Фуллерен C60 Гель",
+                title: "Регенерирующий гель",
+                price: "4400 RUB",
+                img: "photo/Фуллерен C60 Гель.png",
+                desc: "Интенсивное наружное средство с высокой концентрацией фуллерена С60 для экспресс-восстановления кожи, связок и мышечных волокон.",
+                bullets: [
+                    "Занимаются силовыми тренировками или фитнесом",
+                    "Ощущают боли и тяжесть в мышцах после нагрузок",
+                    "Хотят ускорить заживление синяков и ушибов",
+                    "Заботятся о здоровье суставов"
+                ],
+                about: "Легкий трансдермальный гель с фуллереном С60 быстро преодолевает кожный барьер, доставляя антиоксиданты непосредственно в очаг дискомфорта или воспаления.",
+                benefits: "Снижает уровень молочной кислоты в мышцах, ускоряет регенерацию при растяжениях, уменьшает суставную отечность и успокаивает раздраженную кожу.",
+                link: "https://shop.full-en.com/products/activefull_gel?code=59D573B5-7B9A"
+            },
+            5: {
+                badge: "Фуллерен C60 Aqua Power",
+                title: "Aqua фуллерен",
+                price: "4400 RUB",
+                img: "photo/Фуллерен C60 Aqua Power.jpg",
+                desc: "Запатентованный водный раствор фуллерена С60 для мгновенного усвоения и защиты организма без масляной основы.",
+                bullets: [
+                    "Ищут легкий питьевой формат детокса",
+                    "Не любят вкус растительных масел",
+                    "Хотят улучшить гидратацию клеток на наноуровне",
+                    "Заботятся о силе иммунитета"
+                ],
+                about: "Уникальный питьевой раствор, полученный по сложной технологии без применения химических растворителей. Молекулы С60 находятся в стабильной гидратной оболочке.",
+                benefits: "Обеспечивает мгновенный системный детокс, улучшает реологию (текучесть) крови, повышает общий тонус и активирует защитные силы организма.",
+                link: "https://shop.full-en.com/products/aquapower?code=59D573B5-7B9A"
+            },
+            6: {
+                badge: "BeautyOnFull сыворотка",
+                title: "Serum фуллерен",
+                price: "4400 RUB",
+                img: "photo/BeautyOnFull сыворотка.png",
+                desc: "Высококонцентрированная антивозрастная сыворотка для лица для глубокого преображения, упругости и здорового сияния.",
+                bullets: [
+                    "Замечают появление возрастных морщин",
+                    "Борются со снижением упругости овала лица",
+                    "Хотят вернуть коже ровный тон и здоровый цвет",
+                    "Стремятся к качественному аппаратному или домашнему уходу"
+                ],
+                about: "Мультиактивная сыворотка содержит очищенный фуллерен С60 в рабочей дозировке, а также пептиды и гиалуроновую кислоту низкой молекулярности.",
+                benefits: "Нейтрализует свободные радикалы — основную причину увядания, стимулирует синтез коллагена, сужает поры и глубоко увлажняет.",
+                link: "https://shop.full-en.com/products/beautyonfull?code=59D573B5-7B9A"
+            },
+            7: {
+                badge: "Спрей для волос BeautyOnFull",
+                title: "Спрей для волос",
+                price: "4400 RUB",
+                img: "photo/Спрей для волос BeautyONFull.jpg",
+                desc: "Легкий несмываемый спрей для укрепления корней, уплотнения структуры волос и защиты от термического воздействия при укладке.",
+                bullets: [
+                    "Сталкиваются с ломкостью и выпадением волос",
+                    "Постоянно используют фен, утюжки, плойки",
+                    "Хотят вернуть волосам природный блеск и объем",
+                    "Защищают локоны от воздействия солнца и ветра"
+                ],
+                about: "Инновационная формула С60 в сочетании с витаминными комплексами обволакивает стержень волоса невидимой дышащей мантией, предотвращая потерю влаги.",
+                benefits: "Снижает ломкость, облегчает расчесывание, укрепляет фолликулы на этапе роста и придает прядям здоровый шелковистый вид.",
+                link: "https://shop.full-en.com/products/hairspray?code=59D573B5-7B9A"
+            },
+            8: {
+                badge: "Гель-бальзам для тела ActiveFull",
+                title: "Гель-бальзам",
+                price: "4400 RUB",
+                img: "photo/Гель-бальзам для тела ActiveFull.jpg",
+                desc: "Глубоко питательное средство с фуллереном С60 для поддержания здоровья суставов, связок и устранения мышечного напряжения.",
+                bullets: [
+                    "Испытывают скованность движений по утрам",
+                    "Имеют хронические суставные изменения",
+                    "Ведут малоподвижный образ жизни за компьютером",
+                    "Хотят защитить суставы при тяжелом физическом труде"
+                ],
+                about: "Специальная мазевая основа, обогащенная молекулярными сферами фуллерена, хондроитином и натуральными экстрактами трав.",
+                benefits: "Способствует регенерации хрящевых поверхностей, улучшает выработку синовиальной жидкости, убирает ноющий дискомфорт в связках.",
+                link: "https://shop.full-en.com/products/activefull?code=59D573B5-7B9A"
+            },
+            9: {
+                badge: "Крем для рук BeautyOnFull",
+                title: "Крем для рук",
+                price: "3080 RUB",
+                img: "photo/Крем для рук BeautyONFull.jpg",
+                desc: "Питательный и заживляющий крем для рук, возвращающий коже эластичность, ухоженный вид и барьерную защиту.",
+                bullets: [
+                    "Ощущают постоянную сухость и стянутость кожи рук",
+                    "Часто используют бытовую химию или антисептики",
+                    "Страдают от обветривания и шелушения в холодный сезон",
+                    "Стремятся предупредить возрастные изменения кожи кистей"
+                ],
+                about: "Густая, но легко впитывающаяся текстура с маслом ши, пантенолом и фуллереном С60, который предохраняет кожу рук от фотостарения.",
+                benefits: "Быстро реанимирует сухие участки, затягивает микротрещины, смягчает кутикулу и укрепляет ногтевую пластину.",
+                link: "https://shop.full-en.com/products/handcream?code=59D573B5-7B9A"
+            },
+            10: {
+                badge: "Масло Flex Oil (Флекс ойл)",
+                title: "Эликсир из пяти масел",
+                price: "7040 RUB",
+                img: "photo/Flex Oil.jpg",
+                desc: "Премиальный натуропатический продукт: синергия пяти ценнейших сыродавленных масел с фуллереном С60 для гибкости суставов и связок.",
+                bullets: [
+                    "Занимаются растяжкой, йогой, пилатесом",
+                    "Испытывают хруст и дискомфорт в коленях и позвоночнике",
+                    "Хотят насытить организм Омега-3-6-9 жирными кислотами",
+                    "Поддерживают эластичность сосудов и суставных сумок"
+                ],
+                about: "Уникальный эликсир сочетает в себе масло семян конопли, тыквы, расторопши, льна и кунжута первого холодного отжима с наночастицами углерода С60.",
+                benefits: "Обеспечивает внутреннюю смазку суставов, улучшает эластичность хрящей, стимулирует обмен веществ и очищает сосуды от бляшек.",
+                link: "https://shop.full-en.com/products/flexoil?code=59D573B5-7B9A"
+            },
+            11: {
+                badge: "Комплекс Meta-ON (Мета-ОН)",
+                title: "Антивозрастной комплекс",
+                price: "10032 RUB",
+                img: "photo/Meta-ON.jpg",
+                desc: "Высокотехнологичный геропротектор нового поколения. Формула, направленная на замедление биологического возраста и защиту митохондрий.",
+                bullets: [
+                    "Стремятся к качественному омоложению организма",
+                    "Испытывают упадок жизненных сил и апатию",
+                    "Хотят защитить клетки от окислительного разрушения",
+                    "Следят за здоровьем нервной и эндокринной систем"
+                ],
+                about: "Комплекс Meta-ON объединяет мощную антиоксидантную активность фуллерена С60 с коэнзимом Q10 и натуральными биостимуляторами метаболизма.",
+                benefits: "Восстанавливает работу митохондрий (энергетических станций клеток), улучшает регенеративный потенциал органов, замедляет маркеры старения кожи и внутренних систем.",
+                link: "https://shop.full-en.com/products/metaon?code=59D573B5-7B9A"
+            },
+            12: {
+                badge: "FULL-Carnitine (Фулл - карнитин)",
+                title: "Мощь L-карнитина с фуллереном",
+                price: "7040 RUB",
+                img: "photo/FULL-Carnitine.jpg",
+                desc: "Инновационная спортивная и оздоровительная формула для эффективного жиросжигания, выносливости и защиты сердца.",
+                bullets: [
+                    "Снижают вес и избавляются от жировых отложений",
+                    "Регулярно проводят кардиотренировки",
+                    "Хотят быстрее восстанавливаться после физических нагрузок",
+                    "Ищут безопасный источник дополнительной энергии"
+                ],
+                about: "Сбалансированная питьевая формула, содержащая биодоступный L-карнитин и антиоксидантные сферы фуллерена С60, защищающие клетки от закисления.",
+                benefits: "Транспортирует жирные кислоты в митохондрии для выработки энергии, ускоряет сушку тела, бережет сердечную мышцу при пульсовых нагрузках.",
+                link: "https://shop.full-en.com/products/fullcarnitine?code=59D573B5-7B9A"
+            }
+        };
+
+        // Открытие модального окна товара
+        function openProductModal(id) {
+            const product = productsData[id];
+            if (!product) return;
+
+            document.getElementById('modal-product-badge').innerText = product.badge;
+            document.getElementById('modal-product-title').innerText = product.title;
+            document.getElementById('modal-product-desc').innerText = product.desc;
+            document.getElementById('modal-product-price').innerText = product.price;
+            document.getElementById('modal-product-img').src = product.img;
+            document.getElementById('modal-product-shop-link').href = product.link;
+
+            // Наполнение буллетов
+            const bulletsContainer = document.getElementById('modal-product-bullets');
+            bulletsContainer.innerHTML = '';
+            product.bullets.forEach(text => {
+                const li = document.createElement('li');
+                li.className = "flex items-start gap-2.5 text-xs sm:text-sm text-slate-700 leading-normal";
+                li.innerHTML = `<span class="text-orange-500 text-base mt-[-2px]">•</span> <span>${text}</span>`;
+                bulletsContainer.appendChild(li);
+            });
+
+            // Наполнение спойлеров
+            document.getElementById('modal-acc-1').innerText = product.about;
+            document.getElementById('modal-acc-2').innerText = product.benefits;
+
+            // Сброс состояния спойлеров (закрыты по умолчанию)
+            document.getElementById('modal-acc-1').classList.add('hidden');
+            document.getElementById('modal-acc-2').classList.add('hidden');
+            document.getElementById('modal-acc-1-arrow').classList.remove('rotate-180');
+            document.getElementById('modal-acc-2-arrow').classList.remove('rotate-180');
+
+            // Показ модалки
+            const modal = document.getElementById('product-modal');
+            const content = document.getElementById('product-modal-content');
+            modal.classList.remove('opacity-0', 'pointer-events-none');
+            setTimeout(() => {
+                content.classList.remove('scale-95');
+                content.classList.add('scale-100');
+            }, 50);
+            document.body.classList.add('overflow-hidden');
+        }
+
+        // Закрытие модального окна
+        function closeProductModal() {
+            const modal = document.getElementById('product-modal');
+            const content = document.getElementById('product-modal-content');
+            content.classList.remove('scale-100');
+            content.classList.add('scale-95');
+            setTimeout(() => {
+                modal.classList.add('opacity-0', 'pointer-events-none');
+                document.body.classList.remove('overflow-hidden');
+            }, 150);
+        }
+
+        // Переключение спойлера аккордеона
+        function toggleAccordion(id) {
+            const panel = document.getElementById(id);
+            const arrow = document.getElementById(id + '-arrow');
+            const isHidden = panel.classList.contains('hidden');
+            
+            if (isHidden) {
+                panel.classList.remove('hidden');
+                arrow.classList.add('rotate-180');
+            } else {
+                panel.classList.add('hidden');
+                arrow.classList.remove('rotate-180');
+            }
+        }
+
+        // Закрытие модалки при клике по фону
+        document.getElementById('product-modal').addEventListener('click', (e) => {
+            if (e.target === document.getElementById('product-modal')) {
+                closeProductModal();
+            }
+        });
+    </script>
 
     <!-- Навигация между страницами -->
     <script>
@@ -1936,7 +2274,7 @@
         });
     </script>
 
-    <!-- Скрипты (оставлены без изменений) -->
+    <!-- Скрипт Лайтбокса (активен только для zoomable элементов на Главной) -->
     <script>
         document.addEventListener('DOMContentLoaded', () => {
             const lightbox = document.getElementById('lightbox');
@@ -1981,6 +2319,8 @@
             });
         });
     </script>
+
+    <!-- Скрипт интерактивного 3D Canvas C60 -->
     <script>
         document.addEventListener('DOMContentLoaded', () => {
             const canvas = document.getElementById('c60Canvas');
