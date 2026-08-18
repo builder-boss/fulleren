@@ -3,15 +3,15 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Матвеевы Сергей и Олеся | Фуллерен С60</title>
-    
+    <title>Сайт партнёров Full Energy | Матвеевы Сергей и Олеся</title>
+
     <script src="https://cdn.tailwindcss.com"></script>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght=300;400;500;600;700;800&display=swap" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght=0,600;0,700;1,600;1,700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
-    
+
     <style>
         body {
             background-color: #ffffff;
@@ -40,7 +40,7 @@
         .animate-bg-1 { animation: float-purple 18s infinite ease-in-out; will-change: transform; }
         .animate-bg-2 { animation: float-fuchsia 22s infinite ease-in-out; will-change: transform; }
         .animate-bg-3 { animation: float-cyan 26s infinite ease-in-out; will-change: transform; }
-        
+
         /* Плотное матовое стекло (Frosted Glassmorphism) */
         .crystal-glass {
             background: rgba(255, 255, 255, 0.78);
@@ -76,7 +76,7 @@
                 inset 0 1px 1px 0 rgba(255, 255, 255, 0.9);
             transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
         }
-        
+
         .glass-action-btn:hover {
             background: rgba(255, 255, 255, 0.85);
             border-color: rgba(147, 51, 234, 0.3);
@@ -743,32 +743,60 @@
 
         <header class="crystal-glass rounded-[2rem] overflow-hidden mb-8 relative">
             <div class="absolute top-0 left-0 right-0 h-[1px] bg-gradient-to-r from-transparent via-purple-400/20 to-transparent z-20"></div>
-            
+
+            <!-- Фоновый баннер -->
             <div class="h-56 md:h-80 relative overflow-hidden">
                 <div class="absolute inset-0 bg-cover bg-center scale-102" style="background-image: url('https://sun9-27.userapi.com/s/v1/ig2/XvRdtYciMUhWycmkNkD_aPpksuuUApkS1R12T24pcVYpyl4oX0PfaBWuiIF-MdVRVU9-Y7BANKwp_aUfp7kPE6Ab.jpg?quality=95&as=32x13,48x19,72x29,108x43,160x64,240x96,360x144,480x192,540x216,640x256,720x288,1080x432,1280x512,1440x576,1640x656&from=bu&u=_HNgT3hmaiMpmaAvnxKluzLPapr0qSNuDKxSqVLF7xI&cs=1640x0');"></div>
-                <div class="absolute inset-0 bg-gradient-to-t from-white/30 via-white/10 to-transparent"></div>
+                <!-- Легкий белый градиент снизу для мягкого перехода -->
+                <div class="absolute inset-0 bg-gradient-to-t from-white/40 via-transparent to-transparent"></div>
             </div>
-            
-            <div class="px-6 md:px-10 pb-10 -mt-4 md:-mt-6 relative z-10">
-                <div class="flex flex-col md:flex-row items-center gap-6 md:gap-8 text-center md:text-left mb-8">
+
+            <div class="px-6 md:px-10 pb-8 relative z-10">
+                <!-- Убрали items-center, чтобы текст не тянулся вверх за аватаркой -->
+                <div class="flex flex-col md:flex-row gap-6 md:gap-8 text-center md:text-left mb-8">
                     
-                    <div class="w-32 h-32 md:w-40 md:h-40 rounded-full p-1 bg-white/60 shadow-[0_15px_50px_0_rgba(0,0,0,0.1)] backdrop-blur-3xl border border-purple-200 flex-shrink-0 relative group/avatar cursor-pointer zoomable-img-container">
-                        <div class="absolute inset-0 rounded-full bg-purple-500/25 blur-md opacity-0 group-hover/avatar:opacity-100 transition-opacity duration-500"></div>
-                        <div class="w-full h-full rounded-full overflow-hidden border border-white/80 relative z-10">
-                            <img src="https://sun9-79.userapi.com/s/v1/ig2/FBrzlXNIFtc1OlpbZ531A6n-IaiZ6GwyS8iY31wWS5fW4NltJ6AlcxhRp02RXC_ELluf10NOQDg-COuoaqGfjWGR.jpg?quality=95&as=32x51,48x77,72x115,108x173,160x256,240x384,360x577,480x769,540x865,640x1025,720x1153,799x1280&from=bu&u=idguh_Gn7sJRf8iyfFzNMhRZ1xqbDgNfC9ADVRv_qrk&cs=799x0" alt="Матвеевы Сергей и Олеся" class="w-full h-full object-cover transition-transform duration-700 group-hover/avatar:scale-105 src-image" onerror="this.remove();">
+                    <!-- Аватарка (смещена вверх с помощью -mt-16 / -mt-20 и красиво перекрывает баннер) -->
+                    <div class="w-36 h-36 md:w-44 md:h-44 mx-auto md:mx-0 -mt-16 md:-mt-20 rounded-full p-1.5 bg-white/90 backdrop-blur-md shadow-[0_10px_40px_rgba(0,0,0,0.12)] border border-purple-100 flex-shrink-0 relative group/avatar cursor-pointer zoomable-img-container z-20">
+                        <div class="absolute inset-0 rounded-full bg-purple-500/20 blur-md opacity-0 group-hover/avatar:opacity-100 transition-opacity duration-500"></div>
+                        <div class="w-full h-full rounded-full overflow-hidden border-2 border-white relative z-10">
+                            <img src="photo\Сергей и Олеся.jpg" onerror="this.remove();">
                         </div>
                     </div>
-                    
-                    <div class="flex-1 min-w-0">
-                        <h1 class="text-3xl md:text-4xl font-extrabold tracking-tight bg-clip-text text-transparent bg-gradient-to-r from-slate-900 via-slate-800 to-purple-900 leading-[1.15]">
-                            Матвеевы<br>Сергей и Олеся
+
+                    <!-- Текстовый блок (находится строго в чистой белой зоне под картинкой) -->
+                    <div class="flex-1 min-w-0 pt-2 md:pt-3">
+                        
+                        <!-- Красивая плашка с пульсирующим индикатором -->
+                        <div class="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-gradient-to-r from-purple-100 to-fuchsia-100 border border-purple-200/60 mb-3 md:mb-4 shadow-sm">
+                            <span class="relative flex h-2 w-2">
+                                <span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-purple-400 opacity-75"></span>
+                                <span class="relative inline-flex rounded-full h-2 w-2 bg-purple-600"></span>
+                            </span>
+                            <span class="text-[10px] md:text-xs font-black text-purple-900 tracking-widest uppercase">
+                                Сайт партнёров компании Full Energy
+                            </span>
+                        </div>
+                        
+                        <!-- Имя -->
+                        <h1 class="text-3xl md:text-[2.75rem] font-black tracking-tight leading-[1.1] text-slate-900 mb-4 md:mb-5">
+                            Матвеевых<br>
+                            <span class="text-transparent bg-clip-text bg-gradient-to-r from-purple-700 to-indigo-700">Сергея и Олеси</span>
                         </h1>
-                        <p class="text-purple-600 font-semibold text-xs md:text-sm mt-3 tracking-widest uppercase">
-                            Фуллерен С60 • Молекула долголетия в каждой капле!
-                        </p>
+                        
+                        <!-- Эстетичные теги под именем -->
+                        <div class="flex flex-wrap justify-center md:justify-start gap-2">
+                            <span class="px-4 py-1.5 rounded-full bg-white text-slate-700 font-bold text-[11px] md:text-xs tracking-widest uppercase border border-slate-200 shadow-sm">
+                                Фуллерен С60
+                            </span>
+                            <span class="px-4 py-1.5 rounded-full bg-white text-slate-700 font-bold text-[11px] md:text-xs tracking-widest uppercase border border-slate-200 shadow-sm">
+                                Молекула долголетия
+                            </span>
+                        </div>
+                        
                     </div>
                 </div>
 
+                <!-- Инфо-блок под заголовком -->
                 <div class="bg-purple-50/50 rounded-2xl p-6 md:p-8 text-sm sm:text-base text-black space-y-4 border border-purple-100 shadow-inner">
                     <p class="leading-relaxed">Энергия, молодость и здоровье для Вас и Ваших близких.</p>
                     <p class="leading-relaxed"><strong class="text-slate-900 font-semibold">Фуллерен С60</strong> — нано-антиоксидант, который очищает клетки от токсинов, дарит приток энергии и поддерживает процессы регенерации. За его открытие исследователи были удостоены Нобелевской премии.</p>
@@ -778,8 +806,7 @@
                 </div>
             </div>
         </header>
-
-        <main class="space-y-6">
+<main class="space-y-6">
 
             <div class="crystal-glass crystal-glass-hover rounded-[2rem] p-6 sm:p-10 space-y-5 text-left">
                 <h2 class="text-2xl sm:text-3xl font-extrabold text-transparent bg-clip-text bg-gradient-to-r from-slate-900 via-slate-800 to-purple-900">
@@ -822,36 +849,56 @@
             </div>
 
             <div class="space-y-4">
+                <!-- ИЗМЕНЕННАЯ КНОПКА ОТЗЫВОВ TELEGRAM -->
                 <a href="https://t.me/fullenergy_otzyv" target="_blank" rel="noopener noreferrer" 
-                   class="block p-6 rounded-2xl border border-orange-300/80 bg-orange-100/40 backdrop-blur-2xl transition-all duration-400 hover:bg-orange-100/80 hover:border-orange-400 hover:-translate-y-1 group/btn relative overflow-hidden shadow-sm">
+                   class="block p-6 rounded-2xl border border-orange-300/80 bg-gradient-to-br from-orange-50 to-orange-100/40 backdrop-blur-2xl transition-all duration-400 hover:bg-orange-100/90 hover:border-orange-500 hover:-translate-y-1 hover:shadow-lg hover:shadow-orange-500/20 group/btn relative overflow-hidden shadow-sm">
                     <div class="absolute inset-0 bg-gradient-to-r from-orange-500/0 via-orange-500/10 to-orange-500/0 translate-x-[-100%] group-hover/btn:translate-x-[100%] transition-transform duration-1000"></div>
                     <div class="flex items-center justify-between gap-4 relative z-10">
-                        <div class="text-left">
-                            <h3 class="text-base sm:text-xl font-bold tracking-wide text-orange-950 flex items-center gap-2">
-                                ОТЗЫВЫ В TELEGRAM
-                                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" class="text-orange-600 group-hover/btn:translate-x-0.5 group-hover/btn:-translate-y-0.5 transition-transform"><path d="M15 3h6v6"></path><path d="M10 14 21 3"></path><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path></svg>
-                            </h3>
+                        <div class="text-left flex-1">
+                            <div class="flex items-center flex-wrap gap-2 mb-1">
+                                <h3 class="text-base sm:text-xl font-extrabold tracking-wide text-orange-950 flex items-center gap-2">
+                                    ОТЗЫВЫ В TELEGRAM
+                                </h3>
+                                <!-- ЯРКИЙ БЕЙДЖ ЖМИ -->
+                                <span class="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-gradient-to-r from-orange-500 to-red-500 text-white text-[10px] sm:text-xs font-black tracking-widest uppercase shadow-md animate-bounce">
+                                    <span class="relative flex h-2 w-2">
+                                      <span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-white opacity-75"></span>
+                                      <span class="relative inline-flex rounded-full h-2 w-2 bg-white"></span>
+                                    </span>
+                                    Жми
+                                </span>
+                            </div>
                             <p class="text-xs sm:text-sm text-orange-800 mt-1 font-medium">9 600+ реальных историй из жизни</p>
                         </div>
-                        <div class="w-11 h-11 rounded-xl bg-orange-500/15 flex items-center justify-center border border-orange-500/30 flex-shrink-0 shadow-inner group-hover/btn:border-orange-500/50 group-hover/btn:bg-orange-500/25 transition-all">
-                            <svg class="w-5 h-5 text-orange-700" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M17 8h2a2 2 0 012 2v6a2 2 0 01-2 2h-2v4l-4-4H9a1.994 1.994 0 01-1.414-.586m0 0L11 14h4a2 2 0 002-2V6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2v4l.586-.586z"/></svg>
+                        <div class="w-12 h-12 rounded-xl bg-orange-500/15 flex items-center justify-center border border-orange-500/30 flex-shrink-0 shadow-inner group-hover/btn:border-orange-500/60 group-hover/btn:bg-orange-500/30 group-hover/btn:scale-110 transition-all duration-300">
+                            <svg class="w-6 h-6 text-orange-700" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M17 8h2a2 2 0 012 2v6a2 2 0 01-2 2h-2v4l-4-4H9a1.994 1.994 0 01-1.414-.586m0 0L11 14h4a2 2 0 002-2V6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2v4l.586-.586z"/></svg>
                         </div>
                     </div>
                 </a>
 
+                <!-- ИЗМЕНЕННАЯ КНОПКА ОТЗЫВОВ VK -->
                 <a href="https://vk.com/im/channels/-237463683" target="_blank" rel="noopener noreferrer" 
-                   class="block p-6 rounded-2xl border border-orange-300/80 bg-orange-100/40 backdrop-blur-2xl transition-all duration-400 hover:bg-orange-100/80 hover:border-orange-400 hover:-translate-y-1 group/btn relative overflow-hidden shadow-sm">
-                    <div class="absolute inset-0 bg-gradient-to-r from-orange-500/0 via-orange-500/10 to-orange-500/0 translate-x-[-100%] group-hover/btn:translate-x-[100%] transition-transform duration-1000"></div>
+                   class="block p-6 rounded-2xl border border-blue-300/80 bg-gradient-to-br from-blue-50 to-blue-100/40 backdrop-blur-2xl transition-all duration-400 hover:bg-blue-100/90 hover:border-blue-500 hover:-translate-y-1 hover:shadow-lg hover:shadow-blue-500/20 group/btn relative overflow-hidden shadow-sm">
+                    <div class="absolute inset-0 bg-gradient-to-r from-blue-500/0 via-blue-500/10 to-blue-500/0 translate-x-[-100%] group-hover/btn:translate-x-[100%] transition-transform duration-1000"></div>
                     <div class="flex items-center justify-between gap-4 relative z-10">
-                        <div class="text-left">
-                            <h3 class="text-base sm:text-xl font-bold tracking-wide text-orange-950 flex items-center gap-2">
-                                ОТЗЫВЫ В ВКОНТАКТЕ
-                                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" class="text-orange-600 group-hover/btn:translate-x-0.5 group-hover/btn:-translate-y-0.5 transition-transform"><path d="M15 3h6v6"></path><path d="M10 14 21 3"></path><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path></svg>
-                            </h3>
-                            <p class="text-xs sm:text-sm text-orange-800 mt-1 font-medium">Реальные отзывы в нашем сообществе</p>
+                        <div class="text-left flex-1">
+                            <div class="flex items-center flex-wrap gap-2 mb-1">
+                                <h3 class="text-base sm:text-xl font-extrabold tracking-wide text-blue-950 flex items-center gap-2">
+                                    ОТЗЫВЫ В ВКОНТАКТЕ
+                                </h3>
+                                <!-- ЯРКИЙ БЕЙДЖ ЖМИ -->
+                                <span class="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-gradient-to-r from-blue-500 to-indigo-500 text-white text-[10px] sm:text-xs font-black tracking-widest uppercase shadow-md animate-bounce" style="animation-delay: 0.2s;">
+                                    <span class="relative flex h-2 w-2">
+                                      <span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-white opacity-75"></span>
+                                      <span class="relative inline-flex rounded-full h-2 w-2 bg-white"></span>
+                                    </span>
+                                    Жми
+                                </span>
+                            </div>
+                            <p class="text-xs sm:text-sm text-blue-800 mt-1 font-medium">Реальные отзывы в нашем сообществе</p>
                         </div>
-                        <div class="w-11 h-11 rounded-xl bg-orange-500/15 flex items-center justify-center border border-orange-500/30 flex-shrink-0 shadow-inner group-hover/btn:border-orange-500/50 group-hover/btn:bg-orange-500/25 transition-all">
-                            <svg class="w-5 h-5 text-orange-700" fill="currentColor" viewBox="0 0 24 24"><path d="M15.025 21.144c-7.382 0-11.59-5.056-11.765-13.475h3.702c.121 6.182 2.843 8.8 5.01 9.346V7.669H15.48v5.332c2.115-.226 4.352-2.651 5.101-5.332h3.504c-.655 3.754-3.419 6.182-5.462 7.13 2.043.957 5.2 3.078 6.425 6.345h-3.82c-.958-2.986-3.344-5.31-6.195-5.31v5.31h-1.033z"/></svg>
+                        <div class="w-12 h-12 rounded-xl bg-blue-500/15 flex items-center justify-center border border-blue-500/30 flex-shrink-0 shadow-inner group-hover/btn:border-blue-500/60 group-hover/btn:bg-blue-500/30 group-hover/btn:scale-110 transition-all duration-300">
+                            <svg class="w-6 h-6 text-blue-700" fill="currentColor" viewBox="0 0 24 24"><path d="M15.025 21.144c-7.382 0-11.59-5.056-11.765-13.475h3.702c.121 6.182 2.843 8.8 5.01 9.346V7.669H15.48v5.332c2.115-.226 4.352-2.651 5.101-5.332h3.504c-.655 3.754-3.419 6.182-5.462 7.13 2.043.957 5.2 3.078 6.425 6.345h-3.82c-.958-2.986-3.344-5.31-6.195-5.31v5.31h-1.033z"/></svg>
                         </div>
                     </div>
                 </a>
@@ -864,7 +911,7 @@
                 <p class="text-black leading-relaxed text-sm sm:text-base max-w-2xl">
                     Выполняет роль <span class="text-purple-600 font-bold">«молекулярной губки»</span>: связывает свободные радикалы, предохраняет ткани от деструктивных окислительных процессов и помогает поддерживать клеточный баланс.
                 </p>
-                
+
                 <div class="grid grid-cols-1 sm:grid-cols-2 gap-4 my-6">
                     <div class="bg-emerald-50/50 border border-emerald-200 rounded-2xl p-5 flex items-start gap-4 shadow-inner relative group/icon">
                         <span class="text-2xl text-emerald-500 filter drop-shadow-[0_0_8px_rgba(16,185,129,0.3)] transition-all group-hover/icon:scale-110">✨</span>
@@ -895,7 +942,7 @@
                         </div>
                     </div>
                 </div>
-                
+
                 <h3 class="text-xs sm:text-sm font-bold text-center py-4 px-4 text-purple-700 bg-purple-100/80 rounded-2xl border border-purple-200/50 tracking-widest uppercase shadow-inner">
                     Инновации в сфере биохакинга! 🧬
                 </h3>
@@ -903,7 +950,7 @@
 
             <div class="crystal-glass crystal-glass-hover rounded-[2rem] p-6 sm:p-10 space-y-5 text-left my-6 relative overflow-hidden">
                 <div class="absolute top-0 right-0 w-32 h-32 bg-purple-500/5 rounded-full blur-2xl pointer-events-none"></div>
-                
+
                 <h2 class="text-2xl sm:text-3xl font-extrabold text-transparent bg-clip-text bg-gradient-to-r from-slate-900 via-purple-900 to-indigo-950">
                     Будущее уже здесь: Фуллерен и Долголетие 🧬
                 </h2>
@@ -923,8 +970,7 @@
                     </div>
                 </div>
             </div>
-
-            <a href="https://shop.full-en.com/products?code=59D573B5-7B9A" target="_blank" rel="noopener noreferrer" 
+<a href="https://shop.full-en.com/products?code=59D573B5-7B9A" target="_blank" rel="noopener noreferrer" 
                class="block p-6 rounded-2xl border border-purple-500/20 bg-purple-500/5 backdrop-blur-2xl transition-all duration-400 hover:bg-purple-500/10 hover:border-purple-500/40 hover:-translate-y-1 shadow-[0_15px_40px_-15px_rgba(147,51,234,0.1)] group/purple mb-3">
                 <div class="flex items-center justify-between gap-4 relative z-10">
                     <div class="text-left">
@@ -957,11 +1003,11 @@
             </a>
 
             <div id="contacts" class="rounded-[2rem] p-6 sm:p-10 text-left space-y-5 border border-rose-500/20 bg-rose-500/5 backdrop-blur-2xl shadow-[0_25px_50px_-15px_rgba(244,63,94,0.1)]">
-                
+
                 <div class="text-black space-y-3 text-sm sm:text-base leading-relaxed">
                     <p>Отправьте личное сообщение с кодовым словом «С60» в Telegram или VK для получения:</p>
                 </div>
-                
+
                 <div class="grid grid-cols-1 md:grid-cols-3 gap-4 my-4">
                     <div class="bg-purple-50/60 rounded-xl p-4 border border-purple-100 shadow-inner flex items-center">
                         <p class="text-sm text-black"><span class="font-black text-purple-600 mr-1">1️⃣</span>Сопровождения при регистрации и получении скидки 30%</p>
@@ -973,7 +1019,7 @@
                         <p class="text-sm text-black"><span class="font-black text-purple-600 mr-1">3️⃣</span>Информационной поддержки по вопросам партнерства</p>
                     </div>
                 </div>
-                
+
                 <div class="pt-2 font-semibold text-sm sm:text-base space-y-4 w-full">
                     <div class="bg-emerald-50/80 p-5 rounded-xl border border-emerald-200 shadow-inner">
                         <p class="text-slate-800 font-bold mb-3 text-lg">Сергей Матвеев</p>
@@ -992,7 +1038,7 @@
                             </p>
                         </div>
                     </div>
-                
+
                     <div class="bg-pink-50/80 p-5 rounded-xl border border-pink-200 shadow-inner">
                         <p class="text-slate-800 font-bold mb-3 text-lg">Олеся Матвеева</p>
                         <div class="space-y-3">
@@ -1011,7 +1057,7 @@
                         </div>
                     </div>
                 </div>
-                
+
                 <p class="text-center text-base sm:text-lg font-bold tracking-wide text-transparent bg-clip-text bg-gradient-to-r from-rose-950 via-slate-900 to-rose-900 pt-4">
                     Забота о здоровье и ресурсах организма! 🚀
                 </p>
@@ -1019,7 +1065,7 @@
 
             <div class="relative py-16 flex flex-col items-center justify-center overflow-hidden rounded-[2rem] crystal-glass my-6 group">
                 <div class="absolute bottom-[20%] w-80 h-80 bg-purple-400/5 rounded-full blur-[90px] pointer-events-none transition-all duration-700 group-hover:bg-fuchsia-500/10 group-hover:scale-110"></div>
-                
+
                 <div class="relative z-10 mb-6 transform transition-all duration-700 group-hover:translate-y-[-10px] w-80 h-80 flex items-center justify-center">
                     <canvas id="c60Canvas" class="w-full h-full cursor-grab active:cursor-grabbing" style="max-width: 320px; max-height: 320px; touch-action: none;"></canvas>
                 </div>
@@ -1027,14 +1073,14 @@
                 <div class="w-64 h-8 bg-black/[0.02] backdrop-blur-md rounded-[50%] border border-black/5 shadow-[inset_0_1px_2px_rgba(255,255,255,0.25),_0_15px_35px_rgba(0,0,0,0.1)] transform transition-all duration-700 ease-out [transform:rotateX(66deg)] group-hover:bg-black/[0.05] group-hover:scale-105 group-hover:border-purple-500/20">
                     <div class="w-full h-full bg-slate-400/40 rounded-full blur-md scale-75 opacity-90 transition-all duration-700 group-hover:scale-60 group-hover:opacity-40"></div>
                 </div>
-                
+
                 <span class="text-xs text-purple-600/60 mt-4 tracking-widest uppercase font-medium">Fulleren C60</span>
             </div>
 
             <a href="https://my.full-en.com/register.php?code=12055CB0-FFF9" target="_blank" rel="noopener noreferrer" 
                class="glass-action-btn block p-6 rounded-2xl border-l-2 border-purple-500/20 relative overflow-hidden group">
                 <div class="absolute -inset-y-0 -left-16 w-16 bg-gradient-to-r from-transparent via-white/15 to-transparent skew-x-12 group-hover:left-[120%] transition-all duration-1000 ease-in-out"></div>
-                
+
                 <div class="flex items-center justify-between gap-4 relative z-10">
                     <div class="text-left">
                         <h3 class="text-base sm:text-xl font-bold tracking-wide text-transparent bg-clip-text bg-gradient-to-r from-slate-900 to-purple-900 flex items-center gap-2">
@@ -1057,13 +1103,13 @@
                 <h2 class="text-3xl sm:text-4xl font-extrabold tracking-tight text-[#513580] leading-tight">
                     Стартуй прямо сейчас!
                 </h2>
-                
+
                 <p class="text-base sm:text-lg text-slate-700 italic font-medium max-w-2xl mx-auto leading-relaxed">
                     Стань представителем бренда <span class="font-bold text-purple-700 not-italic">Full Energy</span><br class="hidden sm:inline"> и получи готовый план развития при поддержке наставника
                 </p>
 
                 <div class="relative mt-10 sm:mt-12 p-6 sm:p-8 rounded-3xl border-2 border-dashed border-[#ab72f8]/50 bg-white/40 max-w-2xl mx-auto transition-all hover:border-[#ab72f8] hover:bg-white/60 group/action">
-                    
+
                     <div class="absolute -top-4 left-1/2 -translate-x-1/2 bg-white px-5 py-1.5 rounded-full border-2 border-[#ab72f8]/50 text-[#513580] font-extrabold text-sm sm:text-base shadow-sm flex items-center gap-2.5 group-hover/action:border-[#ab72f8] transition-colors whitespace-nowrap">
                         <span class="relative flex h-3 w-3">
                           <span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-purple-400 opacity-75"></span>
@@ -1081,7 +1127,7 @@
                            class="flex-1 text-center py-4 px-6 rounded-full font-semibold text-white bg-[#ab72f8] hover:bg-[#975bf0] shadow-[0_8px_20px_rgba(171,114,248,0.3)] hover:shadow-[0_12px_24px_rgba(171,114,248,0.4)] hover:-translate-y-0.5 active:translate-y-0 transition-all duration-300 text-sm sm:text-base">
                             Хочу купить продукт
                         </a>
-                        
+
                         <a href="https://my.full-en.com/register.php?code=12055CB0-FFF9" target="_blank" rel="noopener noreferrer" 
                            class="flex-1 text-center py-4 px-6 rounded-full font-semibold text-white bg-[#0052b4] hover:bg-[#004190] shadow-[0_8px_20px_rgba(0,82,180,0.3)] hover:shadow-[0_12px_24px_rgba(0,82,180,0.4)] hover:-translate-y-0.5 active:translate-y-0 transition-all duration-300 text-sm sm:text-base">
                             Хочу в бизнес. Действую!
@@ -1098,8 +1144,7 @@
 
         </div>
         <!-- /Главная страница -->
-
-        <!-- О фуллерене -->
+<!-- О фуллерене -->
         <div id="page-about" class="page-section">
 
             <!-- Шапка -->
@@ -1205,7 +1250,7 @@
                         </div>
                         <div class="about-infographic-card">
                             <div class="card-img"><img src="photo\3.jpg" onerror="this.remove();" alt=""></div>
-                            <div class="card-text">Участие в процессах естественного обновления тканей</div>
+                            <div class="card-text">Участие в процессов естественного обновления тканей</div>
                         </div>
                         <div class="about-infographic-card">
                             <div class="card-img"><img src="photo\4.jpg" onerror="this.remove();" alt=""></div>
@@ -1562,7 +1607,7 @@
                         </div>
                     </div>
                     <div class="marketing-text space-y-3">
-                        <p>Условные единицы и баллы введены для унификации цен и расчета товарооборота на международных рынках. 3 продукта в бизнес-пакете эквивалентны 50 баллам. Балловая стоимость заказов является базой для начисления премий.</p>
+                        <p>Условные единицы и баллы введены для унификации цен и расчета товарооборота на международных рынках. 3 продукта в бизнес-пакете эквивалентны 50 баллоам. Балловая стоимость заказов является базой для начисления премий.</p>
                         <p>Партнерская программа Full Energy предлагает сбалансированный маркетинг-план, включающий 8 видов вознаграждений, направленных на поддержку партнеров на всех этапах развития структуры.</p>
                     </div>
                 </section>
@@ -1762,12 +1807,8 @@
                             <p class="marketing-feature-caption">бизнес под ключ</p>
                         </div>
                         <div>
-                            <div class="marketing-feature-img"><img src="photo\10.jpg" onerror="this.remove();" alt="
-
-Пройди регистрацию"></div>
-                            <p class="marketing-feature-caption">
-
-Пройди регистрацию</p>
+                            <div class="marketing-feature-img"><img src="photo\10.jpg" onerror="this.remove();" alt="Пройди регистрацию"></div>
+                            <p class="marketing-feature-caption">Пройди регистрацию</p>
                         </div>
                         <div>
                             <div class="marketing-feature-img"><img src="photo\11.jpg" onerror="this.remove();" alt="Подключи свой магазин"></div>
@@ -1835,7 +1876,7 @@
     <!-- Модалка просмотра товара (По макету со скриншота) -->
     <div id="product-modal" class="fixed inset-0 bg-slate-900/60 backdrop-blur-md z-50 flex items-center justify-center opacity-0 pointer-events-none transition-all duration-300 overflow-y-auto p-4 sm:p-6">
         <div class="max-w-5xl w-full bg-white rounded-3xl shadow-2xl p-6 sm:p-8 relative transform scale-95 transition-transform duration-300 max-h-[90vh] overflow-y-auto" id="product-modal-content">
-            
+
             <!-- Кнопка закрытия модалки -->
             <button onclick="closeProductModal()" class="absolute top-4 right-4 text-slate-400 hover:text-slate-600 p-2 rounded-full hover:bg-slate-100 transition-colors z-10">
                 <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="6" x2="6" y2="18"></line><line x1="6" y1="6" x2="18" y2="18"></line></svg>
@@ -1843,7 +1884,7 @@
 
             <!-- Двухколоночный контент -->
             <div class="grid grid-cols-1 md:grid-cols-12 gap-8 items-start">
-                
+
                 <!-- Левая колонка (Картинка, сертификаты) -->
                 <div class="md:col-span-5 space-y-6">
                     <!-- Изображение -->
@@ -1859,7 +1900,7 @@
                         <p class="text-xs text-slate-500 leading-relaxed">
                             Мы используем современные технологии для очистки компонентов, из которых создаётся наша продукция.
                         </p>
-                        
+
                         <div class="pt-2">
                             <span class="text-[11px] font-bold text-slate-400 uppercase tracking-wider block mb-3">Ознакомиться с документами:</span>
                             <div class="space-y-2">
@@ -1878,7 +1919,7 @@
 
                 <!-- Правая колонка (Описание, буллеты, преимущества, цена) -->
                 <div class="md:col-span-7 space-y-6">
-                    
+
                     <!-- Заголовок -->
                     <div class="space-y-2">
                         <span id="modal-product-badge" class="bg-[#8cc63f] text-white text-[10px] font-bold px-3 py-1 rounded-full uppercase tracking-wider inline-block">Категория</span>
@@ -2204,7 +2245,7 @@
             const panel = document.getElementById(id);
             const arrow = document.getElementById(id + '-arrow');
             const isHidden = panel.classList.contains('hidden');
-            
+
             if (isHidden) {
                 panel.classList.remove('hidden');
                 arrow.classList.add('rotate-180');
