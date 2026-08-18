@@ -747,26 +747,27 @@
             <!-- Фоновый баннер -->
             <div class="h-56 md:h-80 relative overflow-hidden">
                 <div class="absolute inset-0 bg-cover bg-center scale-102" style="background-image: url('https://sun9-27.userapi.com/s/v1/ig2/XvRdtYciMUhWycmkNkD_aPpksuuUApkS1R12T24pcVYpyl4oX0PfaBWuiIF-MdVRVU9-Y7BANKwp_aUfp7kPE6Ab.jpg?quality=95&as=32x13,48x19,72x29,108x43,160x64,240x96,360x144,480x192,540x216,640x256,720x288,1080x432,1280x512,1440x576,1640x656&from=bu&u=_HNgT3hmaiMpmaAvnxKluzLPapr0qSNuDKxSqVLF7xI&cs=1640x0');"></div>
-                <!-- Легкий белый градиент снизу для мягкого перехода -->
                 <div class="absolute inset-0 bg-gradient-to-t from-white/40 via-transparent to-transparent"></div>
             </div>
 
             <div class="px-6 md:px-10 pb-8 relative z-10">
-                <!-- Убрали items-center, чтобы текст не тянулся вверх за аватаркой -->
                 <div class="flex flex-col md:flex-row gap-6 md:gap-8 text-center md:text-left mb-8">
                     
-                    <!-- Аватарка (смещена вверх с помощью -mt-16 / -mt-20 и красиво перекрывает баннер) -->
-                    <div class="w-36 h-36 md:w-44 md:h-44 mx-auto md:mx-0 -mt-16 md:-mt-20 rounded-full p-1.5 bg-white/90 backdrop-blur-md shadow-[0_10px_40px_rgba(0,0,0,0.12)] border border-purple-100 flex-shrink-0 relative group/avatar cursor-pointer zoomable-img-container z-20">
+                    <!-- Увеличенная аватарка с правильным отображением фото -->
+                    <div class="w-40 h-40 md:w-52 md:h-52 mx-auto md:mx-0 -mt-20 md:-mt-28 rounded-full p-1.5 bg-white/95 backdrop-blur-md shadow-[0_12px_45px_rgba(0,0,0,0.15)] border border-purple-100 flex-shrink-0 relative group/avatar cursor-pointer zoomable-img-container z-20">
                         <div class="absolute inset-0 rounded-full bg-purple-500/20 blur-md opacity-0 group-hover/avatar:opacity-100 transition-opacity duration-500"></div>
-                        <div class="w-full h-full rounded-full overflow-hidden border-2 border-white relative z-10">
-                            <img src="photo\Сергей и Олеся.jpg" onerror="this.remove();">
+                        <div class="w-full h-full rounded-full overflow-hidden border-2 border-white relative z-10 bg-slate-100">
+                            <!-- object-[50%_35%] центрирует кадр по лицам, а scale-[1.08] оставляет больше пространства вокруг -->
+                            <img src="photo\Сергей и Олеся.jpg" 
+                                 alt="Матвеевы Сергей и Олеся" 
+                                 class="w-full h-full object-cover object-[50%_30%] scale-100 transition-transform duration-700 group-hover/avatar:scale-105 src-image" 
+                                 onerror="this.remove();">
                         </div>
                     </div>
 
-                    <!-- Текстовый блок (находится строго в чистой белой зоне под картинкой) -->
-                    <div class="flex-1 min-w-0 pt-2 md:pt-3">
+                    <!-- Текстовый блок -->
+                    <div class="flex-1 min-w-0 pt-2 md:pt-4">
                         
-                        <!-- Красивая плашка с пульсирующим индикатором -->
                         <div class="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-gradient-to-r from-purple-100 to-fuchsia-100 border border-purple-200/60 mb-3 md:mb-4 shadow-sm">
                             <span class="relative flex h-2 w-2">
                                 <span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-purple-400 opacity-75"></span>
@@ -777,13 +778,11 @@
                             </span>
                         </div>
                         
-                        <!-- Имя -->
                         <h1 class="text-3xl md:text-[2.75rem] font-black tracking-tight leading-[1.1] text-slate-900 mb-4 md:mb-5">
                             Матвеевых<br>
                             <span class="text-transparent bg-clip-text bg-gradient-to-r from-purple-700 to-indigo-700">Сергея и Олеси</span>
                         </h1>
                         
-                        <!-- Эстетичные теги под именем -->
                         <div class="flex flex-wrap justify-center md:justify-start gap-2">
                             <span class="px-4 py-1.5 rounded-full bg-white text-slate-700 font-bold text-[11px] md:text-xs tracking-widest uppercase border border-slate-200 shadow-sm">
                                 Фуллерен С60
@@ -796,7 +795,7 @@
                     </div>
                 </div>
 
-                <!-- Инфо-блок под заголовком -->
+                <!-- Инфо-блок -->
                 <div class="bg-purple-50/50 rounded-2xl p-6 md:p-8 text-sm sm:text-base text-black space-y-4 border border-purple-100 shadow-inner">
                     <p class="leading-relaxed">Энергия, молодость и здоровье для Вас и Ваших близких.</p>
                     <p class="leading-relaxed"><strong class="text-slate-900 font-semibold">Фуллерен С60</strong> — нано-антиоксидант, который очищает клетки от токсинов, дарит приток энергии и поддерживает процессы регенерации. За его открытие исследователи были удостоены Нобелевской премии.</p>
@@ -1063,12 +1062,52 @@
                 </p>
             </div>
 
-            <div class="relative py-16 flex flex-col items-center justify-center overflow-hidden rounded-[2rem] crystal-glass my-6 group">
-                <div class="absolute bottom-[20%] w-80 h-80 bg-purple-400/5 rounded-full blur-[90px] pointer-events-none transition-all duration-700 group-hover:bg-fuchsia-500/10 group-hover:scale-110"></div>
+            <!-- БЛОК «ДОПОЛНИТЕЛЬНАЯ ИНФОРМАЦИЯ» -->
+            <div class="crystal-glass rounded-[2rem] p-6 sm:p-8 my-6 text-center space-y-4 border border-purple-200/50 shadow-sm relative overflow-hidden">
+                <div class="absolute -top-12 -left-12 w-36 h-36 bg-purple-500/10 rounded-full blur-[50px] pointer-events-none"></div>
+                <div class="absolute -bottom-12 -right-12 w-36 h-36 bg-blue-500/10 rounded-full blur-[50px] pointer-events-none"></div>
 
-                <div class="relative z-10 mb-6 transform transition-all duration-700 group-hover:translate-y-[-10px] w-80 h-80 flex items-center justify-center">
-                    <canvas id="c60Canvas" class="w-full h-full cursor-grab active:cursor-grabbing" style="max-width: 320px; max-height: 320px; touch-action: none;"></canvas>
+                <div class="relative z-10">
+                    <h3 class="text-xl sm:text-2xl font-extrabold text-transparent bg-clip-text bg-gradient-to-r from-slate-900 via-purple-900 to-indigo-950">
+                        Дополнительная информация
+                    </h3>
+                    <p class="text-xs sm:text-sm text-slate-600 mt-1 max-w-md mx-auto">
+                        Присоединяйтесь к нашим официальным сообществам, чтобы быть в курсе новостей и полезных материалов
+                    </p>
+
+                    <div class="grid grid-cols-1 sm:grid-cols-2 gap-4 mt-5 max-w-xl mx-auto">
+                        <!-- Кнопка Telegram-сообщества -->
+                        <a href="https://t.me/+Y3UuC1w9YutkYWEy" target="_blank" rel="noopener noreferrer" 
+                           class="flex items-center justify-between p-4 rounded-xl bg-gradient-to-r from-sky-500/10 to-blue-500/10 hover:from-sky-500/20 hover:to-blue-500/20 border border-sky-500/30 hover:border-sky-500 transition-all duration-300 hover:-translate-y-0.5 group">
+                            <div class="flex items-center gap-3 text-left">
+                                <div class="w-10 h-10 rounded-lg bg-sky-500 text-white flex items-center justify-center flex-shrink-0 shadow-sm group-hover:scale-105 transition-transform">
+                                    <i class="fa-brands fa-telegram text-xl"></i>
+                                </div>
+                                <div>
+                                    <span class="block text-sm font-bold text-slate-900 leading-tight">Telegram-канал</span>
+                                    <span class="text-[11px] text-sky-700 font-medium">Сообщество</span>
+                                </div>
+                            </div>
+                            <i class="fa-solid fa-arrow-up-right-from-square text-sky-600 text-xs opacity-70 group-hover:opacity-100 group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-all"></i>
+                        </a>
+
+                        <!-- Кнопка VK-сообщества -->
+                        <a href="https://vk.ru/club238763208" target="_blank" rel="noopener noreferrer" 
+                           class="flex items-center justify-between p-4 rounded-xl bg-gradient-to-r from-blue-500/10 to-indigo-500/10 hover:from-blue-500/20 hover:to-indigo-500/20 border border-blue-500/30 hover:border-blue-500 transition-all duration-300 hover:-translate-y-0.5 group">
+                            <div class="flex items-center gap-3 text-left">
+                                <div class="w-10 h-10 rounded-lg bg-[#0077ff] text-white flex items-center justify-center flex-shrink-0 shadow-sm group-hover:scale-105 transition-transform">
+                                    <i class="fa-brands fa-vk text-xl"></i>
+                                </div>
+                                <div>
+                                    <span class="block text-sm font-bold text-slate-900 leading-tight">Группа ВКонтакте</span>
+                                    <span class="text-[11px] text-blue-700 font-medium">Сообщество</span>
+                                </div>
+                            </div>
+                            <i class="fa-solid fa-arrow-up-right-from-square text-blue-600 text-xs opacity-70 group-hover:opacity-100 group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-all"></i>
+                        </a>
+                    </div>
                 </div>
+            </div>
 
                 <div class="w-64 h-8 bg-black/[0.02] backdrop-blur-md rounded-[50%] border border-black/5 shadow-[inset_0_1px_2px_rgba(255,255,255,0.25),_0_15px_35px_rgba(0,0,0,0.1)] transform transition-all duration-700 ease-out [transform:rotateX(66deg)] group-hover:bg-black/[0.05] group-hover:scale-105 group-hover:border-purple-500/20">
                     <div class="w-full h-full bg-slate-400/40 rounded-full blur-md scale-75 opacity-90 transition-all duration-700 group-hover:scale-60 group-hover:opacity-40"></div>
