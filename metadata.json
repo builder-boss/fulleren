@@ -1,0 +1,6 @@
+{
+  "name": "Full Energy | Матвеевы Сергей и Олеся",
+  "description": "Сайт партнёров компании Full Energy — Матвеевых Сергея и Олеси с автоматической сезонной и праздничной атмосферой.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}
