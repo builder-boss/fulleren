@@ -4,6 +4,10 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
     <title>Сайт партнёров Full Energy | Матвеевы Сергей и Олеся</title>
+    <meta name="description" content="Сайт партнёров компании Full Energy — Матвеевых Сергея и Олеси. Инновационные продукты для энергии, молодости и долголетия на основе молекулы Фуллерена С60.">
+
+    <!-- Встроенный SVG-фавикон (молекулярный гексагон) -->
+    <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Cdefs%3E%3ClinearGradient id='g' x1='0' y1='0' x2='1' y2='1'%3E%3Cstop offset='0%25' stop-color='%237e22ce'/%3E%3Cstop offset='100%25' stop-color='%23ec4899'/%3E%3C/linearGradient%3E%3C/defs%3E%3Ccircle cx='32' cy='32' r='30' fill='url(%23g)'/%3E%3Cpolygon points='32,12 49,22 49,42 32,52 15,42 15,22' fill='none' stroke='%23ffffff' stroke-width='3'/%3E%3Ccircle cx='32' cy='32' r='6' fill='%23ffffff'/%3E%3C/svg%3E">
 
     <!-- Open Graph для красивого превью в Telegram / VK / WhatsApp -->
     <meta property="og:title" content="Full Energy — Фуллерен С60 | Матвеевы Сергей и Олеся">
@@ -14,14 +18,24 @@
     <script src="https://cdn.tailwindcss.com"></script>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght=300;400;500;600;700;800&display=swap" rel="stylesheet">
-    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght=0,600;0,700;1,600;1,700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&family=Playfair+Display:ital,wght@0,600;0,700;1,600;1,700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
 
     <style>
+        :root {
+            --accent-purple: #7e22ce;
+            --accent-orange: #f97316;
+            --glass-bg: rgba(255, 255, 255, 0.8);
+            --glass-border: rgba(255, 255, 255, 0.7);
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
         body {
             background-color: #ffffff;
-            background-image: radial-gradient(rgba(147, 51, 234, 0.03) 1px, transparent 1px);
+            background-image: radial-gradient(rgba(147, 51, 234, 0.035) 1px, transparent 1px);
             background-size: 24px 24px;
             background-attachment: fixed;
             font-family: 'Plus Jakarta Sans', sans-serif;
@@ -29,65 +43,80 @@
 
         /* Высокопроизводительные анимации фонового свечения */
         @keyframes float-purple {
-            0%, 100% { transform: translate(0px, 0px) scale(1); }
-            33% { transform: translate(30px, -50px) scale(1.1); }
-            66% { transform: translate(-15px, 25px) scale(0.95); }
+            0%, 100% { transform: translate3d(0px, 0px, 0) scale(1); }
+            33% { transform: translate3d(30px, -50px, 0) scale(1.08); }
+            66% { transform: translate3d(-15px, 25px, 0) scale(0.96); }
         }
         @keyframes float-fuchsia {
-            0%, 100% { transform: translate(0px, 0px) scale(1); }
-            50% { transform: translate(-40px, 40px) scale(1.15); }
+            0%, 100% { transform: translate3d(0px, 0px, 0) scale(1); }
+            50% { transform: translate3d(-40px, 40px, 0) scale(1.12); }
         }
         @keyframes float-cyan {
-            0%, 100% { transform: translate(0px, 0px) scale(1); }
-            40% { transform: translate(40px, 20px) scale(1.05); }
-            80% { transform: translate(-10px, -30px) scale(0.9); }
+            0%, 100% { transform: translate3d(0px, 0px, 0) scale(1); }
+            40% { transform: translate3d(40px, 20px, 0) scale(1.05); }
+            80% { transform: translate3d(-10px, -30px, 0) scale(0.92); }
         }
 
         .animate-bg-1 { animation: float-purple 18s infinite ease-in-out; will-change: transform; }
         .animate-bg-2 { animation: float-fuchsia 22s infinite ease-in-out; will-change: transform; }
         .animate-bg-3 { animation: float-cyan 26s infinite ease-in-out; will-change: transform; }
 
+        @media (prefers-reduced-motion: reduce) {
+            .animate-bg-1, .animate-bg-2, .animate-bg-3 { animation: none; }
+        }
+
+        /* Плавное появление блоков при прокрутке */
+        .reveal-block {
+            opacity: 0;
+            transform: translateY(18px);
+            transition: opacity 0.65s cubic-bezier(0.16, 1, 0.3, 1), transform 0.65s cubic-bezier(0.16, 1, 0.3, 1);
+        }
+        .reveal-block.is-visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
         /* Плотное матовое стекло (Frosted Glassmorphism) */
         .crystal-glass {
-            background: rgba(255, 255, 255, 0.78);
-            backdrop-filter: blur(35px) saturate(190%);
-            -webkit-backdrop-filter: blur(35px) saturate(190%);
-            border: 1px solid rgba(255, 255, 255, 0.65);
+            background: var(--glass-bg);
+            backdrop-filter: blur(28px) saturate(180%);
+            -webkit-backdrop-filter: blur(28px) saturate(180%);
+            border: 1px solid var(--glass-border);
             box-shadow: 
-                0 4px 30px rgba(15, 23, 42, 0.02),
+                0 4px 30px rgba(15, 23, 42, 0.025),
                 0 30px 60px -15px rgba(15, 23, 42, 0.05),
                 inset 0 1px 1px 0 rgba(255, 255, 255, 0.95),
                 inset 0 -1px 2px 0 rgba(0, 0, 0, 0.01);
-            transition: all 0.6s cubic-bezier(0.16, 1, 0.3, 1);
+            transition: transform 0.45s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.45s cubic-bezier(0.16, 1, 0.3, 1), border-color 0.35s ease, background-color 0.35s ease;
         }
 
         .crystal-glass-hover:hover {
-            background: rgba(255, 255, 255, 0.88);
+            background: rgba(255, 255, 255, 0.9);
             border-color: rgba(147, 51, 234, 0.25);
             box-shadow: 
-                0 10px 40px rgba(147, 51, 234, 0.04),
-                0 40px 80px -20px rgba(147, 51, 234, 0.08),
+                0 10px 40px rgba(147, 51, 234, 0.05),
+                0 40px 80px -20px rgba(147, 51, 234, 0.09),
                 inset 0 1px 1px 0 rgba(255, 255, 255, 1);
             transform: translateY(-4px);
         }
 
         /* Интерактивные матовые кнопки */
         .glass-action-btn {
-            background: rgba(255, 255, 255, 0.65);
+            background: rgba(255, 255, 255, 0.72);
             backdrop-filter: blur(20px);
             -webkit-backdrop-filter: blur(20px);
-            border: 1px solid rgba(255, 255, 255, 0.5);
+            border: 1px solid rgba(255, 255, 255, 0.6);
             box-shadow: 
-                0 2px 10px rgba(15, 23, 42, 0.02),
+                0 2px 10px rgba(15, 23, 42, 0.025),
                 inset 0 1px 1px 0 rgba(255, 255, 255, 0.9);
-            transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+            transition: all 0.35s cubic-bezier(0.16, 1, 0.3, 1);
         }
 
         .glass-action-btn:hover {
-            background: rgba(255, 255, 255, 0.85);
+            background: rgba(255, 255, 255, 0.9);
             border-color: rgba(147, 51, 234, 0.3);
             box-shadow: 
-                0 12px 25px rgba(147, 51, 234, 0.06),
+                0 12px 25px rgba(147, 51, 234, 0.07),
                 inset 0 1px 1px 0 rgba(255, 255, 255, 1);
             transform: translateY(-2px);
         }
@@ -96,7 +125,7 @@
         ::-webkit-scrollbar { width: 8px; }
         ::-webkit-scrollbar-track { background: #ffffff; }
         ::-webkit-scrollbar-thumb {
-            background: rgba(15, 23, 42, 0.08);
+            background: rgba(15, 23, 42, 0.1);
             border-radius: 10px;
             border: 2px solid #ffffff;
         }
@@ -127,10 +156,19 @@
         input[type="range"].calc-slider::-webkit-slider-thumb:hover {
             transform: scale(1.15);
         }
+        input[type="range"].calc-slider::-moz-range-thumb {
+            width: 22px;
+            height: 22px;
+            border-radius: 50%;
+            background: #7e22ce;
+            cursor: pointer;
+            border: 3px solid #ffffff;
+            box-shadow: 0 2px 8px rgba(126, 34, 206, 0.4);
+        }
 
         /* ===================== Нижняя навигация (компактная, адаптивная) ===================== */
         .bottom-nav {
-            background: rgba(255, 255, 255, 0.95);
+            background: rgba(255, 255, 255, 0.94);
             backdrop-filter: blur(20px);
             -webkit-backdrop-filter: blur(20px);
             border-top: 1px solid rgba(15, 23, 42, 0.08);
@@ -151,25 +189,27 @@
             align-items: center;
             justify-content: center;
             gap: 0.2rem;
-            padding: 0.4rem 0.15rem;
+            padding: 0.4rem 0.1rem;
             border-radius: 0.65rem;
-            font-size: 0.6rem;
+            font-size: clamp(0.54rem, 2.3vw, 0.68rem);
             font-weight: 600;
             color: #64748b;
             white-space: nowrap;
             transition: all 0.25s ease;
             text-align: center;
             min-width: 0;
+            cursor: pointer;
         }
 
-        .nav-btn i { font-size: 1.05rem; line-height: 1; }
+        .nav-btn i { font-size: 1rem; line-height: 1; }
         .nav-btn .nav-label {
             overflow: hidden;
             text-overflow: ellipsis;
             max-width: 100%;
+            letter-spacing: -0.01em;
         }
         .nav-btn:hover { color: #1e293b; background: rgba(15, 23, 42, 0.04); }
-        .nav-btn.active { background: #f97316; color: #ffffff; }
+        .nav-btn.active { background: #f97316; color: #ffffff; box-shadow: 0 2px 10px rgba(249, 115, 22, 0.3); }
         .nav-btn.active:hover { background: #ea580c; color: #ffffff; }
 
         @media (min-width: 640px) {
@@ -183,7 +223,7 @@
                 flex-direction: row;
                 gap: 0.4rem;
                 font-size: 0.8125rem;
-                padding: 0.55rem 0.9rem;
+                padding: 0.55rem 0.95rem;
             }
             .nav-btn i { font-size: 0.9rem; }
         }
@@ -228,8 +268,8 @@
             display: flex !important;
             align-items: center;
             justify-content: center;
-            background: rgba(147, 51, 234, 0.03);
-            border: 2px dashed rgba(147, 51, 234, 0.15);
+            background: rgba(147, 51, 234, 0.04);
+            border: 2px dashed rgba(147, 51, 234, 0.18);
         }
 
         .about-photo-slot:not(:has(img))::after,
@@ -251,6 +291,11 @@
             min-height: 280px;
             display: flex;
             flex-direction: column;
+            transition: transform 0.35s ease, box-shadow 0.35s ease;
+        }
+        .about-infographic-card:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 14px 30px rgba(30, 16, 51, 0.22);
         }
         .about-infographic-card::before {
             content: '';
@@ -303,6 +348,10 @@
             height: 100%;
             object-fit: contain;
             display: block;
+            transition: transform 0.5s cubic-bezier(0.16, 1, 0.3, 1);
+        }
+        .catalog-product-card:hover .catalog-photo-slot img {
+            transform: scale(1.05);
         }
         .catalog-product-card {
             background: #ffffff;
@@ -317,8 +366,8 @@
         }
         .catalog-product-card:hover {
             transform: translateY(-4px);
-            box-shadow: 0 16px 25px rgba(15, 23, 42, 0.05);
-            border-color: #e2e8f0;
+            box-shadow: 0 16px 30px rgba(126, 34, 206, 0.07);
+            border-color: #e9d5ff;
         }
         .catalog-product-body {
             padding: 1rem 1.25rem 1.25rem;
@@ -347,10 +396,40 @@
             padding: 0.25rem 0.75rem;
             border-radius: 9999px;
             display: inline-block;
+            width: fit-content;
+        }
+
+        .filter-chip {
+            padding: 0.45rem 0.95rem;
+            border-radius: 9999px;
+            font-size: 0.75rem;
+            font-weight: 700;
+            border: 1px solid #e2e8f0;
+            background: #ffffff;
+            color: #475569;
+            transition: all 0.25s ease;
+            cursor: pointer;
+        }
+        .filter-chip:hover {
+            border-color: #c084fc;
+            color: #6b21a8;
+        }
+        .filter-chip.active {
+            background: #7e22ce;
+            border-color: #7e22ce;
+            color: #ffffff;
+            box-shadow: 0 4px 12px rgba(126, 34, 206, 0.22);
         }
 
         .page-section { display: none; }
-        .page-section.active { display: block; }
+        .page-section.active {
+            display: block;
+            animation: pageFadeIn 0.35s cubic-bezier(0.16, 1, 0.3, 1);
+        }
+        @keyframes pageFadeIn {
+            from { opacity: 0; transform: translateY(8px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
 
         /* Страница «Маркетинг» */
         #page-marketing { max-width: 52rem; margin-left: auto; margin-right: auto; }
@@ -358,7 +437,7 @@
             background: linear-gradient(90deg, #d9f99d 0%, #bfdbfe 35%, #ddd6fe 70%, #c4b5fd 100%);
             padding: 2.5rem 1.5rem;
             text-align: center;
-            border-radius: 1rem 1rem 0 0;
+            border-radius: 1.5rem 1.5rem 0 0;
         }
         .marketing-header .brand {
             font-family: 'Playfair Display', Georgia, serif;
@@ -371,7 +450,7 @@
             background: #fff;
             border: 1px solid #e2e8f0;
             border-top: none;
-            border-radius: 0 0 1rem 1rem;
+            border-radius: 0 0 1.5rem 1.5rem;
             padding: 2rem 1.5rem 2.5rem;
         }
         .marketing-section-title {
@@ -405,7 +484,7 @@
         .marketing-table th { background: #f8fafc; font-weight: 600; }
         .marketing-note { font-size: 0.8125rem; color: #64748b; margin-top: 0.5rem; }
         .marketing-feature-img {
-            border-radius: 0.5rem;
+            border-radius: 0.75rem;
             overflow: hidden;
             background: #f1f5f9;
             min-height: 180px;
@@ -419,7 +498,7 @@
         }
         .marketing-package-card {
             border: 1px solid #cbd5e1;
-            border-radius: 0.75rem;
+            border-radius: 0.875rem;
             padding: 1rem 0.75rem;
             text-align: center;
             background: #fff;
@@ -427,6 +506,7 @@
         }
         .marketing-package-card:hover {
             border-color: #a855f7;
+            transform: translateY(-2px);
             box-shadow: 0 8px 20px rgba(168, 85, 247, 0.08);
         }
         .marketing-package-card .name { font-weight: 700; font-size: 1rem; color: #1e293b; margin-bottom: 0.5rem; }
@@ -484,9 +564,9 @@
             border-radius: 9999px;
             font-size: 0.9375rem;
             font-weight: 600;
-            transition: background 0.2s;
+            transition: background 0.2s, transform 0.2s;
         }
-        .marketing-cta-btn:hover { background: #4a2f64; }
+        .marketing-cta-btn:hover { background: #4a2f64; transform: translateY(-1px); }
         .marketing-feature-caption {
             text-align: center;
             font-size: 0.8125rem;
@@ -510,22 +590,23 @@
             <header class="crystal-glass rounded-[2rem] overflow-hidden mb-8 relative">
                 <div class="absolute top-0 left-0 right-0 h-[1px] bg-gradient-to-r from-transparent via-purple-400/20 to-transparent z-20"></div>
 
-<!-- Фоновый баннер -->
-                <div class="h-72 sm:h-80 md:h-96 relative overflow-hidden">
+                <!-- Фоновый баннер с резервным градиентом -->
+                <div class="h-72 sm:h-80 md:h-96 relative overflow-hidden bg-gradient-to-br from-indigo-100 via-purple-100 to-fuchsia-100">
                     <div class="absolute inset-0 bg-cover bg-top sm:bg-center scale-[1.02]" style="background-image: url('./photo/Почему одни стареют быстрее других_.png');"></div>
-                    <div class="absolute inset-0 bg-gradient-to-t from-white/60 via-transparent to-transparent"></div>
+                    <div class="absolute inset-0 bg-gradient-to-t from-white/70 via-transparent to-transparent"></div>
                 </div>
 
                 <div class="px-6 md:px-10 pb-8 relative z-10">
                     <div class="flex flex-col md:flex-row gap-6 md:gap-8 text-center md:text-left mb-8">
 
-                        <!-- Аватарка -->
+                        <!-- Аватарка с резервной монограммой -->
                         <div class="w-40 h-40 md:w-52 md:h-52 mx-auto md:mx-0 -mt-12 md:-mt-16 rounded-full p-1.5 bg-white/95 backdrop-blur-md shadow-[0_12px_45px_rgba(0,0,0,0.15)] border border-purple-100 flex-shrink-0 relative group/avatar cursor-pointer zoomable-img-container z-20">
                             <div class="absolute inset-0 rounded-full bg-purple-500/20 blur-md opacity-0 group-hover/avatar:opacity-100 transition-opacity duration-500"></div>
-                            <div class="w-full h-full rounded-full overflow-hidden border-2 border-white relative z-10 bg-slate-100">
+                            <div class="w-full h-full rounded-full overflow-hidden border-2 border-white relative z-10 bg-gradient-to-br from-purple-100 via-indigo-100 to-pink-100 flex items-center justify-center">
+                                <span class="text-3xl md:text-4xl font-black text-purple-800/70 select-none">С &amp; О</span>
                                 <img src="photo/Сергей и Олеся.jpg" 
                                      alt="Матвеевы Сергей и Олеся" 
-                                     class="w-full h-full object-cover object-[50%_30%] scale-100 transition-transform duration-700 group-hover/avatar:scale-105 src-image" 
+                                     class="absolute inset-0 w-full h-full object-cover object-[50%_30%] scale-100 transition-transform duration-700 group-hover/avatar:scale-105 src-image" 
                                      onerror="this.remove();">
                             </div>
                         </div>
@@ -571,7 +652,7 @@
 
             <main class="space-y-6">
 
-                <div class="crystal-glass crystal-glass-hover rounded-[2rem] p-6 sm:p-10 space-y-5 text-left">
+                <div class="reveal-block crystal-glass crystal-glass-hover rounded-[2rem] p-6 sm:p-10 space-y-5 text-left">
                     <h2 class="text-2xl sm:text-3xl font-extrabold text-transparent bg-clip-text bg-gradient-to-r from-slate-900 via-slate-800 to-purple-900">
                         Главный секрет энергии: почему все говорят про Фуллерен С60?
                     </h2>
@@ -586,35 +667,35 @@
                     </div>
                 </div>
 
-                <div class="crystal-glass crystal-glass-hover block rounded-[2rem] overflow-hidden p-2.5 group relative cursor-zoom-in zoomable-img-container">
+                <div class="reveal-block crystal-glass crystal-glass-hover block rounded-[2rem] overflow-hidden p-2.5 group relative cursor-zoom-in zoomable-img-container">
                     <div class="overflow-hidden rounded-[1.5rem] relative">
                         <div class="absolute inset-0 bg-purple-900/5 z-10 opacity-100 group-hover:opacity-0 transition-opacity duration-500"></div>
-                        <img src="https://s3.aisevenai.ru/uploads/528821113/aa373755-35dc-4c85-a44e-dc66799cf714.jpg?quality=95&as=32x18,48x27,72x40,108x60,160x89,240x134,360x201,480x268,540x301,640x357,720x402,1080x603,1280x714,1440x804,1505x840&from=bu&u=Bo45LKMu5IbwnqKYrjdbBEs5c47liYUv48GKqcs7fOU&cs=1505x0" alt="Фуллерен жизнь" class="w-full aspect-[1120/625] object-cover rounded-[1.5rem] transition-transform duration-700 group-hover:scale-[1.02] src-image" onerror="this.remove();">
+                        <img src="https://s3.aisevenai.ru/uploads/528821113/aa373755-35dc-4c85-a44e-dc66799cf714.jpg?quality=95&as=32x18,48x27,72x40,108x60,160x89,240x134,360x201,480x268,540x301,640x357,720x402,1080x603,1280x714,1440x804,1505x840&from=bu&u=Bo45LKMu5IbwnqKYrjdbBEs5c47liYUv48GKqcs7fOU&cs=1505x0" alt="Фуллерен жизнь" loading="lazy" class="w-full aspect-[1120/625] object-cover rounded-[1.5rem] transition-transform duration-700 group-hover:scale-[1.02] src-image" onerror="this.remove();">
                     </div>
                 </div>
 
-                <div class="grid grid-cols-3 gap-4">
+                <div class="reveal-block grid grid-cols-3 gap-4">
                     <div class="aspect-square rounded-2xl crystal-glass p-2 overflow-hidden group cursor-zoom-in zoomable-img-container">
                         <div class="w-full h-full rounded-xl overflow-hidden">
-                            <img src="https://sun9-73.userapi.com/s/v1/ig2/ww55ylnvHXfIbqr6nsGM6j1oAsX8QOZu0kHg3oSbiuGxL5yYhHVMKzzMYQdQTwNbyi2ODmGD4aT4tXw7YQsPE_Mx.jpg?quality=95&as=32x31,48x47,72x71,108x106,160x157,240x236,360x354,361x355&from=bu&u=tDzsM3FGtxIP77aqv396NHppikJGkFbpDiv2_li8JFY&cs=361x0" alt="Фуллерен 1" class="w-full h-full object-cover transition-all duration-700 group-hover:scale-108 group-hover:rotate-1 src-image" onerror="this.remove();">
+                            <img src="photo/review-1.jpg" alt="Фуллерен C60 — молекулярная структура" loading="lazy" class="w-full h-full object-cover transition-all duration-700 group-hover:scale-[1.08] group-hover:rotate-1 src-image">
                         </div>
                     </div>
                     <div class="aspect-square rounded-2xl crystal-glass p-2 overflow-hidden group cursor-zoom-in zoomable-img-container">
                         <div class="w-full h-full rounded-xl overflow-hidden">
-                            <img src="https://s3.aisevenai.ru/uploads/528821113/f63bd63d-7eb5-4bf3-8c2d-734f46dbe4bd.jpg?quality=95&as=32x18,48x27,72x40,108x60,160x89,240x134,360x201,480x268,540x301,640x357,720x402,1080x603,1280x714,1440x804,1505x840&from=bu&u=Bo45LKMu5IbwnqKYrjdbBEs5c47liYUv48GKqcs7fOU&cs=1505x0" alt="Фуллерен 2" class="w-full h-full object-cover transition-all duration-700 group-hover:scale-108 group-hover:-rotate-1 src-image" onerror="this.remove();">
+                            <img src="https://s3.aisevenai.ru/uploads/528821113/f63bd63d-7eb5-4bf3-8c2d-734f46dbe4bd.jpg?quality=95&as=32x18,48x27,72x40,108x60,160x89,240x134,360x201,480x268,540x301,640x357,720x402,1080x603,1280x714,1440x804,1505x840&from=bu&u=Bo45LKMu5IbwnqKYrjdbBEs5c47liYUv48GKqcs7fOU&cs=1505x0" alt="Фуллерен 2" loading="lazy" class="w-full h-full object-cover transition-all duration-700 group-hover:scale-[1.08] group-hover:-rotate-1 src-image" onerror="this.remove();">
                         </div>
                     </div>
                     <div class="aspect-square rounded-2xl crystal-glass p-2 overflow-hidden group cursor-zoom-in zoomable-img-container">
                         <div class="w-full h-full rounded-xl overflow-hidden">
-                            <img src="https://s3.aisevenai.ru/uploads/528821113/27a2ce8f-59dc-4a8d-ad37-dcc4af664115.jpg?quality=95&as=32x18,48x27,72x40,108x60,160x89,240x134,360x201,480x268,540x301,640x357,720x402,1080x603,1280x714,1440x804,1505x840&from=bu&u=Bo45LKMu5IbwnqKYrjdbBEs5c47liYUv48GKqcs7fOU&cs=1505x0" alt="Фуллерен 3" class="w-full h-full object-cover transition-all duration-700 group-hover:scale-108 group-hover:rotate-1 src-image" onerror="this.remove();">
+                            <img src="https://s3.aisevenai.ru/uploads/528821113/27a2ce8f-59dc-4a8d-ad37-dcc4af664115.jpg?quality=95&as=32x18,48x27,72x40,108x60,160x89,240x134,360x201,480x268,540x301,640x357,720x402,1080x603,1280x714,1440x804,1505x840&from=bu&u=Bo45LKMu5IbwnqKYrjdbBEs5c47liYUv48GKqcs7fOU&cs=1505x0" alt="Фуллерен 3" loading="lazy" class="w-full h-full object-cover transition-all duration-700 group-hover:scale-[1.08] group-hover:rotate-1 src-image" onerror="this.remove();">
                         </div>
                     </div>
                 </div>
 
-                <div class="space-y-4">
+                <div class="reveal-block space-y-4">
                     <!-- КНОПКА ОТЗЫВОВ TELEGRAM -->
                     <a href="https://t.me/fullenergy_otzyv" target="_blank" rel="noopener noreferrer" 
-                       class="block p-6 rounded-2xl border border-orange-300/80 bg-gradient-to-br from-orange-50 to-orange-100/40 backdrop-blur-2xl transition-all duration-400 hover:bg-orange-100/90 hover:border-orange-500 hover:-translate-y-1 hover:shadow-lg hover:shadow-orange-500/20 group/btn relative overflow-hidden shadow-sm">
+                       class="block p-6 rounded-2xl border border-orange-300/80 bg-gradient-to-br from-orange-50 to-orange-100/40 backdrop-blur-2xl transition-all duration-300 hover:bg-orange-100/90 hover:border-orange-500 hover:-translate-y-1 hover:shadow-lg hover:shadow-orange-500/20 group/btn relative overflow-hidden shadow-sm">
                         <div class="absolute inset-0 bg-gradient-to-r from-orange-500/0 via-orange-500/10 to-orange-500/0 translate-x-[-100%] group-hover/btn:translate-x-[100%] transition-transform duration-1000"></div>
                         <div class="flex items-center justify-between gap-4 relative z-10">
                             <div class="text-left flex-1">
@@ -622,7 +703,7 @@
                                     <h3 class="text-base sm:text-xl font-extrabold tracking-wide text-orange-950 flex items-center gap-2">
                                         ОТЗЫВЫ В TELEGRAM
                                     </h3>
-                                    <span class="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-gradient-to-r from-orange-500 to-red-500 text-white text-[10px] sm:text-xs font-black tracking-widest uppercase shadow-md animate-bounce">
+                                    <span class="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-gradient-to-r from-orange-500 to-red-500 text-white text-[10px] sm:text-xs font-black tracking-widest uppercase shadow-sm group-hover/btn:scale-105 transition-transform">
                                         <span class="relative flex h-2 w-2">
                                             <span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-white opacity-75"></span>
                                             <span class="relative inline-flex rounded-full h-2 w-2 bg-white"></span>
@@ -640,7 +721,7 @@
 
                     <!-- КНОПКА ОТЗЫВОВ VK -->
                     <a href="https://vk.com/im/channels/-237463683" target="_blank" rel="noopener noreferrer" 
-                       class="block p-6 rounded-2xl border border-blue-300/80 bg-gradient-to-br from-blue-50 to-blue-100/40 backdrop-blur-2xl transition-all duration-400 hover:bg-blue-100/90 hover:border-blue-500 hover:-translate-y-1 hover:shadow-lg hover:shadow-blue-500/20 group/btn relative overflow-hidden shadow-sm">
+                       class="block p-6 rounded-2xl border border-blue-300/80 bg-gradient-to-br from-blue-50 to-blue-100/40 backdrop-blur-2xl transition-all duration-300 hover:bg-blue-100/90 hover:border-blue-500 hover:-translate-y-1 hover:shadow-lg hover:shadow-blue-500/20 group/btn relative overflow-hidden shadow-sm">
                         <div class="absolute inset-0 bg-gradient-to-r from-blue-500/0 via-blue-500/10 to-blue-500/0 translate-x-[-100%] group-hover/btn:translate-x-[100%] transition-transform duration-1000"></div>
                         <div class="flex items-center justify-between gap-4 relative z-10">
                             <div class="text-left flex-1">
@@ -648,7 +729,7 @@
                                     <h3 class="text-base sm:text-xl font-extrabold tracking-wide text-blue-950 flex items-center gap-2">
                                         ОТЗЫВЫ В ВКОНТАКТЕ
                                     </h3>
-                                    <span class="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-gradient-to-r from-blue-500 to-indigo-500 text-white text-[10px] sm:text-xs font-black tracking-widest uppercase shadow-md animate-bounce" style="animation-delay: 0.2s;">
+                                    <span class="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-gradient-to-r from-blue-500 to-indigo-500 text-white text-[10px] sm:text-xs font-black tracking-widest uppercase shadow-sm group-hover/btn:scale-105 transition-transform">
                                         <span class="relative flex h-2 w-2">
                                             <span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-white opacity-75"></span>
                                             <span class="relative inline-flex rounded-full h-2 w-2 bg-white"></span>
@@ -665,7 +746,7 @@
                     </a>
                 </div>
 
-                <div class="crystal-glass crystal-glass-hover rounded-[2rem] p-6 sm:p-10 text-left space-y-5 my-6">
+                <div class="reveal-block crystal-glass crystal-glass-hover rounded-[2rem] p-6 sm:p-10 text-left space-y-5 my-6">
                     <h2 class="text-2xl sm:text-3xl font-extrabold text-transparent bg-clip-text bg-gradient-to-r from-slate-900 to-purple-900">
                         Как работает С60?
                     </h2>
@@ -675,28 +756,28 @@
 
                     <div class="grid grid-cols-1 sm:grid-cols-2 gap-4 my-6">
                         <div class="bg-emerald-50/50 border border-emerald-200 rounded-2xl p-5 flex items-start gap-4 shadow-inner relative group/icon">
-                            <span class="text-2xl text-emerald-500 filter drop-shadow-[0_0_8px_rgba(16,185,129,0.3)] transition-all group-hover/icon:scale-110">✨</span>
+                            <span class="text-2xl text-emerald-500 filter drop-shadow-[0_0_8px_rgba(16,185,129,0.3)] transition-transform group-hover/icon:scale-110">✨</span>
                             <div>
                                 <h4 class="font-bold text-emerald-900 text-sm sm:text-base">Эстетика кожи</h4>
                                 <p class="text-xs sm:text-sm text-black mt-1 leading-relaxed">Свежий и ровный тон лица без агрессивного косметического воздействия.</p>
                             </div>
                         </div>
                         <div class="bg-orange-50/50 border border-orange-200 rounded-2xl p-5 flex items-start gap-4 shadow-inner relative group/icon">
-                            <span class="text-2xl text-orange-500 filter drop-shadow-[0_0_8px_rgba(249,115,22,0.3)] transition-all group-hover/icon:scale-110">⚡</span>
+                            <span class="text-2xl text-orange-500 filter drop-shadow-[0_0_8px_rgba(249,115,22,0.3)] transition-transform group-hover/icon:scale-110">⚡</span>
                             <div>
                                 <h4 class="font-bold text-orange-900 text-sm sm:text-base">Стабильный тонус</h4>
                                 <p class="text-xs sm:text-sm text-black mt-1 leading-relaxed">Бодрое пробуждение по утрам и комфортное распределение ресурсов на весь день.</p>
                             </div>
                         </div>
                         <div class="bg-pink-50/50 border border-pink-200 rounded-2xl p-5 flex items-start gap-4 shadow-inner relative group/icon">
-                            <span class="text-2xl text-pink-500 filter drop-shadow-[0_0_8px_rgba(236,72,153,0.3)] transition-all group-hover/icon:scale-110">🧠</span>
+                            <span class="text-2xl text-pink-500 filter drop-shadow-[0_0_8px_rgba(236,72,153,0.3)] transition-transform group-hover/icon:scale-110">🧠</span>
                             <div>
                                 <h4 class="font-bold text-pink-900 text-sm sm:text-base">Ясность мышления</h4>
                                 <p class="text-xs sm:text-sm text-black mt-1 leading-relaxed">Повышение концентрации внимания, улучшение оперативной памяти.</p>
                             </div>
                         </div>
                         <div class="bg-blue-50/50 border border-blue-200 rounded-2xl p-5 flex items-start gap-4 shadow-inner relative group/icon">
-                            <span class="text-2xl text-blue-500 filter drop-shadow-[0_0_8px_rgba(59,130,246,0.3)] transition-all group-hover/icon:scale-110">🛡️</span>
+                            <span class="text-2xl text-blue-500 filter drop-shadow-[0_0_8px_rgba(59,130,246,0.3)] transition-transform group-hover/icon:scale-110">🛡️</span>
                             <div>
                                 <h4 class="font-bold text-blue-950 text-sm sm:text-base">Иммунный барьер</h4>
                                 <p class="text-xs sm:text-sm text-black mt-1 leading-relaxed">Поддержка естественных защитных сил организма в период сезонных нагрузок.</p>
@@ -709,7 +790,7 @@
                     </h3>
                 </div>
 
-                <div class="crystal-glass crystal-glass-hover rounded-[2rem] p-6 sm:p-10 space-y-5 text-left my-6 relative overflow-hidden">
+                <div class="reveal-block crystal-glass crystal-glass-hover rounded-[2rem] p-6 sm:p-10 space-y-5 text-left my-6 relative overflow-hidden">
                     <div class="absolute top-0 right-0 w-32 h-32 bg-purple-500/5 rounded-full blur-2xl pointer-events-none"></div>
 
                     <h2 class="text-2xl sm:text-3xl font-extrabold text-transparent bg-clip-text bg-gradient-to-r from-slate-900 via-purple-900 to-indigo-950">
@@ -728,40 +809,42 @@
                     </div>
                 </div>
 
-                <a href="https://shop.full-en.com/products?code=59D573B5-7B9A" target="_blank" rel="noopener noreferrer" 
-                   class="block p-6 rounded-2xl border border-purple-500/20 bg-purple-500/5 backdrop-blur-2xl transition-all duration-400 hover:bg-purple-500/10 hover:border-purple-500/40 hover:-translate-y-1 shadow-[0_15px_40px_-15px_rgba(147,51,234,0.1)] group/purple mb-3">
-                    <div class="flex items-center justify-between gap-4 relative z-10">
-                        <div class="text-left">
-                            <h3 class="text-base sm:text-xl font-bold tracking-wide text-purple-700 flex items-center gap-2 leading-tight">
-                                КУПИТЬ БЕЗ СКИДКИ<br>И РЕГИСТРАЦИИ
-                                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" class="group-hover/purple:translate-x-0.5 group-hover/purple:translate-y-0.5 transition-transform mt-[-10px]"><path d="M15 3h6v6"></path><path d="M10 14 21 3"></path><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path></svg>
-                            </h3>
-                            <p class="text-xs sm:text-sm text-purple-600/80 mt-1">Оформление заказа в официальном интернет-магазине</p>
+                <div class="reveal-block space-y-3">
+                    <a href="https://shop.full-en.com/products?code=59D573B5-7B9A" target="_blank" rel="noopener noreferrer" 
+                       class="block p-6 rounded-2xl border border-purple-500/20 bg-purple-500/5 backdrop-blur-2xl transition-all duration-300 hover:bg-purple-500/10 hover:border-purple-500/40 hover:-translate-y-1 shadow-[0_15px_40px_-15px_rgba(147,51,234,0.1)] group/purple">
+                        <div class="flex items-center justify-between gap-4 relative z-10">
+                            <div class="text-left">
+                                <h3 class="text-base sm:text-xl font-bold tracking-wide text-purple-700 flex items-center gap-2 leading-tight">
+                                    КУПИТЬ БЕЗ СКИДКИ<br>И РЕГИСТРАЦИИ
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" class="group-hover/purple:translate-x-0.5 group-hover/purple:translate-y-0.5 transition-transform mt-[-10px]"><path d="M15 3h6v6"></path><path d="M10 14 21 3"></path><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path></svg>
+                                </h3>
+                                <p class="text-xs sm:text-sm text-purple-600/80 mt-1">Оформление заказа в официальном интернет-магазине</p>
+                            </div>
+                            <div class="w-11 h-11 rounded-xl bg-purple-500/10 flex items-center justify-center border border-purple-500/20 flex-shrink-0 shadow-inner group-hover/purple:bg-purple-500/20 transition-colors">
+                                <svg class="w-5 h-5 text-purple-600" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M3 3h2l.4 2M7 13h10l4-8H5.4M7 13L5.4 5M7 13l-2.293 2.293c-.63.63-.184 1.707.707 1.707H17m0 0a2 2 0 100 4 2 2 0 000-4zm-8 2a2 2 0 11-4 0 2 2 0 014 0z"/></svg>
+                            </div>
                         </div>
-                        <div class="w-11 h-11 rounded-xl bg-purple-500/10 flex items-center justify-center border border-purple-500/20 flex-shrink-0 shadow-inner group-hover/purple:bg-purple-500/20 transition-colors">
-                            <svg class="w-5 h-5 text-purple-600" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M3 3h2l.4 2M7 13h10l4-8H5.4M7 13L5.4 5M7 13l-2.293 2.293c-.63.63-.184 1.707.707 1.707H17m0 0a2 2 0 100 4 2 2 0 000-4zm-8 2a2 2 0 11-4 0 2 2 0 014 0z"/></svg>
-                        </div>
-                    </div>
-                </a>
+                    </a>
 
-                <a href="https://my.full-en.com/register.php?code=12055CB0-FFF9" target="_blank" rel="noopener noreferrer" 
-                   class="block p-6 rounded-2xl border border-emerald-500/20 bg-emerald-500/5 backdrop-blur-2xl transition-all duration-400 hover:bg-emerald-500/10 hover:border-emerald-500/40 hover:-translate-y-1 shadow-[0_15px_40px_-15px_rgba(16,185,129,0.1)] group/emerald mt-[-6px]">
-                    <div class="flex items-center justify-between gap-4 relative z-10">
-                        <div class="text-left">
-                            <h3 class="text-base sm:text-xl font-bold tracking-wide text-emerald-700 flex items-center gap-2">
-                                КУПИТЬ СО СКИДКОЙ 30%
-                                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" class="group-hover/emerald:translate-x-0.5 group-hover/emerald:translate-y-0.5 transition-transform"><path d="M15 3h6v6"></path><path d="M10 14 21 3"></path><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path></svg>
-                            </h3>
-                            <p class="text-xs sm:text-sm text-emerald-600/80 mt-1">Оптимальные условия при оформлении личного кабинета</p>
+                    <a href="https://my.full-en.com/register.php?code=12055CB0-FFF9" target="_blank" rel="noopener noreferrer" 
+                       class="block p-6 rounded-2xl border border-emerald-500/20 bg-emerald-500/5 backdrop-blur-2xl transition-all duration-300 hover:bg-emerald-500/10 hover:border-emerald-500/40 hover:-translate-y-1 shadow-[0_15px_40px_-15px_rgba(16,185,129,0.1)] group/emerald">
+                        <div class="flex items-center justify-between gap-4 relative z-10">
+                            <div class="text-left">
+                                <h3 class="text-base sm:text-xl font-bold tracking-wide text-emerald-700 flex items-center gap-2">
+                                    КУПИТЬ СО СКИДКОЙ 30%
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" class="group-hover/emerald:translate-x-0.5 group-hover/emerald:translate-y-0.5 transition-transform"><path d="M15 3h6v6"></path><path d="M10 14 21 3"></path><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path></svg>
+                                </h3>
+                                <p class="text-xs sm:text-sm text-emerald-600/80 mt-1">Оптимальные условия при оформлении личного кабинета</p>
+                            </div>
+                            <div class="w-11 h-11 rounded-xl bg-emerald-500/10 flex items-center justify-center border border-emerald-500/20 flex-shrink-0 shadow-inner group-hover/emerald:bg-emerald-500/20 transition-colors">
+                                <svg class="w-5 h-5 text-emerald-600" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M16 11V7a4 4 0 00-8 0v4M5 9h14l1 12H4L5 9z"/></svg>
+                            </div>
                         </div>
-                        <div class="w-11 h-11 rounded-xl bg-emerald-500/10 flex items-center justify-center border border-emerald-500/20 flex-shrink-0 shadow-inner group-hover/emerald:bg-emerald-500/20 transition-colors">
-                            <svg class="w-5 h-5 text-emerald-600" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M16 11V7a4 4 0 00-8 0v4M5 9h14l1 12H4L5 9z"/></svg>
-                        </div>
-                    </div>
-                </a>
+                    </a>
+                </div>
 
                 <!-- Блок "Контакты" -->
-                <div id="contacts" class="rounded-[2rem] p-6 sm:p-10 text-left space-y-5 border border-rose-500/20 bg-rose-500/5 backdrop-blur-2xl shadow-[0_25px_50px_-15px_rgba(244,63,94,0.1)]">
+                <div id="contacts" class="reveal-block rounded-[2rem] p-6 sm:p-10 text-left space-y-5 border border-rose-500/20 bg-rose-500/5 backdrop-blur-2xl shadow-[0_25px_50px_-15px_rgba(244,63,94,0.1)]">
                     <div class="text-black space-y-3 text-sm sm:text-base leading-relaxed">
                         <p>Отправьте личное сообщение с кодовым словом <strong>«С60»</strong> в Telegram или VK для получения:</p>
                     </div>
@@ -782,17 +865,23 @@
                         <div class="bg-emerald-50/80 p-5 rounded-xl border border-emerald-200 shadow-inner">
                             <p class="text-slate-800 font-bold mb-3 text-lg">Сергей Матвеев</p>
                             <div class="space-y-3">
-                                <p class="flex items-center gap-2">
-                                    💬 <span class="text-slate-400 font-normal">Telegram:</span> 
+                                <p class="flex items-center flex-wrap gap-2">
+                                    💬 <span class="text-slate-500 font-normal">Telegram:</span> 
                                     <a href="https://t.me/Serge1Matveev?text=%D0%97%D0%B4%D1%80%D0%B0%D0%B2%D1%81%D1%82%D0%B2%D1%83%D0%B9%D1%82%D0%B5!%20%D0%9F%D0%B8%D1%88%D1%83%20%D1%81%20%D1%81%D0%B0%D0%B9%D1%82%D0%B0%2C%20%D0%BA%D0%BE%D0%B4%D0%BE%D0%B2%D0%BE%D0%B5%20%D1%81%D0%BB%D0%BE%D0%B2%D0%BE%20%D0%A160" target="_blank" rel="noopener noreferrer" class="text-emerald-800 hover:text-emerald-600 transition-colors underline decoration-emerald-300 underline-offset-4">@Serge1Matveev</a>
+                                    <button type="button" onclick="copyContact('@Serge1Matveev')" title="Скопировать никнейм" class="text-xs text-emerald-700/70 hover:text-emerald-900 bg-white/80 hover:bg-white px-2 py-0.5 rounded-md border border-emerald-200 transition-colors">
+                                        <i class="fa-regular fa-copy"></i>
+                                    </button>
                                 </p>
-                                <p class="flex items-center gap-2">
-                                    🔵 <span class="text-slate-400 font-normal">VK:</span> 
+                                <p class="flex items-center flex-wrap gap-2">
+                                    🔵 <span class="text-slate-500 font-normal">VK:</span> 
                                     <a href="https://vk.com/id1846523" target="_blank" rel="noopener noreferrer" class="text-emerald-800 hover:text-emerald-600 transition-colors underline decoration-emerald-300 underline-offset-4">Сергей</a>
                                 </p>
-                                <p class="flex items-center gap-2">
-                                    📞 <span class="text-slate-400 font-normal">Телефон:</span> 
+                                <p class="flex items-center flex-wrap gap-2">
+                                    📞 <span class="text-slate-500 font-normal">Телефон:</span> 
                                     <a href="tel:+79817133851" class="text-emerald-800 hover:text-emerald-600 transition-colors underline decoration-emerald-300 underline-offset-4">+7 (981) 713-38-51</a>
+                                    <button type="button" onclick="copyContact('+79817133851')" title="Скопировать номер" class="text-xs text-emerald-700/70 hover:text-emerald-900 bg-white/80 hover:bg-white px-2 py-0.5 rounded-md border border-emerald-200 transition-colors">
+                                        <i class="fa-regular fa-copy"></i>
+                                    </button>
                                 </p>
                             </div>
                         </div>
@@ -800,17 +889,23 @@
                         <div class="bg-pink-50/80 p-5 rounded-xl border border-pink-200 shadow-inner">
                             <p class="text-slate-800 font-bold mb-3 text-lg">Олеся Матвеева</p>
                             <div class="space-y-3">
-                                <p class="flex items-center gap-2">
-                                    💬 <span class="text-slate-400 font-normal">Telegram:</span> 
+                                <p class="flex items-center flex-wrap gap-2">
+                                    💬 <span class="text-slate-500 font-normal">Telegram:</span> 
                                     <a href="https://t.me/OlesiaMatveeva?text=%D0%97%D0%B4%D1%80%D0%B0%D0%B2%D1%81%D1%82%D0%B2%D1%83%D0%B9%D1%82%D0%B5!%20%D0%9F%D0%B8%D1%88%D1%83%20%D1%81%20%D1%81%D0%B0%D0%B9%D1%82%D0%B0%2C%20%D0%BA%D0%BE%D0%B4%D0%BE%D0%B2%D0%BE%D0%B5%20%D1%81%D0%BB%D0%BE%D0%B2%D0%BE%20%D0%A160" target="_blank" rel="noopener noreferrer" class="text-pink-800 hover:text-pink-600 transition-colors underline decoration-pink-300 underline-offset-4">@OlesiaMatveeva</a>
+                                    <button type="button" onclick="copyContact('@OlesiaMatveeva')" title="Скопировать никнейм" class="text-xs text-pink-700/70 hover:text-pink-900 bg-white/80 hover:bg-white px-2 py-0.5 rounded-md border border-pink-200 transition-colors">
+                                        <i class="fa-regular fa-copy"></i>
+                                    </button>
                                 </p>
-                                <p class="flex items-center gap-2">
-                                    🔵 <span class="text-slate-400 font-normal">VK:</span> 
+                                <p class="flex items-center flex-wrap gap-2">
+                                    🔵 <span class="text-slate-500 font-normal">VK:</span> 
                                     <a href="https://vk.com/id8230152" target="_blank" rel="noopener noreferrer" class="text-pink-800 hover:text-pink-600 transition-colors underline decoration-pink-300 underline-offset-4">Олеся</a>
                                 </p>
-                                <p class="flex items-center gap-2">
-                                    📞 <span class="text-slate-400 font-normal">Телефон:</span> 
+                                <p class="flex items-center flex-wrap gap-2">
+                                    📞 <span class="text-slate-500 font-normal">Телефон:</span> 
                                     <a href="tel:+79112885254" class="text-pink-800 hover:text-pink-600 transition-colors underline decoration-pink-300 underline-offset-4">+7 (911) 288-52-54</a>
+                                    <button type="button" onclick="copyContact('+79112885254')" title="Скопировать номер" class="text-xs text-pink-700/70 hover:text-pink-900 bg-white/80 hover:bg-white px-2 py-0.5 rounded-md border border-pink-200 transition-colors">
+                                        <i class="fa-regular fa-copy"></i>
+                                    </button>
                                 </p>
                             </div>
                         </div>
@@ -822,7 +917,7 @@
                 </div>
 
                 <!-- БЛОК «ДОПОЛНИТЕЛЬНАЯ ИНФОРМАЦИЯ» -->
-                <div class="crystal-glass rounded-[2rem] p-6 sm:p-8 my-6 text-center space-y-4 border border-purple-200/50 shadow-sm relative overflow-hidden">
+                <div class="reveal-block crystal-glass rounded-[2rem] p-6 sm:p-8 my-6 text-center space-y-4 border border-purple-200/50 shadow-sm relative overflow-hidden">
                     <div class="absolute -top-12 -left-12 w-36 h-36 bg-purple-500/10 rounded-full blur-[50px] pointer-events-none"></div>
                     <div class="absolute -bottom-12 -right-12 w-36 h-36 bg-blue-500/10 rounded-full blur-[50px] pointer-events-none"></div>
 
@@ -849,7 +944,7 @@
                                 <i class="fa-solid fa-arrow-up-right-from-square text-sky-600 text-xs opacity-70 group-hover:opacity-100 group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-all"></i>
                             </a>
 
-                            <a href="https://vk.ru/club238763208" target="_blank" rel="noopener noreferrer" 
+                            <a href="https://vk.com/club238763208" target="_blank" rel="noopener noreferrer" 
                                class="flex items-center justify-between p-4 rounded-xl bg-gradient-to-r from-blue-500/10 to-indigo-500/10 hover:from-blue-500/20 hover:to-indigo-500/20 border border-blue-500/30 hover:border-blue-500 transition-all duration-300 hover:-translate-y-0.5 group">
                                 <div class="flex items-center gap-3 text-left">
                                     <div class="w-10 h-10 rounded-lg bg-[#0077ff] text-white flex items-center justify-center flex-shrink-0 shadow-sm group-hover:scale-105 transition-transform">
@@ -867,8 +962,8 @@
                 </div>
 
                 <a href="https://my.full-en.com/register.php?code=12055CB0-FFF9" target="_blank" rel="noopener noreferrer" 
-                   class="glass-action-btn block p-6 rounded-2xl border-l-2 border-purple-500/20 relative overflow-hidden group">
-                    <div class="absolute -inset-y-0 -left-16 w-16 bg-gradient-to-r from-transparent via-white/15 to-transparent skew-x-12 group-hover:left-[120%] transition-all duration-1000 ease-in-out"></div>
+                   class="reveal-block glass-action-btn block p-6 rounded-2xl border-l-2 border-purple-500/20 relative overflow-hidden group">
+                    <div class="absolute -inset-y-0 -left-16 w-16 bg-gradient-to-r from-transparent via-white/25 to-transparent skew-x-12 group-hover:left-[120%] transition-all duration-1000 ease-in-out"></div>
                     <div class="flex items-center justify-between gap-4 relative z-10">
                         <div class="text-left">
                             <h3 class="text-base sm:text-xl font-bold tracking-wide text-transparent bg-clip-text bg-gradient-to-r from-slate-900 to-purple-900 flex items-center gap-2">
@@ -884,7 +979,7 @@
                 </a>
 
                 <!-- Стартуй прямо сейчас! -->
-                <div class="crystal-glass rounded-[2rem] p-8 sm:p-12 text-center space-y-6 relative overflow-hidden my-6">
+                <div class="reveal-block crystal-glass rounded-[2rem] p-8 sm:p-12 text-center space-y-6 relative overflow-hidden my-6">
                     <div class="absolute -top-16 -left-16 w-48 h-48 bg-purple-500/10 rounded-full blur-[70px] pointer-events-none"></div>
                     <div class="absolute -bottom-16 -right-16 w-48 h-48 bg-blue-500/10 rounded-full blur-[70px] pointer-events-none"></div>
 
@@ -966,7 +1061,7 @@
                         <div class="relative w-full max-w-[300px] sm:max-w-[380px] aspect-square flex items-center justify-center">
                             <canvas id="c60Canvas" class="w-full h-full cursor-grab active:cursor-grabbing"></canvas>
                         </div>
-                        <p class="text-xs sm:text-sm text-purple-900 font-semibold mt-2 flex items-center gap-2 bg-white/80 px-4 py-1.5 rounded-full border border-purple-200/60 shadow-sm">
+                        <p class="text-xs sm:text-sm text-purple-900 font-semibold mt-2 flex items-center gap-2 bg-white/80 px-4 py-1.5 rounded-full border border-purple-200/60 shadow-sm text-center">
                             <i class="fa-solid fa-hand-pointer text-purple-600 animate-pulse"></i>
                             Интерактивная 3D-модель С60: покрутите мышкой или пальцем
                         </p>
@@ -981,14 +1076,14 @@
 
                     <div class="grid grid-cols-1 sm:grid-cols-2 gap-6 pt-2">
                         <div>
-                            <div class="about-photo-slot aspect-square sm:aspect-[4/3]">
-                                <img src="https://sun9-11.userapi.com/s/v1/ig2/N-3Ge6tGFzRk1kFL2Mx2CfZ6STpaIvNc-XW9qkRh6JHjRpbsu-wEYYGaC8q5VcAB4bmpLQeBocp3DAvK6p_GYGGa.jpg?quality=95&as=32x31,48x47,72x71,108x106,160x157,240x236,360x353,480x471,540x530,595x584&from=bu&u=XDCP7InCF61h_0eXN1y8EFzNKAEMKHpf5YDFSA4i_SY&cs=595x0" alt="Фуллерен C60" onerror="this.remove();">
+                            <div class="about-photo-slot aspect-square sm:aspect-[4/3] zoomable-img-container cursor-zoom-in">
+                                <img src="photo/molekula.jpg" alt="Фуллерен C60" loading="lazy" class="src-image" onerror="this.remove();">
                             </div>
                             <p class="text-center text-sm font-semibold text-slate-600 mt-3">Структура фуллерена C60</p>
                         </div>
                         <div>
-                            <div class="about-photo-slot aspect-square sm:aspect-[4/3]">
-                                <img src="https://sun9-10.userapi.com/s/v1/ig2/NX7ZsgJSFyxUNrUZUDzrWea0Q8sHQry629cToxzq5aA9pWzXZWof5aQAdw6v7tFm-GiuNQrd_QHRqN6lO2jQZhu-.jpg?quality=95&as=32x28,48x43,72x64,108x96,160x142,240x213,360x319,480x425,540x478,640x567,709x628&from=bu&u=U1gOE4IWpouLlzyhAwNSF_fqIBBBoylFNMmLJl_YmM4&cs=709x0" alt="Аналогия с мячом" onerror="this.remove();">
+                            <div class="about-photo-slot aspect-square sm:aspect-[4/3] zoomable-img-container cursor-zoom-in">
+                                <img src="photo/myach.jpg" alt="Аналогия с мячом" loading="lazy" class="src-image" onerror="this.remove();">
                             </div>
                             <p class="text-center text-sm font-semibold text-slate-600 mt-3">Усеченный икосаэдр (мяч)</p>
                         </div>
@@ -1039,35 +1134,35 @@
 
                     <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
                         <div class="about-infographic-card">
-                            <div class="card-img"><img src="photo/1.jpg" onerror="this.remove();" alt=""></div>
+                            <div class="card-img"><img src="photo/1.jpg" loading="lazy" onerror="this.remove();" alt=""></div>
                             <div class="card-text">Адсорбция свободных радикалов на молекулярном уровне</div>
                         </div>
                         <div class="about-infographic-card">
-                            <div class="card-img"><img src="photo/2.jpg" onerror="this.remove();" alt=""></div>
+                            <div class="card-img"><img src="photo/2.jpg" loading="lazy" onerror="this.remove();" alt=""></div>
                             <div class="card-text">Поддержание стабильности мембран живых клеток</div>
                         </div>
                         <div class="about-infographic-card">
-                            <div class="card-img"><img src="photo/3.jpg" onerror="this.remove();" alt=""></div>
+                            <div class="card-img"><img src="photo/3.jpg" loading="lazy" onerror="this.remove();" alt=""></div>
                             <div class="card-text">Участие в процессах естественного обновления тканей</div>
                         </div>
                         <div class="about-infographic-card">
-                            <div class="card-img"><img src="photo/4.jpg" onerror="this.remove();" alt=""></div>
+                            <div class="card-img"><img src="photo/4.jpg" loading="lazy" onerror="this.remove();" alt=""></div>
                             <div class="card-text">Поддержка энергетического обмена в митохондриях</div>
                         </div>
                         <div class="about-infographic-card">
-                            <div class="card-img"><img src="photo/5.jpg" onerror="this.remove();" alt=""></div>
+                            <div class="card-img"><img src="photo/5.jpg" loading="lazy" onerror="this.remove();" alt=""></div>
                             <div class="card-text">Снижение интенсивности системных воспалительных факторов</div>
                         </div>
                         <div class="about-infographic-card">
-                            <div class="card-img"><img src="photo/6.jpg" onerror="this.remove();" alt=""></div>
+                            <div class="card-img"><img src="photo/6.jpg" loading="lazy" onerror="this.remove();" alt=""></div>
                             <div class="card-text">Повышение устойчивости нейронов к перегрузкам</div>
                         </div>
                         <div class="about-infographic-card">
-                            <div class="card-img"><img src="photo/7.jpg" onerror="this.remove();" alt=""></div>
+                            <div class="card-img"><img src="photo/7.jpg" loading="lazy" onerror="this.remove();" alt=""></div>
                             <div class="card-text">Улучшение адаптивных возможностей кожи при УФ-воздействии</div>
                         </div>
                         <div class="about-infographic-card">
-                            <div class="card-img"><img src="photo/8.jpg" onerror="this.remove();" alt=""></div>
+                            <div class="card-img"><img src="photo/8.jpg" loading="lazy" onerror="this.remove();" alt=""></div>
                             <div class="card-text">Участие в поддержке общего тонуса организма</div>
                         </div>
                     </div>
@@ -1080,7 +1175,7 @@
 
                     <div class="grid grid-cols-1 md:grid-cols-2 gap-6 items-stretch">
                         <div class="about-photo-slot min-h-[320px] md:min-h-full rounded-2xl">
-                            <img src="photo/111.jpg" onerror="this.remove();" alt="Оборудование Full Energy">
+                            <img src="photo/111.jpg" loading="lazy" onerror="this.remove();" alt="Оборудование Full Energy">
                         </div>
 
                         <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
@@ -1123,7 +1218,7 @@
         <div id="page-catalog" class="page-section bg-[#f8fafc] rounded-3xl p-6 md:p-10 border border-slate-100/80 shadow-md">
 
             <!-- Шапка с переключателем скидки 30% -->
-            <div class="mb-8 text-left border-b border-slate-200/60 pb-6 flex flex-col md:flex-row md:items-center md:justify-between gap-4">
+            <div class="mb-6 text-left border-b border-slate-200/60 pb-6 flex flex-col md:flex-row md:items-center md:justify-between gap-4">
                 <div>
                     <h1 class="catalog-title text-3xl font-extrabold tracking-tight text-slate-950">
                         Все продукты
@@ -1146,184 +1241,23 @@
                 </div>
             </div>
 
-            <!-- Сетка продуктов -->
-            <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6">
-
-                <!-- 1 -->
-                <div onclick="openProductModal(1)" class="catalog-product-card group">
-                    <div class="p-3">
-                        <div class="catalog-photo-slot aspect-square bg-[#f1f5f9] p-4 relative mb-3">
-                            <img src="photo/Фуллерен C60 Утро.jpg" onerror="this.remove();" alt="Конопляное масло">
-                        </div>
-                        <div class="catalog-product-body p-0">
-                            <span class="catalog-category-pill mb-2">Фуллерен C60 Утро</span>
-                            <h3 class="catalog-product-name group-hover:text-purple-600 transition-colors">Конопляное масло</h3>
-                            <p class="catalog-product-price" data-base-price="4400">4 400 RUB</p>
-                        </div>
-                    </div>
+            <!-- Панель фильтрации и быстрого поиска -->
+            <div class="mb-6 flex flex-col sm:flex-row sm:items-center justify-between gap-3">
+                <div class="flex flex-wrap gap-2" id="catalog-filters">
+                    <button type="button" class="filter-chip active" data-category="all" onclick="setCatalogCategory('all', this)">Все (15)</button>
+                    <button type="button" class="filter-chip" data-category="oils" onclick="setCatalogCategory('oils', this)">Масла и Aqua</button>
+                    <button type="button" class="filter-chip" data-category="care" onclick="setCatalogCategory('care', this)">Уход и тело</button>
+                    <button type="button" class="filter-chip" data-category="active" onclick="setCatalogCategory('active', this)">Спорт и Anti-Age</button>
                 </div>
 
-                <!-- 2 -->
-                <div onclick="openProductModal(2)" class="catalog-product-card group">
-                    <div class="p-3">
-                        <div class="catalog-photo-slot aspect-square bg-[#f1f5f9] p-4 relative mb-3">
-                            <img src="photo/Фуллерен C60 День.jpg" onerror="this.remove();" alt="Оливковое масло">
-                        </div>
-                        <div class="catalog-product-body p-0">
-                            <span class="catalog-category-pill mb-2">Фуллерен C60 День</span>
-                            <h3 class="catalog-product-name group-hover:text-purple-600 transition-colors">Оливковое масло</h3>
-                            <p class="catalog-product-price" data-base-price="4400">4 400 RUB</p>
-                        </div>
-                    </div>
+                <div class="relative w-full sm:w-64">
+                    <i class="fa-solid fa-magnifying-glass text-slate-400 text-xs absolute left-3.5 top-1/2 -translate-y-1/2 pointer-events-none"></i>
+                    <input type="text" id="catalog-search" oninput="renderCatalogGrid()" placeholder="Поиск по названию..." class="w-full pl-9 pr-3 py-2 text-xs sm:text-sm bg-white border border-slate-200 rounded-full focus:outline-none focus:border-purple-500 transition-colors">
                 </div>
-
-                <!-- 3 -->
-                <div onclick="openProductModal(3)" class="catalog-product-card group">
-                    <div class="p-3">
-                        <div class="catalog-photo-slot aspect-square bg-[#f1f5f9] p-4 relative mb-3">
-                            <img src="photo/Фуллерен C60 Вечер.jpg" onerror="this.remove();" alt="Тыквенное масло">
-                        </div>
-                        <div class="catalog-product-body p-0">
-                            <span class="catalog-category-pill mb-2">Фуллерен C60 Вечер</span>
-                            <h3 class="catalog-product-name group-hover:text-purple-600 transition-colors">Тыквенное масло</h3>
-                            <p class="catalog-product-price" data-base-price="4400">4 400 RUB</p>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- 4 -->
-                <div onclick="openProductModal(4)" class="catalog-product-card group">
-                    <div class="p-3">
-                        <div class="catalog-photo-slot aspect-square bg-[#f1f5f9] p-4 relative mb-3">
-                            <img src="photo/Фуллерен C60 Гель.png" onerror="this.remove();" alt="Регенерирующий гель">
-                        </div>
-                        <div class="catalog-product-body p-0">
-                            <span class="catalog-category-pill mb-2">Фуллерен C60 Гель</span>
-                            <h3 class="catalog-product-name group-hover:text-purple-600 transition-colors">Регенерирующий гель</h3>
-                            <p class="catalog-product-price" data-base-price="4400">4 400 RUB</p>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- 5 -->
-                <div onclick="openProductModal(5)" class="catalog-product-card group">
-                    <div class="p-3">
-                        <div class="catalog-photo-slot aspect-square bg-[#f1f5f9] p-4 relative mb-3">
-                            <img src="photo/Фуллерен C60 Aqua Power.jpg" onerror="this.remove();" alt="Aqua фуллерен">
-                        </div>
-                        <div class="catalog-product-body p-0">
-                            <span class="catalog-category-pill mb-2">Фуллерен C60 Aqua Power</span>
-                            <h3 class="catalog-product-name group-hover:text-purple-600 transition-colors">Aqua фуллерен</h3>
-                            <p class="catalog-product-price" data-base-price="4400">4 400 RUB</p>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- 6 -->
-                <div onclick="openProductModal(6)" class="catalog-product-card group">
-                    <div class="p-3">
-                        <div class="catalog-photo-slot aspect-square bg-[#f1f5f9] p-4 relative mb-3">
-                            <img src="photo/BeautyOnFull сыворотка.png" onerror="this.remove();" alt="Serum фуллерен">
-                        </div>
-                        <div class="catalog-product-body p-0">
-                            <span class="catalog-category-pill mb-2">BeautyOnFull сыворотка</span>
-                            <h3 class="catalog-product-name group-hover:text-purple-600 transition-colors">Serum фуллерен</h3>
-                            <p class="catalog-product-price" data-base-price="4400">4 400 RUB</p>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- 7 -->
-                <div onclick="openProductModal(7)" class="catalog-product-card group">
-                    <div class="p-3">
-                        <div class="catalog-photo-slot aspect-square bg-[#f1f5f9] p-4 relative mb-3">
-                            <img src="photo/BeautyONFull.jpg" onerror="this.remove();" alt="Спрей для волос">
-                        </div>
-                        <div class="catalog-product-body p-0">
-                            <span class="catalog-category-pill mb-2">Спрей для волос BeautyOnFull</span>
-                            <h3 class="catalog-product-name group-hover:text-purple-600 transition-colors">Спрей для волос</h3>
-                            <p class="catalog-product-price" data-base-price="4400">4 400 RUB</p>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- 8 -->
-                <div onclick="openProductModal(8)" class="catalog-product-card group">
-                    <div class="p-3">
-                        <div class="catalog-photo-slot aspect-square bg-[#f1f5f9] p-4 relative mb-3">
-                            <img src="photo/Гель-бальзам для тела ActiveFull.jpg" onerror="this.remove();" alt="Гель-бальзам">
-                        </div>
-                        <div class="catalog-product-body p-0">
-                            <span class="catalog-category-pill mb-2">Гель-бальзам для тела ActiveFull</span>
-                            <h3 class="catalog-product-name group-hover:text-purple-600 transition-colors">Гель-бальзам</h3>
-                            <p class="catalog-product-price" data-base-price="4400">4 400 RUB</p>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- 9 -->
-                <div onclick="openProductModal(9)" class="catalog-product-card group">
-                    <div class="p-3">
-                        <div class="catalog-photo-slot aspect-square bg-[#f1f5f9] p-4 relative mb-3">
-                            <img src="photo/Крем для рук BeautyONFull.jpg" onerror="this.remove();" alt="Крем для рук">
-                        </div>
-                        <div class="catalog-product-body p-0">
-                            <span class="catalog-category-pill mb-2">Крем для рук BeautyOnFull</span>
-                            <h3 class="catalog-product-name group-hover:text-purple-600 transition-colors">Крем для рук</h3>
-                            <p class="catalog-product-price" data-base-price="3080">3 080 RUB</p>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- 10 -->
-                <div onclick="openProductModal(10)" class="catalog-product-card group">
-                    <div class="p-3">
-                        <div class="catalog-photo-slot aspect-square bg-[#f1f5f9] p-4 relative mb-3">
-                            <img src="photo/Масло Flex Oil (Флекс ойл).jpg" onerror="this.remove();" alt="Эликсир из пяти масел">
-                        </div>
-                        <div class="catalog-product-body p-0">
-                            <span class="catalog-category-pill mb-2">Масло Flex Oil (Флекс ойл)</span>
-                            <h3 class="catalog-product-name group-hover:text-purple-600 transition-colors">Эликсир из пяти масел</h3>
-                            <p class="catalog-product-price" data-base-price="7040">7 040 RUB</p>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- 11 -->
-                <div onclick="openProductModal(11)" class="catalog-product-card group">
-                    <div class="p-3">
-                        <div class="catalog-photo-slot aspect-square bg-[#f1f5f9] p-4 relative mb-3">
-                            <div class="absolute top-2 right-2 w-10 h-10 bg-red-600 rounded-full flex items-center justify-center shadow-md animate-pulse z-10">
-                                <span class="text-white text-[9px] font-black uppercase">NEW</span>
-                            </div>
-                            <img src="photo/Комплекс Meta-ON (Мета-ОН).jpg" onerror="this.remove();" alt="Антивозрастной комплекс">
-                        </div>
-                        <div class="catalog-product-body p-0">
-                            <span class="catalog-category-pill mb-2">Комплекс Meta-ON (Мета-ОН)</span>
-                            <h3 class="catalog-product-name group-hover:text-purple-600 transition-colors">Антивозрастной комплекс</h3>
-                            <p class="catalog-product-price" data-base-price="10032">10 032 RUB</p>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- 12 -->
-                <div onclick="openProductModal(12)" class="catalog-product-card group">
-                    <div class="p-3">
-                        <div class="catalog-photo-slot aspect-square bg-[#f1f5f9] p-4 relative mb-3">
-                            <div class="absolute top-2 right-2 w-10 h-10 bg-red-600 rounded-full flex items-center justify-center shadow-md animate-pulse z-10">
-                                <span class="text-white text-[9px] font-black uppercase">NEW</span>
-                            </div>
-                            <img src="photo/FULL-Carnitine (Фулл - карнитин).jpg" onerror="this.remove();" alt="Мощь L-карнитина с фуллереном">
-                        </div>
-                        <div class="catalog-product-body p-0">
-                            <span class="catalog-category-pill mb-2">FULL-Carnitine (Фулл - карнитин)</span>
-                            <h3 class="catalog-product-name group-hover:text-purple-600 transition-colors">Мощь L-карнитина с фуллереном</h3>
-                            <p class="catalog-product-price" data-base-price="7040">7 040 RUB</p>
-                        </div>
-                    </div>
-                </div>
-
             </div>
+
+            <!-- Сетка продуктов (рендерится динамически из productsData) -->
+            <div id="catalog-grid" class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6"></div>
 
             <footer class="mt-12 text-center text-[10px] text-purple-700/50 tracking-widest uppercase pb-4">
                 &copy; 2026 Матвеевы Сергей и Олеся
@@ -1434,13 +1368,13 @@
                         <div>
                             <label class="block text-xs font-bold uppercase tracking-wider text-slate-500 mb-2">Ваш бизнес-пакет (влияет на % инвайт-бонуса):</label>
                             <div class="grid grid-cols-3 gap-2" id="calc-pkg-selector">
-                                <button type="button" onclick="setCalcRate(0.10, this)" class="calc-pkg-btn py-2 px-3 rounded-xl border border-slate-200 bg-white text-xs font-bold text-slate-700 hover:border-purple-400 transition-all">
+                                <button type="button" onclick="setCalcRate(0.10, this)" class="calc-pkg-btn py-2 px-3 rounded-xl border border-slate-200 bg-white text-xs font-bold text-slate-700 hover:border-purple-400 transition-all cursor-pointer">
                                     X1 / X2 (10%)
                                 </button>
-                                <button type="button" onclick="setCalcRate(0.20, this)" class="calc-pkg-btn py-2 px-3 rounded-xl border border-slate-200 bg-white text-xs font-bold text-slate-700 hover:border-purple-400 transition-all">
+                                <button type="button" onclick="setCalcRate(0.20, this)" class="calc-pkg-btn py-2 px-3 rounded-xl border border-slate-200 bg-white text-xs font-bold text-slate-700 hover:border-purple-400 transition-all cursor-pointer">
                                     X3 / X5 (20%)
                                 </button>
-                                <button type="button" onclick="setCalcRate(0.30, this)" class="calc-pkg-btn py-2 px-3 rounded-xl border-2 border-purple-600 bg-purple-600 text-white text-xs font-bold shadow-sm transition-all">
+                                <button type="button" onclick="setCalcRate(0.30, this)" class="calc-pkg-btn py-2 px-3 rounded-xl border-2 border-purple-600 bg-purple-600 text-white text-xs font-bold shadow-sm transition-all cursor-pointer">
                                     VIP / Premium (30%)
                                 </button>
                             </div>
@@ -1474,11 +1408,17 @@
                             </div>
                         </div>
 
-                        <!-- Итоговое табло -->
-                        <div class="bg-gradient-to-r from-purple-900 via-indigo-900 to-purple-950 text-white p-5 rounded-2xl text-center shadow-lg">
-                            <span class="text-xs uppercase tracking-widest text-purple-200 block mb-1">Ориентировочный доход за месяц:</span>
-                            <div id="calc-total-income" class="text-2xl sm:text-3xl font-black text-amber-300">22 200 RUB</div>
-                            <p class="text-[11px] text-purple-200/80 mt-2">
+                        <!-- Итоговое табло с детализацией -->
+                        <div class="bg-gradient-to-r from-purple-900 via-indigo-900 to-purple-950 text-white p-5 rounded-2xl text-center shadow-lg space-y-3">
+                            <div>
+                                <span class="text-xs uppercase tracking-widest text-purple-200 block mb-1">Ориентировочный доход за месяц:</span>
+                                <div id="calc-total-income" class="text-2xl sm:text-3xl font-black text-amber-300">22 200 RUB</div>
+                            </div>
+                            <div class="flex justify-center gap-4 text-[11px] text-purple-200 border-t border-white/10 pt-2.5">
+                                <span>Клиентский бонус: <strong id="calc-client-sum" class="text-white">13 200 ₽</strong></span>
+                                <span>Инвайт-бонус: <strong id="calc-partner-sum" class="text-white">9 000 ₽</strong></span>
+                            </div>
+                            <p class="text-[11px] text-purple-200/80">
                                 * Без учета бинарного, матчинг и структурного бонусов от глубины команды
                             </p>
                         </div>
@@ -1670,27 +1610,27 @@
                 <section>
                     <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5">
                         <div>
-                            <div class="marketing-feature-img"><img src="photo/9.jpg" onerror="this.remove();" alt="бизнес под ключ"></div>
+                            <div class="marketing-feature-img"><img src="photo/9.jpg" loading="lazy" onerror="this.remove();" alt="бизнес под ключ"></div>
                             <p class="marketing-feature-caption">бизнес под ключ</p>
                         </div>
                         <div>
-                            <div class="marketing-feature-img"><img src="photo/10.jpg" onerror="this.remove();" alt="Пройди регистрацию"></div>
+                            <div class="marketing-feature-img"><img src="photo/10.jpg" loading="lazy" onerror="this.remove();" alt="Пройди регистрацию"></div>
                             <p class="marketing-feature-caption">Пройди регистрацию</p>
                         </div>
                         <div>
-                            <div class="marketing-feature-img"><img src="photo/11.jpg" onerror="this.remove();" alt="Подключи свой магазин"></div>
+                            <div class="marketing-feature-img"><img src="photo/11.jpg" loading="lazy" onerror="this.remove();" alt="Подключи свой магазин"></div>
                             <p class="marketing-feature-caption">Подключи свой магазин</p>
                         </div>
                         <div>
-                            <div class="marketing-feature-img"><img src="photo/12.jpg" onerror="this.remove();" alt="бизнес без затрат и рисков"></div>
+                            <div class="marketing-feature-img"><img src="photo/12.jpg" loading="lazy" onerror="this.remove();" alt="бизнес без затрат и рисков"></div>
                             <p class="marketing-feature-caption">бизнес без затрат и рисков</p>
                         </div>
                         <div>
-                            <div class="marketing-feature-img"><img src="photo/13.jpg" onerror="this.remove();" alt="твой доход растет"></div>
+                            <div class="marketing-feature-img"><img src="photo/13.jpg" loading="lazy" onerror="this.remove();" alt="твой доход растет"></div>
                             <p class="marketing-feature-caption">твой доход растет</p>
                         </div>
                         <div>
-                            <div class="marketing-feature-img"><img src="photo/14.jpg" onerror="this.remove();" alt="масштабируй бизнес"></div>
+                            <div class="marketing-feature-img"><img src="photo/14.jpg" loading="lazy" onerror="this.remove();" alt="масштабируй бизнес"></div>
                             <p class="marketing-feature-caption">масштабируй бизнес</p>
                         </div>
                     </div>
@@ -1706,6 +1646,18 @@
         <!-- ======================= /МАРКЕТИНГ ======================= -->
 
     </div> <!-- Закрытие контейнера max-w-6xl -->
+
+    <!-- Кнопка «Наверх» -->
+    <button id="scroll-top-btn" type="button" onclick="window.scrollTo({top: 0, behavior: 'smooth'})" aria-label="Наверх"
+            class="fixed right-4 bottom-20 sm:bottom-24 z-30 w-10 h-10 rounded-full bg-white/90 backdrop-blur-md border border-purple-200 text-purple-700 shadow-lg flex items-center justify-center opacity-0 pointer-events-none translate-y-2 transition-all duration-300 hover:bg-purple-600 hover:text-white cursor-pointer">
+        <i class="fa-solid fa-arrow-up text-sm"></i>
+    </button>
+
+    <!-- Всплывающее уведомление о копировании -->
+    <div id="copy-toast" class="fixed top-6 left-1/2 -translate-x-1/2 z-50 bg-slate-900/95 text-white text-xs sm:text-sm font-semibold px-4 py-2.5 rounded-full shadow-xl border border-white/10 flex items-center gap-2 opacity-0 pointer-events-none -translate-y-3 transition-all duration-300">
+        <i class="fa-solid fa-check text-emerald-400"></i>
+        <span id="copy-toast-text">Скопировано</span>
+    </div>
 
     <!-- Нижняя навигация -->
     <nav class="bottom-nav fixed bottom-0 left-0 right-0 z-40">
@@ -1743,10 +1695,22 @@
     <div id="product-modal" class="fixed inset-0 bg-slate-900/60 backdrop-blur-md z-50 flex items-center justify-center opacity-0 pointer-events-none transition-all duration-300 overflow-y-auto p-4 sm:p-6">
         <div class="max-w-5xl w-full bg-white rounded-3xl shadow-2xl p-6 sm:p-8 relative transform scale-95 transition-transform duration-300 max-h-[90vh] overflow-y-auto" id="product-modal-content">
 
-            <!-- Кнопка закрытия модалки -->
-            <button onclick="closeProductModal()" class="absolute top-4 right-4 text-slate-400 hover:text-slate-600 p-2 rounded-full hover:bg-slate-100 transition-colors z-10">
-                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="6" x2="6" y2="18"></line><line x1="6" y1="6" x2="18" y2="18"></line></svg>
-            </button>
+            <!-- Верхняя панель навигации в модалке (Предыдущий / Следующий / Закрыть) -->
+            <div class="flex items-center justify-between mb-4 pb-3 border-b border-slate-100">
+                <div class="flex items-center gap-2">
+                    <button type="button" onclick="navigateProductModal(-1)" title="Предыдущий товар (←)" class="w-9 h-9 rounded-full border border-slate-200 text-slate-600 hover:text-purple-700 hover:border-purple-300 hover:bg-purple-50 flex items-center justify-center transition-colors cursor-pointer">
+                        <i class="fa-solid fa-chevron-left text-xs"></i>
+                    </button>
+                    <button type="button" onclick="navigateProductModal(1)" title="Следующий товар (→)" class="w-9 h-9 rounded-full border border-slate-200 text-slate-600 hover:text-purple-700 hover:border-purple-300 hover:bg-purple-50 flex items-center justify-center transition-colors cursor-pointer">
+                        <i class="fa-solid fa-chevron-right text-xs"></i>
+                    </button>
+                    <span id="modal-product-counter" class="text-xs font-bold text-slate-400 ml-1">1 / 12</span>
+                </div>
+
+                <button type="button" onclick="closeProductModal()" class="text-slate-400 hover:text-slate-700 p-2 rounded-full hover:bg-slate-100 transition-colors cursor-pointer">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="6" x2="6" y2="18"></line><line x1="6" y1="6" x2="18" y2="18"></line></svg>
+                </button>
+            </div>
 
             <div class="grid grid-cols-1 md:grid-cols-12 gap-8 items-start">
 
@@ -1795,7 +1759,7 @@
 
                     <div class="space-y-2">
                         <div class="border border-slate-200/80 rounded-xl overflow-hidden">
-                            <button onclick="toggleAccordion('modal-acc-1')" class="w-full flex items-center justify-between py-3 px-4 bg-white hover:bg-slate-50 text-slate-900 font-bold text-sm transition-colors text-left">
+                            <button type="button" onclick="toggleAccordion('modal-acc-1')" class="w-full flex items-center justify-between py-3 px-4 bg-white hover:bg-slate-50 text-slate-900 font-bold text-sm transition-colors text-left cursor-pointer">
                                 Что это такое?
                                 <i id="modal-acc-1-arrow" class="fa-solid fa-chevron-down text-slate-400 text-xs transition-transform duration-200"></i>
                             </button>
@@ -1803,7 +1767,7 @@
                         </div>
 
                         <div class="border border-slate-200/80 rounded-xl overflow-hidden">
-                            <button onclick="toggleAccordion('modal-acc-2')" class="w-full flex items-center justify-between py-3 px-4 bg-white hover:bg-slate-50 text-slate-900 font-bold text-sm transition-colors text-left">
+                            <button type="button" onclick="toggleAccordion('modal-acc-2')" class="w-full flex items-center justify-between py-3 px-4 bg-white hover:bg-slate-50 text-slate-900 font-bold text-sm transition-colors text-left cursor-pointer">
                                 Главные преимущества
                                 <i id="modal-acc-2-arrow" class="fa-solid fa-chevron-down text-slate-400 text-xs transition-transform duration-200"></i>
                             </button>
@@ -1812,19 +1776,26 @@
                     </div>
 
                     <!-- Стоимость и кнопки -->
-                    <div class="bg-slate-50/80 rounded-2xl p-4 sm:p-5 flex flex-col sm:flex-row items-center justify-between gap-4 border border-slate-100/50">
-                        <div class="text-center sm:text-left">
-                            <span class="text-xs text-slate-400 block mb-1">Стоимость:</span>
-                            <div id="modal-product-price" class="text-xl sm:text-2xl font-black text-slate-950">4 400 RUB</div>
+                    <div class="bg-slate-50/80 rounded-2xl p-4 sm:p-5 space-y-3 border border-slate-100/50">
+                        <div class="flex flex-col sm:flex-row items-center justify-between gap-4">
+                            <div class="text-center sm:text-left">
+                                <span class="text-xs text-slate-400 block mb-1">Стоимость:</span>
+                                <div id="modal-product-price" class="text-xl sm:text-2xl font-black text-slate-950">4 400 RUB</div>
+                            </div>
+                            <div class="flex flex-col sm:flex-row gap-2.5 w-full sm:w-auto">
+                                <a id="modal-product-shop-link" href="" target="_blank" rel="noopener noreferrer" class="text-center py-3.5 px-6 rounded-2xl font-extrabold text-white bg-gradient-to-r from-orange-500 to-orange-600 hover:from-orange-600 hover:to-orange-700 shadow-lg shadow-orange-500/10 hover:shadow-orange-500/25 transition-all text-xs sm:text-sm uppercase tracking-wide">
+                                    Купить в магазине
+                                </a>
+                                <a href="https://my.full-en.com/register.php?code=12055CB0-FFF9" target="_blank" rel="noopener noreferrer" class="text-center py-3.5 px-5 rounded-2xl font-bold text-emerald-900 bg-emerald-100 hover:bg-emerald-200 border border-emerald-300 transition-all text-xs sm:text-sm">
+                                    Скидка 30%
+                                </a>
+                            </div>
                         </div>
-                        <div class="flex flex-col sm:flex-row gap-2.5 w-full sm:w-auto">
-                            <a id="modal-product-shop-link" href="" target="_blank" rel="noopener noreferrer" class="text-center py-3.5 px-6 rounded-2xl font-extrabold text-white bg-gradient-to-r from-orange-500 to-orange-600 hover:from-orange-600 hover:to-orange-700 shadow-lg shadow-orange-500/10 hover:shadow-orange-500/25 transition-all text-xs sm:text-sm uppercase tracking-wide">
-                                Купить в магазине
-                            </a>
-                            <a href="https://my.full-en.com/register.php?code=12055CB0-FFF9" target="_blank" rel="noopener noreferrer" class="text-center py-3.5 px-5 rounded-2xl font-bold text-emerald-900 bg-emerald-100 hover:bg-emerald-200 border border-emerald-300 transition-all text-xs sm:text-sm">
-                                Скидка 30%
-                            </a>
-                        </div>
+
+                        <a id="modal-product-tg-ask" href="https://t.me/Serge1Matveev" target="_blank" rel="noopener noreferrer" class="w-full flex items-center justify-center gap-2 py-2.5 px-4 rounded-xl bg-sky-50 hover:bg-sky-100 text-sky-800 border border-sky-200 text-xs font-bold transition-colors">
+                            <i class="fa-brands fa-telegram text-sm text-sky-600"></i>
+                            Задать вопрос по продукту в Telegram
+                        </a>
                     </div>
 
                 </div>
@@ -1836,7 +1807,7 @@
 
     <!-- Модалка обычного лайтбокса -->
     <div id="lightbox" class="fixed inset-0 bg-slate-950/80 backdrop-blur-xl z-50 flex items-center justify-center opacity-0 pointer-events-none transition-all duration-300">
-        <button id="lightbox-close" class="absolute top-6 right-6 text-white/70 hover:text-white bg-white/10 hover:bg-white/20 p-3 rounded-full border border-white/10 backdrop-blur-md transition-all z-50">
+        <button id="lightbox-close" type="button" class="absolute top-6 right-6 text-white/70 hover:text-white bg-white/10 hover:bg-white/20 p-3 rounded-full border border-white/10 backdrop-blur-md transition-all z-50 cursor-pointer">
             <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="6" x2="6" y2="18"></line><line x1="6" y1="6" x2="18" y2="18"></line></svg>
         </button>
         <div class="max-w-[90vw] max-h-[85vh] p-2 crystal-glass rounded-2xl shadow-2xl relative transform scale-95 transition-transform duration-300" id="lightbox-content">
@@ -1844,13 +1815,15 @@
         </div>
     </div>
 
-    <!-- База данных продуктов + Скидка 30% + Калькулятор -->
+    <!-- База данных продуктов + Каталог + Скидка 30% + Калькулятор -->
     <script>
         let isDiscountActive = false;
         let currentOpenProductId = null;
+        let currentCatalogCategory = 'all';
 
         const productsData = {
             1: {
+                category: "oils",
                 badge: "Фуллерен C60 Утро",
                 title: "Конопляное масло",
                 basePrice: 4400,
@@ -1867,6 +1840,7 @@
                 link: "https://shop.full-en.com/products/morning?code=59D573B5-7B9A"
             },
             2: {
+                category: "oils",
                 badge: "Фуллерен C60 День",
                 title: "Оливковое масло",
                 basePrice: 4400,
@@ -1883,6 +1857,7 @@
                 link: "https://shop.full-en.com/products/day?code=59D573B5-7B9A"
             },
             3: {
+                category: "oils",
                 badge: "Фуллерен C60 Вечер",
                 title: "Тыквенное масло",
                 basePrice: 4400,
@@ -1899,6 +1874,7 @@
                 link: "https://shop.full-en.com/products/night?code=59D573B5-7B9A"
             },
             4: {
+                category: "care",
                 badge: "Фуллерен C60 Гель",
                 title: "Регенерирующий гель",
                 basePrice: 4400,
@@ -1915,6 +1891,7 @@
                 link: "https://shop.full-en.com/products/activefull_gel?code=59D573B5-7B9A"
             },
             5: {
+                category: "oils",
                 badge: "Фуллерен C60 Aqua Power",
                 title: "Aqua фуллерен",
                 basePrice: 4400,
@@ -1931,6 +1908,7 @@
                 link: "https://shop.full-en.com/products/aquapower?code=59D573B5-7B9A"
             },
             6: {
+                category: "care",
                 badge: "BeautyOnFull сыворотка",
                 title: "Serum фуллерен",
                 basePrice: 4400,
@@ -1947,6 +1925,7 @@
                 link: "https://shop.full-en.com/products/beautyonfull?code=59D573B5-7B9A"
             },
             7: {
+                category: "care",
                 badge: "Спрей для волос BeautyOnFull",
                 title: "Спрей для волос",
                 basePrice: 4400,
@@ -1963,6 +1942,7 @@
                 link: "https://shop.full-en.com/products/hairspray?code=59D573B5-7B9A"
             },
             8: {
+                category: "care",
                 badge: "Гель-бальзам для тела ActiveFull",
                 title: "Гель-бальзам",
                 basePrice: 4400,
@@ -1979,6 +1959,7 @@
                 link: "https://shop.full-en.com/products/activefull?code=59D573B5-7B9A"
             },
             9: {
+                category: "care",
                 badge: "Крем для рук BeautyOnFull",
                 title: "Крем для рук",
                 basePrice: 3080,
@@ -1995,6 +1976,7 @@
                 link: "https://shop.full-en.com/products/handcream?code=59D573B5-7B9A"
             },
             10: {
+                category: "oils",
                 badge: "Масло Flex Oil (Флекс ойл)",
                 title: "Эликсир из пяти масел",
                 basePrice: 7040,
@@ -2011,6 +1993,7 @@
                 link: "https://shop.full-en.com/products/flexoil?code=59D573B5-7B9A"
             },
             11: {
+                category: "active",
                 badge: "Комплекс Meta-ON (Мета-ОН)",
                 title: "Антивозрастной комплекс",
                 basePrice: 10032,
@@ -2027,6 +2010,7 @@
                 link: "https://shop.full-en.com/products/metaon?code=59D573B5-7B9A"
             },
             12: {
+                category: "active",
                 badge: "FULL-Carnitine (Фулл - карнитин)",
                 title: "Мощь L-карнитина с фуллереном",
                 basePrice: 7040,
@@ -2041,14 +2025,125 @@
                 about: "Сбалансированная питьевая формула, содержащая биодоступный L-карнитин и антиоксидантные сферы фуллерена С60, защищающие клетки от закисления.",
                 benefits: "Транспортирует жирные кислоты в митохондрии для выработки энергии, ускоряет сушку тела, бережет сердечную мышцу при пульсовых нагрузках.",
                 link: "https://shop.full-en.com/products/fullcarnitine?code=59D573B5-7B9A"
+            },
+            13: {
+                category: "active",
+                isNew: true,
+                badge: "Adaptation Pro Max",
+                title: "Функциональное желе с комплексом адаптогенов",
+                basePrice: 5016,
+                img: "photo/adaptation-pro-max.jpg",
+                desc: "Функциональное желе с комплексом адаптогенов. Упаковка: 20 стиков по 20 г.",
+                bullets: [
+                    "Функциональное желе с комплексом адаптогенов",
+                    "Формат индивидуальных стиков",
+                    "20 стиков по 20 г в упаковке"
+                ],
+                about: "Adaptation Pro Max — функциональное желе с комплексом адаптогенов. На изображении упаковки указано: 20 стиков по 20 г.",
+                benefits: "Информация о продукте на сайте партнёров: функциональное желе с комплексом адаптогенов. Подробные свойства и состав следует сверять с официальной упаковкой и описанием производителя.",
+                link: "https://shop.full-en.com/products?code=59D573B5-7B9A"
+            },
+            14: {
+                category: "active",
+                isNew: true,
+                badge: "Pro Relax",
+                title: "Функциональное антистресс-желе",
+                basePrice: 5016,
+                img: "photo/pro-relax.jpg",
+                desc: "Функциональное антистресс-желе. Упаковка: 20 стиков по 20 г.",
+                bullets: [
+                    "Функциональное антистресс-желе",
+                    "Формат индивидуальных стиков",
+                    "20 стиков по 20 г в упаковке"
+                ],
+                about: "Pro Relax — функциональное антистресс-желе. На изображении упаковки указано: 20 стиков по 20 г.",
+                benefits: "Информация о продукте на сайте партнёров: функциональное антистресс-желе. Подробные свойства и состав следует сверять с официальной упаковкой и описанием производителя.",
+                link: "https://shop.full-en.com/products?code=59D573B5-7B9A"
+            },
+            15: {
+                category: "active",
+                isNew: true,
+                badge: "Energy Max",
+                title: "Функциональное желе для энергии и бодрости",
+                basePrice: 5016,
+                img: "photo/energy-max.jpg",
+                desc: "Функциональное желе для энергии и бодрости. Упаковка: 20 стиков по 20 г.",
+                bullets: [
+                    "Функциональное желе для энергии и бодрости",
+                    "Формат индивидуальных стиков",
+                    "20 стиков по 20 г в упаковке"
+                ],
+                about: "Energy Max — функциональное желе для энергии и бодрости. На изображении упаковки указано: 20 стиков по 20 г.",
+                benefits: "Информация о продукте на сайте партнёров: функциональное желе для энергии и бодрости. Подробные свойства и состав следует сверять с официальной упаковкой и описанием производителя.",
+                link: "https://shop.full-en.com/products?code=59D573B5-7B9A"
             }
         };
+
+        const productIds = Object.keys(productsData).map(Number);
 
         function formatPriceHtml(basePrice, withDiscount) {
             const formattedBase = basePrice.toLocaleString('ru-RU') + ' RUB';
             if (!withDiscount) return formattedBase;
             const discounted = Math.round(basePrice * 0.7).toLocaleString('ru-RU') + ' RUB';
             return `<span class="text-emerald-600 font-black">${discounted}</span> <span class="line-through text-slate-400 text-xs font-medium ml-1">${formattedBase}</span>`;
+        }
+
+        function setCatalogCategory(category, btnEl) {
+            currentCatalogCategory = category;
+            document.querySelectorAll('#catalog-filters .filter-chip').forEach(chip => chip.classList.remove('active'));
+            if (btnEl) btnEl.classList.add('active');
+            renderCatalogGrid();
+        }
+
+        function renderCatalogGrid() {
+            const grid = document.getElementById('catalog-grid');
+            if (!grid) return;
+
+            const searchInput = document.getElementById('catalog-search');
+            const query = searchInput ? searchInput.value.trim().toLowerCase() : '';
+
+            const filteredEntries = Object.entries(productsData).filter(([, item]) => {
+                const matchCat = currentCatalogCategory === 'all' || item.category === currentCatalogCategory;
+                const matchQuery = !query ||
+                    item.title.toLowerCase().includes(query) ||
+                    item.badge.toLowerCase().includes(query) ||
+                    item.desc.toLowerCase().includes(query);
+                return matchCat && matchQuery;
+            });
+
+            if (filteredEntries.length === 0) {
+                grid.innerHTML = `
+                    <div class="col-span-full text-center py-12 bg-white rounded-2xl border border-slate-200/70">
+                        <p class="text-sm font-bold text-slate-700">По вашему запросу ничего не найдено</p>
+                        <button type="button" onclick="document.getElementById('catalog-search').value=''; setCatalogCategory('all', document.querySelector('#catalog-filters .filter-chip'));" class="mt-3 text-xs font-bold text-purple-700 hover:underline cursor-pointer">
+                            Сбросить фильтр
+                        </button>
+                    </div>
+                `;
+                return;
+            }
+
+            grid.innerHTML = filteredEntries.map(([id, item]) => `
+                <div onclick="openProductModal(${id})" class="catalog-product-card group">
+                    <div class="p-3 flex-1 flex flex-col">
+                        <div class="catalog-photo-slot aspect-square bg-[#f1f5f9] p-4 relative mb-3">
+                            ${item.isNew ? `
+                                <div class="absolute top-2 right-2 w-10 h-10 bg-red-600 rounded-full flex items-center justify-center shadow-md z-10">
+                                    <span class="text-white text-[9px] font-black uppercase">NEW</span>
+                                </div>
+                            ` : ''}
+                            <img src="${item.img}" loading="lazy" onerror="this.remove();" alt="${item.title}">
+                        </div>
+                        <div class="catalog-product-body p-0">
+                            <div>
+                                <span class="catalog-category-pill mb-2">${item.badge}</span>
+                                <h3 class="catalog-product-name group-hover:text-purple-600 transition-colors">${item.title}</h3>
+                            </div>
+                            <p class="catalog-product-price" data-base-price="${item.basePrice}">${formatPriceHtml(item.basePrice, isDiscountActive)}</p>
+                        </div>
+                    </div>
+                </div>
+            `).join('');
         }
 
         function toggleDiscountPrices(checked) {
@@ -2065,13 +2160,19 @@
         function openProductModal(id) {
             const product = productsData[id];
             if (!product) return;
-            currentOpenProductId = id;
+            currentOpenProductId = Number(id);
+
+            const idx = productIds.indexOf(currentOpenProductId);
+            document.getElementById('modal-product-counter').innerText = `${idx + 1} / ${productIds.length}`;
 
             document.getElementById('modal-product-badge').innerText = product.badge;
             document.getElementById('modal-product-title').innerText = product.title;
             document.getElementById('modal-product-desc').innerText = product.desc;
             document.getElementById('modal-product-price').innerHTML = formatPriceHtml(product.basePrice, isDiscountActive);
             document.getElementById('modal-product-shop-link').href = product.link;
+
+            const tgQuestion = encodeURIComponent(`Здравствуйте! Пишу с сайта, хочу узнать подробнее про «${product.badge} — ${product.title}»`);
+            document.getElementById('modal-product-tg-ask').href = `https://t.me/Serge1Matveev?text=${tgQuestion}`;
 
             // Безопасная подгрузка картинки с фоллбэком 🧬
             const imgContainer = document.getElementById('modal-img-container');
@@ -2097,16 +2198,24 @@
             const modal = document.getElementById('product-modal');
             const content = document.getElementById('product-modal-content');
             modal.classList.remove('opacity-0', 'pointer-events-none');
-            setTimeout(() => {
+            requestAnimationFrame(() => {
                 content.classList.remove('scale-95');
                 content.classList.add('scale-100');
-            }, 50);
+            });
             document.body.classList.add('overflow-hidden');
+        }
+
+        function navigateProductModal(direction) {
+            if (!currentOpenProductId) return;
+            const currentIdx = productIds.indexOf(currentOpenProductId);
+            const nextIdx = (currentIdx + direction + productIds.length) % productIds.length;
+            openProductModal(productIds[nextIdx]);
         }
 
         function closeProductModal() {
             const modal = document.getElementById('product-modal');
             const content = document.getElementById('product-modal-content');
+            currentOpenProductId = null;
             content.classList.remove('scale-100');
             content.classList.add('scale-95');
             setTimeout(() => {
@@ -2126,14 +2235,45 @@
             if (e.target === document.getElementById('product-modal')) closeProductModal();
         });
 
+        // Копирование контактов в буфер обмена с уведомлением
+        let copyToastTimeout = null;
+        function copyContact(text) {
+            if (navigator.clipboard && navigator.clipboard.writeText) {
+                navigator.clipboard.writeText(text).then(() => showCopyToast(`Скопировано: ${text}`));
+            } else {
+                const tmp = document.createElement('input');
+                tmp.value = text;
+                document.body.appendChild(tmp);
+                tmp.select();
+                document.execCommand('copy');
+                tmp.remove();
+                showCopyToast(`Скопировано: ${text}`);
+            }
+        }
+
+        function showCopyToast(message) {
+            const toast = document.getElementById('copy-toast');
+            const toastText = document.getElementById('copy-toast-text');
+            if (!toast || !toastText) return;
+            toastText.innerText = message;
+            toast.classList.remove('opacity-0', 'pointer-events-none', '-translate-y-3');
+            toast.classList.add('opacity-100', 'translate-y-0');
+
+            clearTimeout(copyToastTimeout);
+            copyToastTimeout = setTimeout(() => {
+                toast.classList.add('opacity-0', 'pointer-events-none', '-translate-y-3');
+                toast.classList.remove('opacity-100', 'translate-y-0');
+            }, 2200);
+        }
+
         // Логика калькулятора дохода
         let calcInviteRate = 0.30;
         function setCalcRate(rate, btnEl) {
             calcInviteRate = rate;
             document.querySelectorAll('.calc-pkg-btn').forEach(btn => {
-                btn.className = "calc-pkg-btn py-2 px-3 rounded-xl border border-slate-200 bg-white text-xs font-bold text-slate-700 hover:border-purple-400 transition-all";
+                btn.className = "calc-pkg-btn py-2 px-3 rounded-xl border border-slate-200 bg-white text-xs font-bold text-slate-700 hover:border-purple-400 transition-all cursor-pointer";
             });
-            btnEl.className = "calc-pkg-btn py-2 px-3 rounded-xl border-2 border-purple-600 bg-purple-600 text-white text-xs font-bold shadow-sm transition-all";
+            btnEl.className = "calc-pkg-btn py-2 px-3 rounded-xl border-2 border-purple-600 bg-purple-600 text-white text-xs font-bold shadow-sm transition-all cursor-pointer";
             updateIncomeCalc();
         }
 
@@ -2152,12 +2292,16 @@
 
             const total = clientBonus + partnerBonus;
             document.getElementById('calc-total-income').innerText = total.toLocaleString('ru-RU') + ' RUB';
+            document.getElementById('calc-client-sum').innerText = clientBonus.toLocaleString('ru-RU') + ' ₽';
+            document.getElementById('calc-partner-sum').innerText = partnerBonus.toLocaleString('ru-RU') + ' ₽';
         }
     </script>
 
-    <!-- Навигация между страницами + поддержка URL-хэшей -->
+    <!-- Навигация между страницами + поддержка URL-хэшей + Reveal анимации -->
     <script>
         document.addEventListener('DOMContentLoaded', () => {
+            renderCatalogGrid();
+
             const pages = {
                 home: document.getElementById('page-home'),
                 about: document.getElementById('page-about'),
@@ -2182,6 +2326,9 @@
                     const hashValue = scrollTarget ? `#${scrollTarget}` : (pageName === 'home' ? '#home' : `#${pageName}`);
                     history.pushState(null, null, hashValue);
                 }
+
+                // Сообщаем 3D-модели С60 о смене вкладки (чтобы не тратить ресурсы в фоне)
+                window.dispatchEvent(new CustomEvent('pagechange', { detail: { page: pageName } }));
 
                 if (scrollTarget === 'contacts') {
                     setTimeout(() => {
@@ -2224,10 +2371,39 @@
                     }
                 });
             });
+
+            // Плавное появление блоков при прокрутке
+            const revealBlocks = document.querySelectorAll('.reveal-block');
+            if ('IntersectionObserver' in window) {
+                const observer = new IntersectionObserver((entries) => {
+                    entries.forEach(entry => {
+                        if (entry.isIntersecting) {
+                            entry.target.classList.add('is-visible');
+                            observer.unobserve(entry.target);
+                        }
+                    });
+                }, { threshold: 0.08 });
+                revealBlocks.forEach(el => observer.observe(el));
+            } else {
+                revealBlocks.forEach(el => el.classList.add('is-visible'));
+            }
+
+            // Кнопка «Наверх» при прокрутке вниз
+            const scrollTopBtn = document.getElementById('scroll-top-btn');
+            window.addEventListener('scroll', () => {
+                if (!scrollTopBtn) return;
+                if (window.scrollY > 450) {
+                    scrollTopBtn.classList.remove('opacity-0', 'pointer-events-none', 'translate-y-2');
+                    scrollTopBtn.classList.add('opacity-100', 'translate-y-0');
+                } else {
+                    scrollTopBtn.classList.add('opacity-0', 'pointer-events-none', 'translate-y-2');
+                    scrollTopBtn.classList.remove('opacity-100', 'translate-y-0');
+                }
+            }, { passive: true });
         });
     </script>
 
-    <!-- Скрипт Лайтбокса -->
+    <!-- Скрипт Лайтбокса и клавиатурной навигации -->
     <script>
         document.addEventListener('DOMContentLoaded', () => {
             const lightbox = document.getElementById('lightbox');
@@ -2243,10 +2419,10 @@
                     if (img) {
                         lightboxImg.src = img.src;
                         lightbox.classList.remove('opacity-0', 'pointer-events-none');
-                        setTimeout(() => {
+                        requestAnimationFrame(() => {
                             lightboxContent.classList.remove('scale-95');
                             lightboxContent.classList.add('scale-100');
-                        }, 50);
+                        });
                         document.body.classList.add('overflow-hidden');
                     }
                 });
@@ -2271,24 +2447,27 @@
                 if (e.key === 'Escape') {
                     closeLightbox();
                     closeProductModal();
+                } else if (currentOpenProductId && e.key === 'ArrowRight') {
+                    navigateProductModal(1);
+                } else if (currentOpenProductId && e.key === 'ArrowLeft') {
+                    navigateProductModal(-1);
                 }
             });
         });
     </script>
 
-    <!-- Скрипт интерактивного 3D Canvas C60 -->
+    <!-- Скрипт интерактивного 3D Canvas C60 (с инерцией и энергосбережением) -->
     <script>
         document.addEventListener('DOMContentLoaded', () => {
             const canvas = document.getElementById('c60Canvas');
-            if (!canvas) return;
+            const aboutPage = document.getElementById('page-about');
+            if (!canvas || !aboutPage) return;
 
             const ctx = canvas.getContext('2d');
-            let width = 520;
-            let height = 520;
-
-            const dpr = window.devicePixelRatio || 1;
-            canvas.width = width * dpr;
-            canvas.height = height * dpr;
+            const size = 520;
+            const dpr = Math.min(window.devicePixelRatio || 1, 2);
+            canvas.width = size * dpr;
+            canvas.height = size * dpr;
             ctx.scale(dpr, dpr);
 
             const phi = (1 + Math.sqrt(5)) / 2;
@@ -2329,16 +2508,17 @@
             const minDist = Math.min(...pairs.map(p => p.d));
             const edges = pairs.filter(p => p.d < minDist * 1.15).map(p => [p.i, p.j]);
 
-            let angleX = 0;
-            let angleY = 0;
+            let angleX = 0.2;
+            let angleY = 0.4;
+            let velX = 0.0025;
+            let velY = 0.005;
             let isDragging = false;
             let lastMouseX = 0;
             let lastMouseY = 0;
-            let autoRotate = true;
+            let rafId = null;
 
             canvas.addEventListener('mousedown', (e) => {
                 isDragging = true;
-                autoRotate = false;
                 lastMouseX = e.clientX;
                 lastMouseY = e.clientY;
             });
@@ -2347,38 +2527,43 @@
                 if (!isDragging) return;
                 const deltaX = e.clientX - lastMouseX;
                 const deltaY = e.clientY - lastMouseY;
-                angleY += deltaX * 0.01;
-                angleX += deltaY * 0.01;
+                velY = deltaX * 0.008;
+                velX = deltaY * 0.008;
+                angleY += velY;
+                angleX += velX;
                 lastMouseX = e.clientX;
                 lastMouseY = e.clientY;
             });
 
             window.addEventListener('mouseup', () => {
                 isDragging = false;
-                autoRotate = true;
             });
 
             canvas.addEventListener('touchstart', (e) => {
+                if (e.touches.length !== 1) return;
                 isDragging = true;
-                autoRotate = false;
                 lastMouseX = e.touches[0].clientX;
                 lastMouseY = e.touches[0].clientY;
             }, { passive: true });
 
             canvas.addEventListener('touchmove', (e) => {
-                if (!isDragging) return;
-                e.preventDefault(); 
+                if (!isDragging || e.touches.length !== 1) return;
                 const deltaX = e.touches[0].clientX - lastMouseX;
                 const deltaY = e.touches[0].clientY - lastMouseY;
-                angleY += deltaX * 0.01;
-                angleX += deltaY * 0.01;
+                // Блокируем скролл только при явном горизонтальном/круговом вращении
+                if (Math.abs(deltaX) > Math.abs(deltaY) * 0.8) {
+                    e.preventDefault();
+                }
+                velY = deltaX * 0.008;
+                velX = deltaY * 0.008;
+                angleY += velY;
+                angleX += velX;
                 lastMouseX = e.touches[0].clientX;
                 lastMouseY = e.touches[0].clientY;
             }, { passive: false });
 
             window.addEventListener('touchend', () => {
                 isDragging = false;
-                autoRotate = true;
             });
 
             function rotate3D(vertex, ax, ay) {
@@ -2393,14 +2578,19 @@
             }
 
             function draw() {
-                ctx.clearRect(0, 0, width, height);
+                if (!aboutPage.classList.contains('active') || document.hidden) {
+                    rafId = null;
+                    return;
+                }
+
+                ctx.clearRect(0, 0, size, size);
                 const rotated = vertices.map(v => rotate3D(v, angleX, angleY));
                 const projected = rotated.map(v => {
                     const [x, y, z] = v;
                     const fov = 280; 
                     const distance = 11;
                     const factor = fov / (distance + z);
-                    return { x: width / 2 + x * factor * 1.5, y: height / 2 + y * factor * 1.5, z: z };
+                    return { x: size / 2 + x * factor * 1.5, y: size / 2 + y * factor * 1.5, z: z };
                 });
 
                 const drawQueue = [];
@@ -2435,14 +2625,26 @@
                     }
                 }
 
-                if (autoRotate) {
-                    angleX += 0.0025;
-                    angleY += 0.005;
+                if (!isDragging) {
+                    angleX += velX;
+                    angleY += velY;
+                    // Плавное затухание инерции к базовому авто-вращению
+                    velX += (0.0025 - velX) * 0.04;
+                    velY += (0.005 - velY) * 0.04;
                 }
 
-                requestAnimationFrame(draw);
+                rafId = requestAnimationFrame(draw);
             }
-            draw();
+
+            function startLoopIfNeeded() {
+                if (aboutPage.classList.contains('active') && !document.hidden && !rafId) {
+                    rafId = requestAnimationFrame(draw);
+                }
+            }
+
+            window.addEventListener('pagechange', startLoopIfNeeded);
+            document.addEventListener('visibilitychange', startLoopIfNeeded);
+            startLoopIfNeeded();
         });
     </script>
 </body>
